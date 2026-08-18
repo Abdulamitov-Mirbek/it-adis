@@ -1,0 +1,151 @@
+{
+  "nav": {
+    "home":     "Home",
+    "courses":  "Courses",
+    "about":    "About",
+    "teachers": "Teachers",
+    "reviews":  "Reviews",
+    "contact":  "Contact",
+    "apply":    "Apply Now"
+  },
+  "hero": {
+    "badge":    "Advanced Digital Innovation School",
+    "title1":   "Your Future",
+    "title2":   "Starts",
+    "title3":   "with IT",
+    "subtitle": "Master the technologies that define tomorrow — Python, JavaScript, AI, Frontend, and Vibe Coding. Real projects. Real mentors. Real results.",
+    "cta1":     "Start Learning",
+    "cta2":     "Explore Courses",
+    "stats": {
+      "students":   "Students",
+      "placement":  "Job placement",
+      "courses":    "Courses",
+      "years":      "Years"
+    }
+  },
+  "courses": {
+    "badge":       "Our Programs",
+    "title1":      "Learn the",
+    "titleGreen":  "Technologies",
+    "title2":      "of the Future",
+    "subtitle":    "Industry-aligned courses built with real companies. Practical skills, mentored projects, and a career path from day one.",
+    "apply":       "Apply for a Course",
+    "popular":     "Most Popular",
+    "demand":      "High Demand",
+    "career":      "Career-Ready",
+    "new":         "New",
+    "advanced":    "Advanced",
+    "practical":   "Practical",
+    "duration":    "Duration",
+    "learnMore":   "Learn More",
+    "items": {
+      "python": {
+        "title": "Python Development",
+        "desc":  "From basics to advanced — data manipulation, automation, web scraping, and building APIs. The language every developer needs."
+      },
+      "js": {
+        "title": "JavaScript & TypeScript",
+        "desc":  "Master the language of the web. From vanilla JS fundamentals to modern TypeScript patterns used in production."
+      },
+      "frontend": {
+        "title": "Frontend Development",
+        "desc":  "React, Next.js, Tailwind CSS, and modern tooling. Build stunning, performant web applications for real clients."
+      },
+      "vibe": {
+        "title": "Vibe Coding",
+        "desc":  "The future of development — AI-assisted coding workflows, prompt engineering for devs, and building fast with LLMs."
+      },
+      "ai": {
+        "title": "Artificial Intelligence",
+        "desc":  "Neural networks, machine learning pipelines, LLMs, and practical AI applications. Build the intelligent systems of tomorrow."
+      },
+      "data": {
+        "title": "Data Science",
+        "desc":  "Transform data into insights. Master analytics, visualization, and data-driven decision making."
+      }
+    }
+  },
+  "about": {
+    "badge":    "About IT ADIS",
+    "title1":   "We Don't Teach Code.",
+    "title2":   "We Build",
+    "titleGreen": "Careers.",
+    "p1":       "IT ADIS is a modern technology education center dedicated to producing industry-ready developers, data scientists, and AI engineers. We combine rigorous technical depth with real-world project experience.",
+    "p2":       "Founded with one mission: eliminate the gap between traditional education and what tech companies actually need. Every curriculum update reflects what top employers are hiring for right now.",
+    "points": [
+      "Mentored by active senior engineers",
+      "Portfolio of 3+ production projects on graduation",
+      "Career support and introductions to hiring partners",
+      "Flexible schedule — online & in-person options"
+    ],
+    "cta":      "Schedule a Visit",
+    "stats": {
+      "students":  "Students trained",
+      "employed":  "Graduates employed",
+      "courses":   "Courses available",
+      "years":     "Years of excellence"
+    },
+    "pillars": {
+      "curriculum": { "title": "Industry-First Curriculum",  "desc": "Every course is co-designed with tech companies. No outdated content — only what the market actually uses." },
+      "projects":   { "title": "Project-Based Learning",     "desc": "Students ship real projects from week one. Portfolio over certificates. Proof over promises." },
+      "global":     { "title": "Global Mindset",             "desc": "We prepare students for the global tech market — English-first technical communication, remote-ready skills." },
+      "results":    { "title": "Proven Results",             "desc": "95% of our graduates land tech roles within 3 months. Our track record speaks louder than any ranking." }
+    }
+  },
+  "teachers": {
+    "badge":    "Our Teachers",
+    "title1":   "Learn From",
+    "titleGreen": "Practitioners",
+    "subtitle": "Not academics — working engineers. Every instructor brings years of production experience to every lesson."
+  },
+  "reviews": {
+    "badge":    "Student Stories",
+    "title1":   "Real People,",
+    "titleGreen": "Real Results",
+    "subtitle": "Over 2,500 graduates. Their stories say more than we ever could."
+  },
+  "contact": {
+    "badge":    "Get Started",
+    "title1":   "Begin Your",
+    "titleGreen": "Journey Today",
+    "subtitle": "Drop us a message and our team will get back to you within 24 hours.",
+    "email":    "Email Us",
+    "emailVal": "hello@itadis.edu",
+    "emailSub": "Response within 24 hours",
+    "phone":    "Call Us",
+    "phoneVal": "+996 (700) 123-456",
+    "phoneSub": "Mon–Sat, 9am–6pm",
+    "address":  "Visit Us",
+    "addressVal": "Bishkek, Kyrgyzstan",
+    "addressSub": "Innovation District, Building 5",
+    "form": {
+      "name":        "Full Name",
+      "namePh":      "John Doe",
+      "email":       "Email",
+      "emailPh":     "you@example.com",
+      "phone":       "Phone",
+      "phonePh":     "+996 700 000 000",
+      "program":     "Program of Interest",
+      "programPh":   "Select a program…",
+      "message":     "Message",
+      "messagePh":   "Tell us about your background and goals…",
+      "submit":      "Send Application",
+      "privacy":     "By submitting, you agree to our Privacy Policy. No spam — ever."
+    },
+    "success": {
+      "title": "Message Received!",
+      "desc":  "Thanks for reaching out. Our admissions team will contact you within 24 hours to discuss next steps.",
+      "again": "Send Another Message"
+    }
+  },
+  "footer": {
+    "tagline":  "Advanced Digital Innovation School — where technology education meets real-world impact.",
+    "copyright": "All rights reserved.",
+    "energy":   "green energy",
+    "sections": {
+      "Programs": ["Python", "JavaScript", "Frontend", "Vibe Coding", "AI", "Data Science"],
+      "Company":  ["About Us", "Our Team", "Careers", "Blog", "Press"],
+      "Support":  ["FAQ", "Contact", "Privacy Policy", "Terms of Service"]
+    }
+  }
+}
