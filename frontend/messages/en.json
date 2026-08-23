@@ -1,151 +1,548 @@
 {
   "nav": {
-    "home":     "Home",
-    "courses":  "Courses",
-    "about":    "About",
+    "home": "Home",
+    "courses": "Courses",
+    "about": "About",
     "teachers": "Teachers",
-    "reviews":  "Reviews",
-    "contact":  "Contact",
-    "apply":    "Apply Now"
+    "reviews": "Reviews",
+    "contact": "Contact",
+    "apply": "Apply Now"
   },
   "hero": {
-    "badge":    "Advanced Digital Innovation School",
-    "title1":   "Your Future",
-    "title2":   "Starts",
-    "title3":   "with IT",
+    "badge": "Advanced Digital Innovation School",
+    "title1": "Your Future",
+    "title2": "Starts",
+    "title3": "with IT",
     "subtitle": "Master the technologies that define tomorrow — Python, JavaScript, AI, Frontend, and Vibe Coding. Real projects. Real mentors. Real results.",
-    "cta1":     "Start Learning",
-    "cta2":     "Explore Courses",
+    "cta1": "Start Learning",
+    "cta2": "Explore Courses",
     "stats": {
-      "students":   "Students",
-      "placement":  "Job placement",
-      "courses":    "Courses",
-      "years":      "Years"
-    }
+      "students": "Students",
+      "placement": "Job placement",
+      "courses": "Courses",
+      "years": "Years"
+    },
+    "techHint": "Click a technology to explore",
+    "techListLabel": "Technologies you'll master",
+    "scroll": "Scroll"
   },
   "courses": {
-    "badge":       "Our Programs",
-    "title1":      "Learn the",
-    "titleGreen":  "Technologies",
-    "title2":      "of the Future",
-    "subtitle":    "Industry-aligned courses built with real companies. Practical skills, mentored projects, and a career path from day one.",
-    "apply":       "Apply for a Course",
-    "popular":     "Most Popular",
-    "demand":      "High Demand",
-    "career":      "Career-Ready",
-    "new":         "New",
-    "advanced":    "Advanced",
-    "practical":   "Practical",
-    "duration":    "Duration",
-    "learnMore":   "Learn More",
+    "badge": "Our Programs",
+    "title1": "Learn the",
+    "titleGreen": "Technologies",
+    "title2": "of the Future",
+    "subtitle": "Industry-aligned courses built with real companies. Practical skills, mentored projects, and a career path from day one.",
+    "apply": "Apply for a Course",
+    "popular": "Most Popular",
+    "demand": "High Demand",
+    "career": "Career-Ready",
+    "new": "New",
+    "advanced": "Advanced",
+    "practical": "Practical",
+    "duration": "Duration",
+    "learnMore": "Learn More",
     "items": {
       "python": {
         "title": "Python Development",
-        "desc":  "From basics to advanced — data manipulation, automation, web scraping, and building APIs. The language every developer needs."
+        "desc": "From basics to advanced — data manipulation, automation, web scraping, and building APIs. The language every developer needs."
       },
       "js": {
         "title": "JavaScript & TypeScript",
-        "desc":  "Master the language of the web. From vanilla JS fundamentals to modern TypeScript patterns used in production."
+        "desc": "Master the language of the web. From vanilla JS fundamentals to modern TypeScript patterns used in production."
       },
       "frontend": {
         "title": "Frontend Development",
-        "desc":  "React, Next.js, Tailwind CSS, and modern tooling. Build stunning, performant web applications for real clients."
+        "desc": "React, Next.js, Tailwind CSS, and modern tooling. Build stunning, performant web applications for real clients."
       },
       "vibe": {
         "title": "Vibe Coding",
-        "desc":  "The future of development — AI-assisted coding workflows, prompt engineering for devs, and building fast with LLMs."
+        "desc": "The future of development — AI-assisted coding workflows, prompt engineering for devs, and building fast with LLMs."
       },
       "ai": {
         "title": "Artificial Intelligence",
-        "desc":  "Neural networks, machine learning pipelines, LLMs, and practical AI applications. Build the intelligent systems of tomorrow."
+        "desc": "Neural networks, machine learning pipelines, LLMs, and practical AI applications. Build the intelligent systems of tomorrow."
       },
       "data": {
         "title": "Data Science",
-        "desc":  "Transform data into insights. Master analytics, visualization, and data-driven decision making."
+        "desc": "Transform data into insights. Master analytics, visualization, and data-driven decision making."
       }
     }
   },
   "about": {
-    "badge":    "About IT ADIS",
-    "title1":   "We Don't Teach Code.",
-    "title2":   "We Build",
+    "badge": "About IT ADIS",
+    "title1": "We Don't Teach Code.",
+    "title2": "We Build",
     "titleGreen": "Careers.",
-    "p1":       "IT ADIS is a modern technology education center dedicated to producing industry-ready developers, data scientists, and AI engineers. We combine rigorous technical depth with real-world project experience.",
-    "p2":       "Founded with one mission: eliminate the gap between traditional education and what tech companies actually need. Every curriculum update reflects what top employers are hiring for right now.",
+    "p1": "IT ADIS is a modern technology education center dedicated to producing industry-ready developers, data scientists, and AI engineers. We combine rigorous technical depth with real-world project experience.",
+    "p2": "Founded with one mission: eliminate the gap between traditional education and what tech companies actually need. Every curriculum update reflects what top employers are hiring for right now.",
     "points": [
       "Mentored by active senior engineers",
       "Portfolio of 3+ production projects on graduation",
       "Career support and introductions to hiring partners",
       "Flexible schedule — online & in-person options"
     ],
-    "cta":      "Schedule a Visit",
+    "cta": "Schedule a Visit",
     "stats": {
-      "students":  "Students trained",
-      "employed":  "Graduates employed",
-      "courses":   "Courses available",
-      "years":     "Years of excellence"
+      "students": "Students trained",
+      "employed": "Graduates employed",
+      "courses": "Courses available",
+      "years": "Years of excellence"
     },
     "pillars": {
-      "curriculum": { "title": "Industry-First Curriculum",  "desc": "Every course is co-designed with tech companies. No outdated content — only what the market actually uses." },
-      "projects":   { "title": "Project-Based Learning",     "desc": "Students ship real projects from week one. Portfolio over certificates. Proof over promises." },
-      "global":     { "title": "Global Mindset",             "desc": "We prepare students for the global tech market — English-first technical communication, remote-ready skills." },
-      "results":    { "title": "Proven Results",             "desc": "95% of our graduates land tech roles within 3 months. Our track record speaks louder than any ranking." }
+      "curriculum": {
+        "title": "Industry-First Curriculum",
+        "desc": "Every course is co-designed with tech companies. No outdated content — only what the market actually uses."
+      },
+      "projects": {
+        "title": "Project-Based Learning",
+        "desc": "Students ship real projects from week one. Portfolio over certificates. Proof over promises."
+      },
+      "global": {
+        "title": "Global Mindset",
+        "desc": "We prepare students for the global tech market — English-first technical communication, remote-ready skills."
+      },
+      "results": {
+        "title": "Proven Results",
+        "desc": "95% of our graduates land tech roles within 3 months. Our track record speaks louder than any ranking."
+      }
     }
   },
   "teachers": {
-    "badge":    "Our Teachers",
-    "title1":   "Learn From",
+    "badge": "Our Teachers",
+    "title1": "Learn From",
     "titleGreen": "Practitioners",
     "subtitle": "Not academics — working engineers. Every instructor brings years of production experience to every lesson."
   },
   "reviews": {
-    "badge":    "Student Stories",
-    "title1":   "Real People,",
+    "badge": "Student Stories",
+    "title1": "Real People,",
     "titleGreen": "Real Results",
     "subtitle": "Over 2,500 graduates. Their stories say more than we ever could."
   },
   "contact": {
-    "badge":    "Get Started",
-    "title1":   "Begin Your",
+    "badge": "Get Started",
+    "title1": "Begin Your",
     "titleGreen": "Journey Today",
     "subtitle": "Drop us a message and our team will get back to you within 24 hours.",
-    "email":    "Email Us",
+    "email": "Email Us",
     "emailVal": "hello@itadis.edu",
     "emailSub": "Response within 24 hours",
-    "phone":    "Call Us",
+    "phone": "Call Us",
     "phoneVal": "+996 (700) 123-456",
     "phoneSub": "Mon–Sat, 9am–6pm",
-    "address":  "Visit Us",
+    "address": "Visit Us",
     "addressVal": "Bishkek, Kyrgyzstan",
     "addressSub": "Innovation District, Building 5",
     "form": {
-      "name":        "Full Name",
-      "namePh":      "John Doe",
-      "email":       "Email",
-      "emailPh":     "you@example.com",
-      "phone":       "Phone",
-      "phonePh":     "+996 700 000 000",
-      "program":     "Program of Interest",
-      "programPh":   "Select a program…",
-      "message":     "Message",
-      "messagePh":   "Tell us about your background and goals…",
-      "submit":      "Send Application",
-      "privacy":     "By submitting, you agree to our Privacy Policy. No spam — ever."
+      "name": "Full Name",
+      "namePh": "John Doe",
+      "email": "Email",
+      "emailPh": "you@example.com",
+      "phone": "Phone",
+      "phonePh": "+996 700 000 000",
+      "program": "Program of Interest",
+      "programPh": "Select a program…",
+      "message": "Message",
+      "messagePh": "Tell us about your background and goals…",
+      "submit": "Send Application",
+      "privacy": "By submitting, you agree to our Privacy Policy. No spam — ever."
     },
     "success": {
       "title": "Message Received!",
-      "desc":  "Thanks for reaching out. Our admissions team will contact you within 24 hours to discuss next steps.",
+      "desc": "Thanks for reaching out. Our admissions team will contact you within 24 hours to discuss next steps.",
       "again": "Send Another Message"
     }
   },
   "footer": {
-    "tagline":  "Advanced Digital Innovation School — where technology education meets real-world impact.",
+    "tagline": "Advanced Digital Innovation School — where technology education meets real-world impact.",
     "copyright": "All rights reserved.",
-    "energy":   "green energy",
+    "energy": "green energy",
     "sections": {
-      "Programs": ["Python", "JavaScript", "Frontend", "Vibe Coding", "AI", "Data Science"],
-      "Company":  ["About Us", "Our Team", "Careers", "Blog", "Press"],
-      "Support":  ["FAQ", "Contact", "Privacy Policy", "Terms of Service"]
+      "Programs": [
+        "Python",
+        "JavaScript",
+        "Frontend",
+        "Vibe Coding",
+        "AI",
+        "Data Science"
+      ],
+      "Company": [
+        "About Us",
+        "Our Team",
+        "Careers",
+        "Blog",
+        "Press"
+      ],
+      "Support": [
+        "FAQ",
+        "Contact",
+        "Privacy Policy",
+        "Terms of Service"
+      ]
+    }
+  },
+  "tech": {
+    "navLabel": "Technologies we teach",
+    "eyebrow": "Technology",
+    "backHome": "Back to home",
+    "allTech": "All technologies",
+    "sections": {
+      "what": "What it is",
+      "why": "Why it is worth learning",
+      "build": "What you will build",
+      "careers": "Where it leads",
+      "roadmap": "Your learning path"
+    },
+    "careerNote": "Indicative monthly ranges for the regional market. Actual pay depends on experience, company and stack.",
+    "role": "Role",
+    "salary": "Typical range",
+    "ctaTitle": "Learn this at IT ADIS",
+    "ctaBody": "Mentored projects, real code review, and a portfolio you can show.",
+    "ctaButton": "See the course",
+    "ctaSecondary": "Talk to us",
+    "items": {
+      "python": {
+        "name": "Python",
+        "tagline": "Reads like English, runs half the modern world.",
+        "what": "Python is a general-purpose programming language designed to be readable first. That single decision is why it became the default language of data science, automation, machine learning and backend services alike — you spend your effort on the problem instead of on the syntax.",
+        "why": [
+          "The gentlest entry into programming that still leads to a serious career — nothing is a toy language you outgrow.",
+          "One language covers web backends, data analysis, automation and AI, so your second project reuses the skills from your first.",
+          "The largest package ecosystem in software: whatever you need to do, a well-tested library already does most of it.",
+          "Consistently among the most in-demand languages in job listings, and the standard language of AI research."
+        ],
+        "build": [
+          {
+            "title": "An automation bot",
+            "desc": "Turn a repetitive daily task into a script that runs by itself — file sorting, reports, scraping a site for changes."
+          },
+          {
+            "title": "A REST API",
+            "desc": "A real backend with FastAPI: routes, a database, authentication, and documentation generated for you."
+          },
+          {
+            "title": "A data analysis",
+            "desc": "Take a messy real-world dataset, clean it, and produce charts that actually answer a question."
+          }
+        ],
+        "careers": [
+          {
+            "role": "Backend Developer",
+            "salary": "$700 – $1 800 / mo"
+          },
+          {
+            "role": "Data Analyst",
+            "salary": "$600 – $1 500 / mo"
+          },
+          {
+            "role": "Automation / QA Engineer",
+            "salary": "$500 – $1 200 / mo"
+          }
+        ],
+        "roadmap": [
+          {
+            "phase": "Foundations",
+            "detail": "Syntax, data types, control flow, functions. Writing programs that do something on day one."
+          },
+          {
+            "phase": "Structure",
+            "detail": "Files, modules, error handling, and object-oriented design — how code stays readable past 100 lines."
+          },
+          {
+            "phase": "The ecosystem",
+            "detail": "Virtual environments, pip, requests, pandas. Standing on other people's work properly."
+          },
+          {
+            "phase": "Shipping",
+            "detail": "A database-backed API, tests, Git, and deployment. The parts that separate a script from a product."
+          }
+        ]
+      },
+      "javascript": {
+        "name": "JavaScript",
+        "tagline": "The only language that runs natively in every browser on earth.",
+        "what": "JavaScript is the language of the web. It is the only one browsers execute directly, which means every interactive page you have ever used runs it. With Node.js it also runs on servers, and with TypeScript it gains the type safety that makes large codebases survivable.",
+        "why": [
+          "Non-negotiable for web work — there is no alternative that runs in the browser without compiling to it.",
+          "One language for the whole stack: the same skills drive the interface, the server and the build tooling.",
+          "TypeScript turns it into a language you can build something large in without fear of refactoring.",
+          "The largest hiring market of any language, and the easiest to freelance in."
+        ],
+        "build": [
+          {
+            "title": "An interactive interface",
+            "desc": "DOM manipulation, events and state — a page that responds instead of just displaying."
+          },
+          {
+            "title": "A app that talks to an API",
+            "desc": "Fetch, async/await, error and loading states. The shape of every real front end."
+          },
+          {
+            "title": "A typed codebase",
+            "desc": "The same project rewritten in TypeScript, where the compiler catches your mistakes before users do."
+          }
+        ],
+        "careers": [
+          {
+            "role": "Frontend Developer",
+            "salary": "$700 – $1 800 / mo"
+          },
+          {
+            "role": "Full-Stack Developer",
+            "salary": "$900 – $2 200 / mo"
+          },
+          {
+            "role": "Node.js Backend Developer",
+            "salary": "$800 – $2 000 / mo"
+          }
+        ],
+        "roadmap": [
+          {
+            "phase": "The language",
+            "detail": "Types, functions, scope, closures. Understanding what actually happens, not memorising patterns."
+          },
+          {
+            "phase": "The browser",
+            "detail": "DOM, events, forms, storage — making a page react to a person."
+          },
+          {
+            "phase": "Asynchronous code",
+            "detail": "Promises, async/await, fetch. Working with a network that is slow and sometimes fails."
+          },
+          {
+            "phase": "TypeScript & tooling",
+            "detail": "Types, generics, modules, bundlers. Code that scales past one file and one author."
+          }
+        ]
+      },
+      "frontend": {
+        "name": "Frontend",
+        "tagline": "Where design becomes something people can actually use.",
+        "what": "Frontend development is the craft of building the part of a product people touch. Modern frontend means React and Next.js for structure, Tailwind for styling, and a real concern for performance and accessibility — because an interface that is beautiful but slow or unusable has failed.",
+        "why": [
+          "The most visible work in software: you can show your portfolio to anyone, technical or not.",
+          "The clearest path from beginner to employed — junior frontend roles are the most common entry point in the industry.",
+          "Immediate feedback. You change a line and see it, which makes learning far faster than backend work.",
+          "Highly freelance-friendly: small businesses need sites and are willing to pay individuals for them."
+        ],
+        "build": [
+          {
+            "title": "A responsive marketing site",
+            "desc": "Pixel-accurate from a design, working from a phone to a wide monitor."
+          },
+          {
+            "title": "A dashboard",
+            "desc": "Components, routing, data fetching, and state that stays correct as the app grows."
+          },
+          {
+            "title": "A production Next.js app",
+            "desc": "Server rendering, image optimisation, SEO metadata and a real deployment."
+          }
+        ],
+        "careers": [
+          {
+            "role": "Frontend Developer",
+            "salary": "$700 – $1 800 / mo"
+          },
+          {
+            "role": "React / Next.js Developer",
+            "salary": "$900 – $2 200 / mo"
+          },
+          {
+            "role": "UI Engineer",
+            "salary": "$800 – $2 000 / mo"
+          }
+        ],
+        "roadmap": [
+          {
+            "phase": "HTML & CSS properly",
+            "detail": "Semantics, flexbox, grid, responsive design. The foundation most self-taught developers skip and regret."
+          },
+          {
+            "phase": "React",
+            "detail": "Components, props, state, hooks. Thinking in composable pieces rather than pages."
+          },
+          {
+            "phase": "Next.js",
+            "detail": "Routing, server components, data loading, rendering strategies and SEO."
+          },
+          {
+            "phase": "Craft",
+            "detail": "Accessibility, performance budgets, animation and design systems — what makes work look professional."
+          }
+        ]
+      },
+      "ai": {
+        "name": "AI & Machine Learning",
+        "tagline": "Teaching software to find the patterns you cannot describe.",
+        "what": "Machine learning is how we build systems for problems too complex to write rules for — recognising speech, ranking results, forecasting demand. Instead of encoding the logic yourself, you assemble data, choose a model, and let it learn the mapping. It is the fastest-moving field in software right now.",
+        "why": [
+          "The highest-paying specialisation in the industry, and the gap between demand and supply is still wide.",
+          "It applies to every domain — medicine, agriculture, logistics, finance — so you can pair it with what you already know.",
+          "You learn to reason with data and uncertainty, which sharpens your judgement well beyond programming.",
+          "The tooling has matured enough that you can build genuinely useful models without a research degree."
+        ],
+        "build": [
+          {
+            "title": "A prediction model",
+            "desc": "From raw data to a trained model that forecasts something real, evaluated honestly."
+          },
+          {
+            "title": "A computer-vision classifier",
+            "desc": "A neural network that recognises images, trained and tested on your own dataset."
+          },
+          {
+            "title": "An LLM-powered app",
+            "desc": "A working product built on a language model API — prompting, context, and handling wrong answers."
+          }
+        ],
+        "careers": [
+          {
+            "role": "ML Engineer",
+            "salary": "$1 200 – $3 000 / mo"
+          },
+          {
+            "role": "Data Scientist",
+            "salary": "$1 000 – $2 500 / mo"
+          },
+          {
+            "role": "AI Application Developer",
+            "salary": "$900 – $2 200 / mo"
+          }
+        ],
+        "roadmap": [
+          {
+            "phase": "The maths you need",
+            "detail": "Just enough statistics and linear algebra to understand what a model is doing — not a maths degree."
+          },
+          {
+            "phase": "Classical ML",
+            "detail": "Regression, classification, trees. Training, validation, and why models fool you."
+          },
+          {
+            "phase": "Deep learning",
+            "detail": "Neural networks, TensorFlow, computer vision and language models."
+          },
+          {
+            "phase": "In production",
+            "detail": "Serving a model behind an API, monitoring it, and knowing when it has gone stale."
+          }
+        ]
+      },
+      "data": {
+        "name": "Data Science",
+        "tagline": "Turning a spreadsheet nobody understands into a decision.",
+        "what": "Data science is the work of getting a trustworthy answer out of messy data. It combines programming, statistics and communication: pulling data together, cleaning what is wrong with it, finding what is actually true, and presenting it so a decision-maker can act.",
+        "why": [
+          "Every organisation now collects more data than it can interpret, and very few people can close that gap.",
+          "It is the most business-adjacent technical role, which makes it a natural route into leadership.",
+          "You can start adding value with skills that take months, not years, to build.",
+          "Shares its foundation with AI, so it opens that door too."
+        ],
+        "build": [
+          {
+            "title": "An end-to-end analysis",
+            "desc": "A real dataset from collection through cleaning to a written conclusion someone could act on."
+          },
+          {
+            "title": "An interactive dashboard",
+            "desc": "Live metrics that a non-technical person can read without you in the room."
+          },
+          {
+            "title": "A forecast",
+            "desc": "Time-series work that projects forward — and states its own uncertainty honestly."
+          }
+        ],
+        "careers": [
+          {
+            "role": "Data Analyst",
+            "salary": "$600 – $1 500 / mo"
+          },
+          {
+            "role": "Data Scientist",
+            "salary": "$1 000 – $2 500 / mo"
+          },
+          {
+            "role": "BI Developer",
+            "salary": "$700 – $1 800 / mo"
+          }
+        ],
+        "roadmap": [
+          {
+            "phase": "Data wrangling",
+            "detail": "Python, pandas, SQL. Getting data out of where it lives and into a usable shape."
+          },
+          {
+            "phase": "Statistics that matter",
+            "detail": "Distributions, correlation, significance — and the traps that produce confident wrong answers."
+          },
+          {
+            "phase": "Visualisation",
+            "detail": "Charts that reveal rather than decorate, and the judgement to choose the right one."
+          },
+          {
+            "phase": "Communication",
+            "detail": "Turning an analysis into a recommendation. The skill that decides whether your work changes anything."
+          }
+        ]
+      },
+      "vibe": {
+        "name": "Vibe Coding",
+        "tagline": "Building with AI as a collaborator, not an autocomplete.",
+        "what": "Vibe coding is the practice of building software with AI assistants as a genuine part of the workflow — describing intent, reviewing what comes back, and iterating quickly. It is a real skill: knowing how to specify, how to verify, and where the assistant is confidently wrong is what separates a fast developer from a dangerous one.",
+        "why": [
+          "It is already how a large share of professional development is done — this is current practice, not a prediction.",
+          "It compresses the time from idea to working prototype dramatically.",
+          "It lowers the barrier into programming without lowering the ceiling.",
+          "The judgement it demands — reading code critically, testing claims — makes you a better engineer regardless of the tools."
+        ],
+        "build": [
+          {
+            "title": "A prototype in a day",
+            "desc": "Idea to deployed, working application in a single session, with AI carrying the boilerplate."
+          },
+          {
+            "title": "A verified feature",
+            "desc": "Adding to an existing codebase with AI, then proving it works — the discipline most people skip."
+          },
+          {
+            "title": "Your own workflow",
+            "desc": "Prompts, rules and tooling tuned to how you build, so the speed persists after the course."
+          }
+        ],
+        "careers": [
+          {
+            "role": "AI-Assisted Developer",
+            "salary": "$800 – $2 000 / mo"
+          },
+          {
+            "role": "Product Prototyper",
+            "salary": "$700 – $1 800 / mo"
+          },
+          {
+            "role": "Technical Founder",
+            "salary": "Depends on what you build"
+          }
+        ],
+        "roadmap": [
+          {
+            "phase": "The tools",
+            "detail": "Modern AI coding assistants, what each is good at, and how to drive them."
+          },
+          {
+            "phase": "Specifying well",
+            "detail": "Describing intent precisely enough to get useful output — the core skill."
+          },
+          {
+            "phase": "Verifying",
+            "detail": "Reading generated code critically, testing it, and catching confident mistakes."
+          },
+          {
+            "phase": "Shipping",
+            "detail": "Taking an AI-built prototype all the way to something real people can use safely."
+          }
+        ]
+      }
     }
   }
 }

@@ -1,15 +1,19 @@
 import { PrismaClient, CourseLevel } from "@prisma/client";
+import * as bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
+
+// Hash password using bcrypt for consistency with auth service
+function hashPassword(password: string): string {
+  return bcrypt.hashSync(password, 10);
+}
 
 const courses = [
   {
     slug: "python-development",
     title: "Python Development",
-    description:
-      "From basics to advanced — data manipulation, automation, web scraping, and building APIs.",
-    longDesc:
-      "A comprehensive Python course taking you from absolute beginner to professional developer. Covers OOP, data structures, web scraping with BeautifulSoup/Selenium, REST APIs with FastAPI, and automation scripts.",
+    description: "From basics to advanced — data manipulation, automation, web scraping, and building APIs.",
+    longDesc: "A comprehensive Python course covering OOP, data structures, web scraping, REST APIs with FastAPI, and automation scripts.",
     duration: "4 months",
     level: CourseLevel.BEGINNER,
     price: 35000,
@@ -20,10 +24,8 @@ const courses = [
   {
     slug: "javascript-typescript",
     title: "JavaScript & TypeScript",
-    description:
-      "Master the language of the web. From vanilla JS to modern TypeScript patterns used in production.",
-    longDesc:
-      "Deep dive into JavaScript fundamentals, ES2024+, asynchronous programming, and TypeScript. Build real projects using modern tooling.",
+    description: "Master the language of the web. From vanilla JS to modern TypeScript patterns used in production.",
+    longDesc: "Deep dive into JavaScript fundamentals, ES2024+, async programming, and TypeScript for production apps.",
     duration: "3 months",
     level: CourseLevel.BEGINNER,
     price: 30000,
@@ -34,10 +36,8 @@ const courses = [
   {
     slug: "frontend-development",
     title: "Frontend Development",
-    description:
-      "React, Next.js, Tailwind CSS, and modern tooling. Build stunning, performant web applications.",
-    longDesc:
-      "Complete frontend engineering course. React fundamentals, Next.js App Router, Tailwind CSS, state management, testing, and deployment to Vercel.",
+    description: "React, Next.js, Tailwind CSS, and modern tooling. Build stunning, performant web applications.",
+    longDesc: "Complete frontend engineering: React, Next.js App Router, Tailwind CSS, state management, testing, Vercel deployment.",
     duration: "5 months",
     level: CourseLevel.INTERMEDIATE,
     price: 45000,
@@ -48,10 +48,8 @@ const courses = [
   {
     slug: "vibe-coding",
     title: "Vibe Coding",
-    description:
-      "AI-assisted coding workflows, prompt engineering for devs, and building fast with LLMs.",
-    longDesc:
-      "The future of software development. Learn to leverage AI tools like Cursor, GitHub Copilot, Claude, and GPT-4 to multiply your development speed 3-10x.",
+    description: "AI-assisted coding workflows, prompt engineering for devs, and building fast with LLMs.",
+    longDesc: "Learn Cursor, Copilot, Claude, GPT-4 to multiply your development speed 3-10x.",
     duration: "2 months",
     level: CourseLevel.ALL_LEVELS,
     price: 20000,
@@ -62,10 +60,8 @@ const courses = [
   {
     slug: "artificial-intelligence",
     title: "Artificial Intelligence",
-    description:
-      "Neural networks, machine learning pipelines, LLMs, and practical AI applications.",
-    longDesc:
-      "Comprehensive AI/ML course covering supervised/unsupervised learning, deep learning with PyTorch, NLP, computer vision, and fine-tuning LLMs.",
+    description: "Neural networks, machine learning pipelines, LLMs, and practical AI applications.",
+    longDesc: "Supervised/unsupervised learning, deep learning with PyTorch, NLP, computer vision, fine-tuning LLMs.",
     duration: "6 months",
     level: CourseLevel.ADVANCED,
     price: 60000,
@@ -76,10 +72,8 @@ const courses = [
   {
     slug: "data-science",
     title: "Data Science",
-    description:
-      "Data analysis, visualization, statistical modeling, and real business insights.",
-    longDesc:
-      "Learn pandas, NumPy, matplotlib, seaborn, scikit-learn, and SQL. Build end-to-end data pipelines and dashboards for real business problems.",
+    description: "Data analysis, visualization, statistical modeling, and real business insights.",
+    longDesc: "pandas, NumPy, matplotlib, seaborn, scikit-learn, SQL. End-to-end data pipelines and dashboards.",
     duration: "4 months",
     level: CourseLevel.INTERMEDIATE,
     price: 40000,
@@ -92,23 +86,35 @@ const courses = [
 async function main() {
   console.log("🌱 Seeding database...");
 
+  // Upsert courses
   for (const course of courses) {
     await prisma.course.upsert({
-      where: { slug: course.slug },
+      where:  { slug: course.slug },
       update: course,
       create: course,
     });
     console.log(`  ✓ Course: ${course.title}`);
   }
 
+  // Upsert default admin
+  const hashedPassword = hashPassword("itadis_admin_2026");
+  await prisma.adminUser.upsert({
+    where:  { email: "admin@itadis.edu" },
+    update: {
+      passwordHash: hashedPassword,
+      name: "IT ADIS Admin",
+    },
+    create: {
+      email:        "admin@itadis.edu",
+      passwordHash: hashedPassword,
+      name:         "IT ADIS Admin",
+    },
+  });
+  console.log("  ✓ Admin user: admin@itadis.edu / itadis_admin_2026");
+
   console.log("✅ Seed complete");
 }
 
 main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+  .catch((e) => { console.error(e); process.exit(1); })
+  .finally(() => prisma.$disconnect());

@@ -1,98 +1,24 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  Code2, Brain, Layers, Zap, Globe, Database,
   ArrowRight, Clock, Users, Star,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SparkleButton } from "@/components/ui/SparkleButton";
+import { api } from "@/lib/api";
+import { mapCoursesToMeta, type CourseMeta } from "@/lib/course-meta";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const COURSE_META = [
-  {
-    key:      "python" as const,
-    icon:     Code2,
-    badgeKey: "popular",
-    duration: "4 months",
-    students: "840+",
-    rating:   4.9,
-    tags:     ["Beginner", "Backend", "Data"],
-    gradient: "from-green-600/20 to-green-900/10",
-    border:   "border-green-500/30 hover:border-green-400/60",
-    iconBg:   "bg-green-500/10 text-green-400",
-  },
-  {
-    key:      "js" as const,
-    icon:     Globe,
-    badgeKey: "demand",
-    duration: "3 months",
-    students: "620+",
-    rating:   4.8,
-    tags:     ["Beginner", "Frontend", "Backend"],
-    gradient: "from-blue-600/20 to-blue-900/10",
-    border:   "border-blue-500/30 hover:border-blue-400/60",
-    iconBg:   "bg-blue-500/10 text-blue-400",
-  },
-  {
-    key:      "frontend" as const,
-    icon:     Layers,
-    badgeKey: "career",
-    duration: "5 months",
-    students: "510+",
-    rating:   4.9,
-    tags:     ["Intermediate", "React", "Next.js"],
-    gradient: "from-green-600/20 to-emerald-900/10",
-    border:   "border-green-500/30 hover:border-green-400/60",
-    iconBg:   "bg-emerald-500/10 text-emerald-400",
-  },
-  {
-    key:      "vibe" as const,
-    icon:     Zap,
-    badgeKey: "new",
-    duration: "2 months",
-    students: "380+",
-    rating:   5.0,
-    tags:     ["All Levels", "AI Tools", "Productivity"],
-    gradient: "from-yellow-600/15 to-orange-900/10",
-    border:   "border-yellow-500/30 hover:border-yellow-400/60",
-    iconBg:   "bg-yellow-500/10 text-yellow-400",
-  },
-  {
-    key:      "ai" as const,
-    icon:     Brain,
-    badgeKey: "advanced",
-    duration: "6 months",
-    students: "290+",
-    rating:   4.8,
-    tags:     ["Advanced", "ML", "Deep Learning"],
-    gradient: "from-purple-600/20 to-purple-900/10",
-    border:   "border-purple-500/30 hover:border-purple-400/60",
-    iconBg:   "bg-purple-500/10 text-purple-400",
-  },
-  {
-    key:      "data" as const,
-    icon:     Database,
-    badgeKey: "practical",
-    duration: "4 months",
-    students: "310+",
-    rating:   4.7,
-    tags:     ["Intermediate", "Analytics", "Python"],
-    gradient: "from-cyan-600/15 to-teal-900/10",
-    border:   "border-cyan-500/30 hover:border-cyan-400/60",
-    iconBg:   "bg-cyan-500/10 text-cyan-400",
-  },
-] as const;
 
 function CourseCard({
   meta,
   index,
 }: {
-  meta: (typeof COURSE_META)[number];
+  meta: CourseMeta;
   index: number;
 }) {
   const t    = useTranslations("courses");
@@ -123,7 +49,7 @@ function CourseCard({
       )}
       tabIndex={0}
       role="article"
-      aria-label={t(`items.${meta.key}.title`)}
+      aria-label={meta.course.title}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
@@ -149,12 +75,12 @@ function CourseCard({
 
       {/* Title */}
       <h3 className="font-display text-xl font-bold text-white mb-2 group-hover:text-green-300 transition-colors">
-        {t(`items.${meta.key}.title`)}
+        {meta.course.title}
       </h3>
 
       {/* Description */}
-      <p className="text-sm text-green-100/60 leading-relaxed mb-5">
-        {t(`items.${meta.key}.desc`)}
+      <p className="text-sm text-green-100/75 leading-relaxed mb-5">
+        {meta.course.description}
       </p>
 
       {/* Tags */}
@@ -167,7 +93,7 @@ function CourseCard({
       </div>
 
       {/* Meta row */}
-      <div className="flex items-center justify-between text-xs text-green-100/50 pt-4 border-t border-white/5">
+      <div className="flex items-center justify-between text-xs text-green-100/70 pt-4 border-t border-white/5">
         <div className="flex items-center gap-1">
           <Clock size={12} aria-hidden="true" />
           <span>{meta.duration}</span>
@@ -196,6 +122,33 @@ function CourseCard({
 export function Courses() {
   const t          = useTranslations("courses");
   const headingRef = useRef<HTMLDivElement>(null);
+  const [courseMeta, setCourseMeta] = useState<CourseMeta[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    let cancelled = false;
+
+    const fetchCourses = async () => {
+      try {
+        const courses = await api.getCourses();
+        if (!cancelled) {
+          setCourseMeta(mapCoursesToMeta(courses));
+        }
+      } catch (err) {
+        if (!cancelled) {
+          console.error('Failed to fetch courses:', err);
+          setError(err instanceof Error ? err.message : 'Failed to load courses');
+        }
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    };
+
+    fetchCourses();
+    return () => { cancelled = true; controller.abort(); };
+  }, []);
 
   useEffect(() => {
     if (!headingRef.current) return;
@@ -226,16 +179,52 @@ export function Courses() {
             <br className="hidden sm:block" />
             {" "}{t("title2")}
           </h2>
-          <p className="text-lg text-green-100/50 max-w-2xl mx-auto">
+          <p className="text-lg text-green-100/70 max-w-2xl mx-auto">
             {t("subtitle")}
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {COURSE_META.map((meta, i) => (
-            <CourseCard key={meta.key} meta={meta} index={i} />
-          ))}
-        </div>
+        {isLoading && (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="rounded-3xl p-6 border border-green-500/30 bg-gradient-to-br from-green-600/20 to-green-900/10 animate-pulse">
+                <div className="h-32 bg-green-500/10 rounded mb-4"></div>
+                <div className="h-6 bg-green-500/10 rounded mb-2"></div>
+                <div className="h-4 bg-green-500/10 rounded mb-4"></div>
+                <div className="flex gap-2 mb-4">
+                  <div className="h-6 w-16 bg-green-500/10 rounded"></div>
+                  <div className="h-6 w-20 bg-green-500/10 rounded"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {error && (
+          <div className="text-center py-12">
+            <p className="text-red-400 mb-4">Error loading courses: {error}</p>
+            <button 
+              onClick={() => window.location.reload()}
+              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+            >
+              Retry
+            </button>
+          </div>
+        )}
+
+        {!isLoading && !error && courseMeta.length > 0 && (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {courseMeta.map((meta, i) => (
+              <CourseCard key={meta.course.id} meta={meta} index={i} />
+            ))}
+          </div>
+        )}
+
+        {!isLoading && !error && courseMeta.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-green-100/70">No courses available at the moment.</p>
+          </div>
+        )}
 
         <div className="flex justify-center mt-14">
           <SparkleButton

@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CheckCircle2, Cpu, Globe2, Lightbulb, Trophy } from "lucide-react";
 import { SparkleButton } from "@/components/ui/SparkleButton";
+import { api, type Stats } from "@/lib/api";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,13 +34,37 @@ export function About() {
   const leftRef    = useRef<HTMLDivElement>(null);
   const rightRef   = useRef<HTMLDivElement>(null);
   const [counted, setCounted] = useState(false);
+  const [stats, setStats] = useState<Stats | null>(null);
+  const [statsLoading, setStatsLoading] = useState(true);
 
-  const STATS = [
-    { value: 2500, suffix: "+", labelKey: "students" },
-    { value: 95,   suffix: "%", labelKey: "employed" },
-    { value: 5,    suffix: "+", labelKey: "courses"  },
-    { value: 3,    suffix: "+", labelKey: "years"    },
-  ] as const;
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const data = await api.getStats();
+        setStats(data);
+      } catch (err) {
+        console.error('Failed to fetch stats:', err);
+        // Fallback to default stats
+        setStats({
+          students: 2500,
+          employed: 95,
+          courses: 5,
+          years: 3,
+        });
+      } finally {
+        setStatsLoading(false);
+      }
+    };
+
+    fetchStats();
+  }, []);
+
+  const STATS = stats ? [
+    { value: stats.students, suffix: "+", labelKey: "students" },
+    { value: stats.employed, suffix: "%", labelKey: "employed" },
+    { value: stats.courses,  suffix: "+", labelKey: "courses"  },
+    { value: stats.years,    suffix: "+", labelKey: "years"    },
+  ] : [] as const;
 
   const PILLARS = [
     { icon: Cpu,       key: "curriculum" },
@@ -98,8 +123,8 @@ export function About() {
                 {t("title2")}{" "}
                 <span className="gradient-text">{t("titleGreen")}</span>
               </h2>
-              <p className="text-green-100/60 text-lg leading-relaxed mb-6">{t("p1")}</p>
-              <p className="text-green-100/50 leading-relaxed">{t("p2")}</p>
+              <p className="text-green-100/75 text-lg leading-relaxed mb-6">{t("p1")}</p>
+              <p className="text-green-100/70 leading-relaxed">{t("p2")}</p>
             </div>
 
             <div className="flex flex-col gap-3">
@@ -124,16 +149,26 @@ export function About() {
           {/* Right */}
           <div ref={rightRef} className="flex flex-col gap-6">
             <div className="grid grid-cols-2 gap-4 mb-2">
-              {STATS.map((s) => (
-                <div key={s.labelKey}
-                  className="glass border border-green-900/40 rounded-3xl p-6 hover:border-green-500/30 transition-all duration-300 group"
-                >
-                  <div className="font-display text-4xl font-bold gradient-text mb-1">
-                    <AnimatedCounter value={s.value} suffix={s.suffix} trigger={counted} />
+              {statsLoading ? (
+                // Loading skeleton
+                [...Array(4)].map((_, i) => (
+                  <div key={i} className="glass border border-green-900/40 rounded-3xl p-6 animate-pulse">
+                    <div className="h-8 bg-green-500/10 rounded mb-2"></div>
+                    <div className="h-4 bg-green-500/10 rounded w-2/3"></div>
                   </div>
-                  <div className="text-sm text-green-100/50">{t(`stats.${s.labelKey}` as "stats.students")}</div>
-                </div>
-              ))}
+                ))
+              ) : (
+                STATS.map((s) => (
+                  <div key={s.labelKey}
+                    className="glass border border-green-900/40 rounded-3xl p-6 hover:border-green-500/30 transition-all duration-300 group"
+                  >
+                    <div className="font-display text-4xl font-bold gradient-text mb-1">
+                      <AnimatedCounter value={s.value} suffix={s.suffix} trigger={counted} />
+                    </div>
+                    <div className="text-sm text-green-100/70">{t(`stats.${s.labelKey}` as "stats.students")}</div>
+                  </div>
+                ))
+              )}
             </div>
 
             <div className="grid grid-cols-1 gap-3">
@@ -148,7 +183,7 @@ export function About() {
                     <h4 className="font-semibold text-white text-sm mb-1">
                       {t(`pillars.${key}.title` as "pillars.curriculum.title")}
                     </h4>
-                    <p className="text-xs text-green-100/50 leading-relaxed">
+                    <p className="text-xs text-green-100/70 leading-relaxed">
                       {t(`pillars.${key}.desc` as "pillars.curriculum.desc")}
                     </p>
                   </div>

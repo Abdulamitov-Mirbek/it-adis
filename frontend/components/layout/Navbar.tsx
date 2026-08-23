@@ -8,9 +8,11 @@ import { gsap } from "gsap";
 import { ITAdisLogoInline } from "@/components/ui/ITAdisLogo";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 import { SparkleButton } from "@/components/ui/SparkleButton";
+import { useRouter } from "@/i18n/navigation";
 
 export function Navbar() {
   const t = useTranslations("nav");
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
@@ -39,9 +41,17 @@ export function Navbar() {
     );
   }, []);
 
+  // The nav targets are sections of the home page. From a sub-page such as
+  // /tech/python those elements do not exist, so scrolling silently does
+  // nothing — navigate home with the hash instead.
   const scrollTo = (href: string) => {
     setMenuOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+    router.push(`/${href}`);
   };
 
   return (

@@ -428,7 +428,7 @@ export function TechEcosystem({
     <Canvas
       camera={{ position: [0, 0, 9], fov: 52 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-      dpr={[1, Math.min(window.devicePixelRatio, 2)]}
+      dpr={[1, typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 1]}
       style={{ background: "transparent" }}
       aria-label="Interactive 3D technology ecosystem"
     >

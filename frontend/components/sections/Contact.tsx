@@ -7,17 +7,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, MapPin, Phone, CheckCircle2 } from "lucide-react";
 import { SparkleButton } from "@/components/ui/SparkleButton";
 import { cn } from "@/lib/utils";
+import { api } from "@/lib/api";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const PROGRAMS_EN = [
-  "Python Development",
-  "JavaScript & TypeScript",
-  "Frontend Development",
-  "Vibe Coding",
-  "Artificial Intelligence",
-  "Data Science",
-];
 
 export function Contact() {
   const t          = useTranslations("contact");
@@ -27,6 +19,34 @@ export function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading]     = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", program: "", message: "" });
+  const [programs, setPrograms] = useState<string[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      try {
+        const courses = await api.getCourses();
+        const programNames = courses
+          .filter(course => course.isActive)
+          .sort((a, b) => a.order - b.order)
+          .map(course => course.title);
+        setPrograms(programNames);
+      } catch (err) {
+        console.error('Failed to fetch programs:', err);
+        // Fallback to hardcoded programs
+        setPrograms([
+          "Python Development",
+          "JavaScript & TypeScript", 
+          "Frontend Development",
+          "Vibe Coding",
+          "Artificial Intelligence",
+          "Data Science",
+        ]);
+      }
+    };
+
+    fetchPrograms();
+  }, []);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -47,16 +67,18 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError(null);
+    
     try {
-      await fetch("/api/applications", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-    } catch { /* graceful offline fallback */ }
-    setLoading(false);
-    setSubmitted(true);
-    setForm({ name: "", email: "", phone: "", program: "", message: "" });
+      await api.submitApplication(form);
+      setSubmitted(true);
+      setForm({ name: "", email: "", phone: "", program: "", message: "" });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to submit application');
+      console.error('Application submission failed:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputCls = "px-4 py-3 rounded-xl bg-white/5 border border-green-900/40 text-white placeholder-green-100/30 text-sm focus:outline-none focus:border-green-500/60 focus:bg-white/8 transition-all";
@@ -79,7 +101,7 @@ export function Contact() {
             {t("title1")}{" "}
             <span className="gradient-text">{t("titleGreen")}</span>
           </h2>
-          <p className="text-green-100/50 text-lg max-w-xl mx-auto">{t("subtitle")}</p>
+          <p className="text-green-100/70 text-lg max-w-xl mx-auto">{t("subtitle")}</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -98,7 +120,7 @@ export function Contact() {
                   <div>
                     <div className="text-xs text-green-400 font-medium mb-0.5">{label}</div>
                     <div className="font-semibold text-white">{value}</div>
-                    <div className="text-xs text-green-100/40 mt-0.5">{sub}</div>
+                    <div className="text-xs text-green-100/78 mt-0.5">{sub}</div>
                   </div>
                 </div>
               ))}
@@ -129,7 +151,7 @@ export function Contact() {
                   <CheckCircle2 size={36} className="text-green-400" aria-hidden="true" />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-white">{t("success.title")}</h3>
-                <p className="text-green-100/60 max-w-sm">{t("success.desc")}</p>
+                <p className="text-green-100/75 max-w-sm">{t("success.desc")}</p>
                 <button onClick={() => setSubmitted(false)}
                   className="mt-2 px-6 py-3 rounded-xl text-sm font-medium glass border border-green-500/30 text-green-300 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-green-500/40"
                 >
@@ -158,7 +180,7 @@ export function Contact() {
                     className="px-4 py-3 rounded-xl bg-dark-card border border-green-900/40 text-white text-sm focus:outline-none focus:border-green-500/60 transition-all appearance-none"
                   >
                     <option value="" disabled>{t("form.programPh")}</option>
-                    {PROGRAMS_EN.map((p) => <option key={p} value={p}>{p}</option>)}
+                    {programs.map((p) => <option key={p} value={p}>{p}</option>)}
                   </select>
                 </div>
                 <div className="flex flex-col gap-2">
@@ -175,7 +197,13 @@ export function Contact() {
                   ) : t("form.submit")}
                 </SparkleButton>
 
-                <p className="text-xs text-center text-green-100/30">{t("form.privacy")}</p>
+                {error && (
+                  <div className="bg-red-900/30 border border-red-500/30 rounded-lg p-3 text-red-300 text-sm">
+                    {error}
+                  </div>
+                )}
+
+                <p className="text-xs text-center text-green-100/75">{t("form.privacy")}</p>
               </form>
             )}
           </div>

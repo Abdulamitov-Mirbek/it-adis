@@ -61,7 +61,7 @@ export function Reviews() {
             {t("title1")}{" "}
             <span className="gradient-text">{t("titleGreen")}</span>
           </h2>
-          <p className="text-green-100/50 text-lg max-w-xl mx-auto">{t("subtitle")}</p>
+          <p className="text-green-100/70 text-lg max-w-xl mx-auto">{t("subtitle")}</p>
         </div>
 
         {/* Carousel */}
@@ -99,7 +99,7 @@ export function Reviews() {
                   <div>
                     <div className="font-semibold text-white">{review.name}</div>
                     <div className="text-xs text-green-400">{review.role}</div>
-                    <div className="text-xs text-green-100/40 mt-0.5">Course: {review.course}</div>
+                    <div className="text-xs text-green-100/78 mt-0.5">Course: {review.course}</div>
                   </div>
                 </div>
               </div>

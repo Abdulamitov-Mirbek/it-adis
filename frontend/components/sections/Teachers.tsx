@@ -76,7 +76,7 @@ export function Teachers() {
             {t("title1")}{" "}
             <span className="gradient-text">{t("titleGreen")}</span>
           </h2>
-          <p className="text-green-100/50 text-lg max-w-xl mx-auto">{t("subtitle")}</p>
+          <p className="text-green-100/70 text-lg max-w-xl mx-auto">{t("subtitle")}</p>
         </div>
 
         <div ref={cardsRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -97,7 +97,7 @@ export function Teachers() {
 
               <h3 className="font-display font-bold text-white text-lg mb-1 group-hover:text-green-300 transition-colors">{teacher.name}</h3>
               <p className="text-green-400 text-xs font-medium mb-3">{teacher.role}</p>
-              <p className="text-green-100/55 text-sm leading-relaxed mb-5">{teacher.bio}</p>
+              <p className="text-green-100/72 text-sm leading-relaxed mb-5">{teacher.bio}</p>
 
               <div className="flex flex-wrap gap-1.5 mb-5">
                 {teacher.tags.map((tag) => (
@@ -108,7 +108,7 @@ export function Teachers() {
               <div className="flex gap-2 pt-4 border-t border-white/5">
                 {SOCIAL.map(({ Icon, label }) => (
                   <button key={label} aria-label={label}
-                    className="p-1.5 rounded-lg text-green-100/30 hover:text-green-400 hover:bg-green-500/10 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-500/40"
+                    className="p-1.5 rounded-lg text-green-100/75 hover:text-green-400 hover:bg-green-500/10 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-500/40"
                   >
                     <Icon size={15} />
                   </button>

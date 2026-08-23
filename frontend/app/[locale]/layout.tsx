@@ -21,6 +21,12 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  // Without this, Next cannot turn the Open Graph image into an absolute URL
+  // and social platforms silently drop the preview. Set NEXT_PUBLIC_SITE_URL
+  // to the production domain at deploy time.
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+  ),
   title: "IT ADIS — Advanced Digital Innovation School",
   description:
     "IT ADIS — Modern IT education center in Bishkek. Master Python, JavaScript, AI, Frontend, and Vibe Coding.",

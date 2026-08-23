@@ -1,99 +1,60 @@
 "use client";
 
-import { useEffect, useRef, Suspense, lazy, useState } from "react";
+import { useEffect, useRef, Suspense, lazy } from "react";
 import { useTranslations } from "next-intl";
 import { gsap } from "gsap";
 import { ArrowRight, Play, Sparkles } from "lucide-react";
 import { SparkleButton } from "@/components/ui/SparkleButton";
-import { TECH_NODES } from "@/components/3d/TechEcosystem";
+import { TechLinks } from "@/components/ui/TechLinks";
+import { CanvasErrorBoundary } from "@/components/3d/CanvasErrorBoundary";
 
-// Lazy-load 3D so it never blocks SSR / initial paint
-const TechEcosystem = lazy(() =>
-  import("@/components/3d/TechEcosystem").then((m) => ({ default: m.TechEcosystem }))
+// Lazy-loaded so the 3D bundle and the ~2.6 MB of Earth textures never block
+// first paint or server rendering.
+const TechEarth = lazy(() =>
+  import("@/components/3d/TechEarth").then((m) => ({ default: m.TechEarth }))
 );
 
-/* ── Ecosystem fallback for SSR / no-JS ─────────────── */
-function EcosystemFallback() {
+/* ── Placeholder shown while the globe loads ──────────── */
+function EarthFallback() {
   return (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="relative w-64 h-64">
-        {/* Static rings */}
-        <div className="absolute inset-0 rounded-full border border-green-500/20 animate-pulse" />
-        <div className="absolute inset-8 rounded-full border border-green-500/15" />
-        <div className="absolute inset-16 rounded-full bg-green-500/10 border border-green-500/30" />
-        {/* Central glow */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-green-600 to-emerald-800 opacity-80 blur-sm" />
-        </div>
+    <div
+      className="w-full h-full flex items-center justify-center"
+      aria-hidden="true"
+    >
+      <div className="relative w-56 h-56 lg:w-72 lg:h-72">
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-green-800/40 to-blue-900/30 blur-sm animate-pulse" />
+        <div className="absolute -inset-4 rounded-full border border-green-500/15" />
+        <div className="absolute -inset-10 rounded-full border border-green-500/10" />
       </div>
     </div>
   );
 }
 
-/* ── Mobile tech grid (replaces 3D on small screens) ── */
-function MobileTechGrid() {
-  const t = useTranslations("courses");
-  return (
-    <div className="grid grid-cols-3 gap-3 mt-4">
-      {TECH_NODES.map((node) => (
-        <button
-          key={node.id}
-          onClick={() =>
-            document.querySelector(node.section)?.scrollIntoView({ behavior: "smooth" })
-          }
-          className="flex flex-col items-center gap-1.5 p-3 rounded-2xl glass border border-white/8 hover:border-green-500/30 transition-all duration-200 active:scale-95"
-        >
-          <span className="text-2xl">{node.emoji}</span>
-          <span className="text-[11px] font-medium text-green-200/70 text-center leading-tight">
-            {node.label}
-          </span>
-        </button>
-      ))}
-    </div>
-  );
-}
-
-/* ── Active-node tooltip above canvas ───────────────── */
-function NodeTooltip({ activeId }: { activeId: string | null }) {
-  const node = TECH_NODES.find((n) => n.id === activeId);
-  if (!node) return null;
-  return (
-    <div
-      className="absolute bottom-4 left-1/2 -translate-x-1/2 glass border rounded-2xl px-5 py-2.5 text-sm font-semibold pointer-events-none transition-all duration-200 z-20"
-      style={{ borderColor: `${node.color}40`, color: node.color }}
-    >
-      {node.emoji} Click to explore <strong>{node.label}</strong>
-    </div>
-  );
-}
-
-/* ── Hero ────────────────────────────────────────────── */
+/* ── Hero ────────────────────────────────────────────────── */
 export function Hero() {
   const t = useTranslations("hero");
   const ts = useTranslations("hero.stats");
 
-  const badgeRef   = useRef<HTMLDivElement>(null);
+  const badgeRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const subRef     = useRef<HTMLParagraphElement>(null);
-  const ctaRef     = useRef<HTMLDivElement>(null);
-  const statsRef   = useRef<HTMLDivElement>(null);
-
-  const [activeNodeId, setActiveNodeId] = useState<string | null>(null);
+  const subRef = useRef<HTMLParagraphElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
 
   const STATS = [
     { value: "2 500+", label: ts("students") },
-    { value: "95%",    label: ts("placement") },
-    { value: "5+",     label: ts("courses") },
-    { value: "3+",     label: ts("years") },
+    { value: "95%", label: ts("placement") },
+    { value: "5+", label: ts("courses") },
+    { value: "3+", label: ts("years") },
   ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(badgeRef.current,   { y: 30, opacity: 0, duration: 0.7 })
+      tl.from(badgeRef.current, { y: 30, opacity: 0, duration: 0.7 })
         .from(headingRef.current, { y: 50, opacity: 0, duration: 0.9 }, "-=0.4")
-        .from(subRef.current,     { y: 30, opacity: 0, duration: 0.7 }, "-=0.5")
-        .from(ctaRef.current,     { y: 30, opacity: 0, duration: 0.7 }, "-=0.4");
+        .from(subRef.current, { y: 30, opacity: 0, duration: 0.7 }, "-=0.5")
+        .from(ctaRef.current, { y: 30, opacity: 0, duration: 0.7 }, "-=0.4");
       if (statsRef.current) {
         tl.from(
           Array.from(statsRef.current.children),
@@ -147,12 +108,10 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-16">
-        <div className="grid lg:grid-cols-2 gap-8 xl:gap-16 items-center">
-
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 w-full pt-28 pb-14 sm:pb-16">
+        <div className="grid lg:grid-cols-2 gap-9 lg:gap-8 xl:gap-16 items-center">
           {/* ── Left column ──────────────────────── */}
-          <div className="flex flex-col gap-7">
-            {/* Badge */}
+          <div className="flex flex-col gap-6 sm:gap-7">
             <div ref={badgeRef} className="inline-flex items-center gap-2 self-start">
               <div className="flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-green-500/30 text-green-300 text-sm font-medium">
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse-green" />
@@ -161,10 +120,9 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Headline */}
             <h1
               ref={headingRef}
-              className="font-display text-5xl sm:text-6xl xl:text-7xl font-bold leading-[1.06] tracking-tight"
+              className="font-display text-[2.4rem] sm:text-5xl md:text-6xl xl:text-7xl font-bold leading-[1.12] sm:leading-[1.06] tracking-tight"
             >
               {t("title1")}{" "}
               <span className="relative inline-block">
@@ -188,84 +146,91 @@ export function Hero() {
               {t("title3")}
             </h1>
 
-            {/* Subtitle */}
             <p
               ref={subRef}
-              className="text-lg sm:text-xl text-green-100/60 leading-relaxed max-w-xl"
+              className="text-base sm:text-lg md:text-xl text-green-100/75 leading-relaxed max-w-xl"
             >
               {t("subtitle")}
             </p>
 
-            {/* CTAs */}
-            <div ref={ctaRef} className="flex flex-wrap gap-4">
-              <SparkleButton onClick={() => scrollTo("#courses")}>
+            {/* Buttons go full width on phones so they are comfortable thumb
+                targets rather than two narrow pills sharing a row. */}
+            <div ref={ctaRef} className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
+              <SparkleButton
+                onClick={() => scrollTo("#courses")}
+                className="w-full sm:w-auto justify-center"
+              >
                 {t("cta1")}
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight
+                  size={18}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
               </SparkleButton>
 
-              <SparkleButton variant="secondary" onClick={() => scrollTo("#courses")}>
+              <SparkleButton
+                variant="secondary"
+                onClick={() => scrollTo("#courses")}
+                className="w-full sm:w-auto justify-center"
+              >
                 <Play size={16} className="fill-current" />
                 {t("cta2")}
               </SparkleButton>
             </div>
 
-            {/* Stats */}
-            <div ref={statsRef} className="flex flex-wrap gap-6 pt-2">
+            <div
+              ref={statsRef}
+              className="grid grid-cols-2 gap-x-4 gap-y-5 sm:flex sm:flex-wrap sm:gap-6 pt-2"
+            >
               {STATS.map((s) => (
                 <div key={s.label} className="flex flex-col">
-                  <span className="font-display text-2xl font-bold gradient-text">
+                  <span className="font-display text-2xl sm:text-3xl font-bold gradient-text">
                     {s.value}
                   </span>
-                  <span className="text-sm text-green-100/50 mt-0.5">{s.label}</span>
+                  <span className="text-sm text-green-100/70 mt-0.5">{s.label}</span>
                 </div>
               ))}
             </div>
-
-            {/* Mobile tech grid — shown only on small screens */}
-            <div className="lg:hidden">
-              <p className="text-xs text-green-400/60 mb-3 tracking-wide uppercase">
-                Technologies you&apos;ll master
-              </p>
-              <MobileTechGrid />
-            </div>
           </div>
 
-          {/* ── Right column: 3D ecosystem ────────── */}
-          <div className="relative h-[480px] lg:h-[640px] hidden lg:flex items-center justify-center">
-            {/* Glow backdrop */}
+          {/* ── Right column: the globe ───────────── */}
+          <div className="relative h-[360px] sm:h-[440px] lg:h-[640px] flex items-center justify-center">
             <div
               className="absolute inset-0 pointer-events-none flex items-center justify-center"
               aria-hidden="true"
             >
               <div
-                className="w-72 h-72 rounded-full blur-3xl opacity-20"
+                className="w-72 h-72 rounded-full blur-3xl opacity-25"
                 style={{
-                  background: "radial-gradient(circle, #22c55e 0%, #16a34a 40%, transparent 70%)",
+                  background:
+                    "radial-gradient(circle, #22c55e 0%, #1d4ed8 45%, transparent 72%)",
                 }}
               />
             </div>
 
-            {/* 3D Canvas */}
-            <Suspense fallback={<EcosystemFallback />}>
-              <TechEcosystem
-                onNodeClick={(_, id) => setActiveNodeId(id)}
-              />
-            </Suspense>
+            <CanvasErrorBoundary fallback={<EarthFallback />}>
+              <Suspense fallback={<EarthFallback />}>
+                <TechEarth overlay={<TechLinks variant="overlay" />} />
+              </Suspense>
+            </CanvasErrorBoundary>
 
-            {/* Node tooltip */}
-            <NodeTooltip activeId={activeNodeId} />
+            <p className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[11px] sm:text-xs text-green-400/70 tracking-widest uppercase whitespace-nowrap pointer-events-none">
+              {t("techHint")}
+            </p>
+          </div>
 
-            {/* Hint text */}
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 text-xs text-green-500/40 tracking-widest uppercase whitespace-nowrap pointer-events-none">
-              Click a node to explore
-            </div>
+          {/* ── Technology list — visible on small screens ── */}
+          <div className="lg:hidden">
+            <p className="text-xs text-green-400/80 mb-3 tracking-wide uppercase font-medium">
+              {t("techListLabel")}
+            </p>
+            <TechLinks variant="grid" />
           </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-green-500/40 pointer-events-none">
-        <span className="text-xs tracking-widest uppercase">Scroll</span>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-green-500/40 pointer-events-none">
+        <span className="text-xs tracking-widest uppercase">{t("scroll")}</span>
         <div className="w-px h-8 bg-gradient-to-b from-green-500/50 to-transparent animate-pulse" />
       </div>
     </section>

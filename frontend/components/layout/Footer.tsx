@@ -38,7 +38,7 @@ export function Footer() {
               </div>
               <span className="font-display font-bold text-xl text-white">IT ADIS</span>
             </div>
-            <p className="text-green-100/50 text-sm leading-relaxed max-w-xs">{t("tagline")}</p>
+            <p className="text-green-100/70 text-sm leading-relaxed max-w-xs">{t("tagline")}</p>
             <div className="flex gap-3">
               {SOCIAL_ICONS.map(({ label, path }) => (
                 <a key={label} href="#" aria-label={label}
@@ -59,7 +59,7 @@ export function Footer() {
               <ul className="flex flex-col gap-2.5">
                 {items.map((item) => (
                   <li key={item}>
-                    <a href="#" className="text-sm text-green-100/45 hover:text-green-300 transition-colors duration-200 focus:outline-none focus:text-green-300">
+                    <a href="#" className="text-sm text-green-100/68 hover:text-green-300 transition-colors duration-200 focus:outline-none focus:text-green-300">
                       {item}
                     </a>
                   </li>
@@ -70,8 +70,8 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-green-900/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-green-100/35">© {new Date().getFullYear()} IT ADIS. {t("copyright")}</p>
-          <p className="text-xs text-green-100/35">Built with ❤️ and <span className="text-green-500">{t("energy")}</span></p>
+          <p className="text-xs text-green-100/62">© {new Date().getFullYear()} IT ADIS. {t("copyright")}</p>
+          <p className="text-xs text-green-100/62">Built with ❤️ and <span className="text-green-500">{t("energy")}</span></p>
         </div>
       </div>
     </footer>
