@@ -1,9 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { ContentService } from '../content/content.service';
 
+/**
+ * The public endpoints the marketing site reads.
+ *
+ * Teachers, reviews and the headline figures now come from the database so an
+ * administrator can change them without a deploy. While those tables are still
+ * empty — right after the migration, before anything has been entered — the
+ * original hardcoded content is served instead, so the site never renders an
+ * empty Teachers or Reviews section during the changeover.
+ */
 @Injectable()
 export class PublicService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private content: ContentService,
+  ) {}
 
   async getStats() {
     const [
@@ -14,17 +27,32 @@ export class PublicService {
       this.prisma.course.count({ where: { isActive: true } }),
     ]);
 
-    // Static/calculated stats for now
+    const siteContent = await this.content.getSiteContent();
+
     return {
-      students: Math.max(totalApplications * 3, 2500), // Estimate based on applications
-      employed: 95, // Employment success rate
+      // Admin-managed, with the old estimate as the floor so the number never
+      // reads lower than the applications actually received.
+      students: Math.max(siteContent.statStudents, totalApplications * 3),
+      employed: siteContent.statEmployed,
+      // Always computed: a stored count would drift the moment a course is
+      // archived from the admin panel.
       courses: activeCourses,
-      years: 3, // Academy operating years
+      years: siteContent.statYears,
     };
   }
 
   async getReviews() {
-    return [
+    const stored = await this.content.findPublicReviews();
+    return stored.length > 0 ? stored : this.seedReviews;
+  }
+
+  async getTeachers() {
+    const stored = await this.content.findPublicTeachers();
+    return stored.length > 0 ? stored : this.seedTeachers;
+  }
+
+  /** Shown only while the reviews table is empty. */
+  private readonly seedReviews = [
       { 
         id: 1,
         name: "Kamila Asanova", 
@@ -86,10 +114,9 @@ export class PublicService {
         course: "Vibe Coding" 
       },
     ];
-  }
 
-  async getTeachers() {
-    return [
+  /** Shown only while the teachers table is empty. */
+  private readonly seedTeachers = [
       { 
         id: 1,
         name: "Amir Seitkali", 
@@ -118,5 +145,4 @@ export class PublicService {
         color: "from-purple-500 to-purple-700" 
       },
     ];
-  }
 }

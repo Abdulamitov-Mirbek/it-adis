@@ -1,32 +1,12 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
+import { proxyToBackend } from "@/lib/server/backend";
 
+/**
+ * Deliberately has no fallback. The previous version answered "Application
+ * received (dev mode)" when no backend was configured, so a prospective
+ * student got a success message for a form submission that was written
+ * nowhere. A visible failure they can retry is far better than a silent loss.
+ */
 export async function POST(req: NextRequest) {
-  try {
-    const body = await req.json();
-    const apiUrl = process.env.BACKEND_API_URL;
-
-    if (apiUrl) {
-      // Forward to NestJS backend
-      const res = await fetch(`${apiUrl}/applications`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      const data = await res.json();
-      return NextResponse.json(data, { status: res.status });
-    }
-
-    // Dev fallback — just acknowledge
-    console.log("[IT ADIS] New application:", body);
-    return NextResponse.json(
-      { success: true, message: "Application received (dev mode)" },
-      { status: 201 }
-    );
-  } catch (error) {
-    console.error("[IT ADIS] Application error:", error);
-    return NextResponse.json(
-      { success: false, message: "Failed to process application" },
-      { status: 500 }
-    );
-  }
+  return proxyToBackend(req, { path: "/applications", method: "POST" });
 }

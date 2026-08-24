@@ -9,9 +9,15 @@ async function bootstrap() {
     logger: ["error", "warn", "log"],
   });
 
-  // CORS
+  // CORS. FRONTEND_URL accepts a comma-separated list so the production
+  // domain and any Vercel preview deployments can share one variable.
+  const allowedOrigins = (process.env.FRONTEND_URL ?? "http://localhost:3000")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
   app.enableCors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,

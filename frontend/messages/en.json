@@ -315,6 +315,63 @@
           }
         ]
       },
+      "flutter": {
+        "name": "Flutter",
+        "tagline": "One codebase, running on both phones in your pocket.",
+        "what": "Flutter is Google's toolkit for building applications from a single codebase that run natively on both Android and iOS — and on the web and desktop from that same source. It draws every pixel itself instead of wrapping each platform's own widgets, which is why a Flutter app looks and behaves identically on both phones rather than quietly drifting apart.",
+        "why": [
+          "Two app stores from one codebase — the single largest saving in mobile development, and the reason small teams reach for it.",
+          "Mobile is where clients in this region actually spend their budget: delivery, banking, booking and logistics apps all need it.",
+          "Dart comes easily after Python or JavaScript — you are learning a framework, not fighting an unfamiliar language.",
+          "Hot reload puts your change on a real device in under a second, which makes learning interface work genuinely fast."
+        ],
+        "build": [
+          {
+            "title": "A multi-screen app",
+            "desc": "Navigation, forms and local storage, running on a real handset from the first week."
+          },
+          {
+            "title": "An app backed by an API",
+            "desc": "Sign-in, network calls, honest loading and error states, and offline caching."
+          },
+          {
+            "title": "A published release",
+            "desc": "Icons, splash screen, signing keys and a build submitted to the Play Store."
+          }
+        ],
+        "careers": [
+          {
+            "role": "Flutter Developer",
+            "salary": "$700 – $1 900 / mo"
+          },
+          {
+            "role": "Mobile Developer",
+            "salary": "$900 – $2 300 / mo"
+          },
+          {
+            "role": "Freelance app developer",
+            "salary": "$500 – $3 000 / project"
+          }
+        ],
+        "roadmap": [
+          {
+            "phase": "Dart foundations",
+            "detail": "Syntax, types, async and null safety, practised on small console programs."
+          },
+          {
+            "phase": "Widgets and layout",
+            "detail": "Composition, state, navigation and layouts that survive a rotation."
+          },
+          {
+            "phase": "Data and state",
+            "detail": "REST calls, state management, persistence and testing."
+          },
+          {
+            "phase": "Ship it",
+            "detail": "Native integrations, performance profiling, store assets and release."
+          }
+        ]
+      },
       "frontend": {
         "name": "Frontend",
         "tagline": "Where design becomes something people can actually use.",
@@ -542,6 +599,26 @@
             "detail": "Taking an AI-built prototype all the way to something real people can use safely."
           }
         ]
+      }
+    },
+    "stack": {
+      "badge": "What we teach",
+      "title1": "Choose your",
+      "titleAccent": "technology",
+      "subtitle": "Each one is a full course. Pick one to see what it covers.",
+      "prompt": "Select a technology to see its course.",
+      "duration": "Duration",
+      "level": "Level",
+      "apply": "Apply for this course",
+      "fullGuide": "Read the full guide",
+      "close": "Close",
+      "error": "Courses could not be loaded right now.",
+      "retry": "Try again",
+      "levels": {
+        "BEGINNER": "Beginner",
+        "INTERMEDIATE": "Intermediate",
+        "ADVANCED": "Advanced",
+        "ALL_LEVELS": "All levels"
       }
     }
   }

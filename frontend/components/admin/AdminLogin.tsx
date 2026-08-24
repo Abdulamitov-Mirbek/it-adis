@@ -1,110 +1,114 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useAdmin } from './AdminProvider';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from "react";
+import { useAdmin } from "./AdminProvider";
+import { useRouter } from "@/i18n/navigation";
+import { Button, Field, Input } from "./ui/primitives";
 
 export function AdminLogin() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const { login, isAuthenticated } = useAdmin();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { login, isAuthenticated, isLoading } = useAdmin();
   const router = useRouter();
 
-  // Redirect if already authenticated
   useEffect(() => {
-    if (isAuthenticated) {
-      router.push('/en/admin');
+    // Someone arriving here with a live session should not have to sign in
+    // twice. Waiting for isLoading avoids a flash of the form on reload.
+    if (!isLoading && isAuthenticated) {
+      router.replace("/admin");
     }
-  }, [isAuthenticated, router]);
+  }, [isLoading, isAuthenticated, router]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setIsLoading(true);
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setError("");
+    setIsSubmitting(true);
 
     try {
       await login(email, password);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Login failed');
-    } finally {
-      setIsLoading(false);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : "Sign in failed");
+      setIsSubmitting(false);
     }
+    // On success the provider navigates away, so the submitting state is left
+    // on deliberately — clearing it would flicker the button back to idle
+    // underneath the redirect.
   };
 
-  // Show loading state while checking authentication
-  if (isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-blue-50 flex items-center justify-center p-4">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Redirecting...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-blue-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl border border-white/20 p-8 w-full max-w-md">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">IT ADIS Admin</h1>
-          <p className="text-gray-600">Sign in to access the admin panel</p>
-        </div>
+    <div className="relative min-h-screen grid place-items-center bg-dark px-4 py-10 overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] blur-3xl opacity-25"
+        style={{ background: "radial-gradient(ellipse, var(--color-green-600), transparent 70%)" }}
+      />
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
-              placeholder="admin@itadis.edu"
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
-              placeholder="Enter your password"
-              required
-            />
-          </div>
-
-          {error && (
-            <div className="bg-red-50 text-red-700 p-3 rounded-lg text-sm">
-              {error}
-            </div>
-          )}
-
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full bg-emerald-600 text-white py-3 px-4 rounded-lg hover:bg-emerald-700 focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isLoading ? 'Signing in...' : 'Sign In'}
-          </button>
-        </form>
-
-        <div className="mt-6 text-center text-sm text-gray-600">
-          <p>Demo credentials:</p>
-          <p className="font-mono bg-gray-100 p-2 rounded mt-2">
-            admin@itadis.edu / itadis_admin_2026
+      <div className="relative w-full max-w-sm">
+        <div className="flex flex-col items-center text-center mb-7">
+          <span className="grid place-items-center w-11 h-11 rounded-xl bg-green-500 text-dark font-bold mb-4">
+            IA
+          </span>
+          <h1 className="font-display text-xl font-semibold text-green-50">IT ADIS Administration</h1>
+          <p className="text-[13px] text-green-100/50 mt-1">
+            Sign in to manage courses and applications
           </p>
         </div>
+
+        <div className="relative bg-dark-card border border-dark-border rounded-2xl p-6">
+          <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+            <Field label="Email address" htmlFor="email" required>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="username"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="you@itadis.edu"
+                required
+                autoFocus
+              />
+            </Field>
+
+            <Field label="Password" htmlFor="password" required>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                required
+              />
+            </Field>
+
+            {error && (
+              <p
+                className="rounded-lg bg-red-500/10 border border-red-500/25 px-3 py-2 text-[13px] text-red-300"
+                role="alert"
+              >
+                {error}
+              </p>
+            )}
+
+            <Button
+              type="submit"
+              variant="primary"
+              loading={isSubmitting}
+              className="w-full"
+            >
+              {isSubmitting ? "Signing in…" : "Sign in"}
+            </Button>
+          </form>
+        </div>
+
+        {/* The previous version printed the live administrator email and
+            password on this page, in production, to anyone who loaded it. */}
+        <p className="text-center text-xs text-green-100/35 mt-6">
+          Authorised personnel only.
+        </p>
       </div>
     </div>
   );

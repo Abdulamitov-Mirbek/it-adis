@@ -36,26 +36,37 @@
   --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Base reset ─────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ── Base reset ───────────────────────────────────────
+   Everything here MUST stay inside @layer base.
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+   Tailwind emits its utilities into @layer utilities, and in the CSS cascade
+   an unlayered rule beats a layered one no matter how specific the layered
+   selector is. This reset used to sit outside any layer, so `* { margin: 0;
+   padding: 0 }` silently overrode every p-*, px-*, m-* and mx-auto in the
+   codebase — cards lost their padding, containers never centred, and the
+   admin sidebar overlapped the page because lg:pl-64 did nothing.
 
-body {
-  background-color: var(--color-dark);
-  color: #f0fdf4;
-  font-family: var(--font-sans);
-  overflow-x: hidden;
+   The margin/padding reset itself is redundant (Tailwind preflight already
+   does it) and is kept only for the box-sizing declaration. */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-dark);
+    color: #f0fdf4;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
 }
 
 /* ── Scrollbar ──────────────────────────────────────── */

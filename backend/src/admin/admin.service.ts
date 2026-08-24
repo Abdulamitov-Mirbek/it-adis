@@ -13,17 +13,20 @@ export class AdminService {
       pendingApplications,
       acceptedApplications,
       rejectedApplications,
+      unreadApplications,
     ] = await Promise.all([
       this.prisma.course.count({ where: { isActive: true } }),
       this.prisma.application.count(),
       this.prisma.application.count({ where: { status: ApplicationStatus.PENDING } }),
       this.prisma.application.count({ where: { status: ApplicationStatus.ACCEPTED } }),
       this.prisma.application.count({ where: { status: ApplicationStatus.REJECTED } }),
+      this.prisma.application.count({ where: { isRead: false } }),
     ]);
 
     return {
       totalCourses,
       totalApplications,
+      unreadApplications,
       applicationsByStatus: {
         pending: pendingApplications,
         accepted: acceptedApplications,

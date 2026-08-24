@@ -1,5 +1,5 @@
 import {
-  Code2, Brain, Layers, Zap, Globe, Database,
+  Code2, Brain, Layers, Zap, Globe, Database, Smartphone,
 } from "lucide-react";
 import { Course } from "./api";
 
@@ -73,6 +73,17 @@ const STATIC_META_MAP: Record<string, Omit<CourseMeta, "course" | "duration">> =
     gradient: "from-purple-600/20 to-purple-900/10",
     border: "border-purple-500/30 hover:border-purple-400/60",
     iconBg: "bg-purple-500/10 text-purple-400",
+  },
+  "flutter-development": {
+    key: "flutter",
+    icon: Smartphone,
+    badgeKey: "demand",
+    students: "180+",
+    rating: 4.8,
+    tags: ["Beginner", "Mobile", "Cross-platform"],
+    gradient: "from-sky-600/20 to-sky-900/10",
+    border: "border-sky-500/30 hover:border-sky-400/60",
+    iconBg: "bg-sky-500/10 text-sky-400",
   },
   "data-science": {
     key: "data",

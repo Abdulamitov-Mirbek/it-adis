@@ -50,7 +50,15 @@ export const TECHNOLOGIES: readonly TechDef[] = [
     icon: "javascript",
     color: "#F7DF1E",
     courseSlug: "javascript-typescript",
-    orbit: { radius: 1.95, inclination: 0.14, phase: Math.PI, speed: 0.30 },
+    orbit: { radius: 1.95, inclination: 0.14, phase: (2 * Math.PI) / 3, speed: 0.30 },
+  },
+  {
+    slug: "flutter",
+    key: "flutter",
+    icon: "flutter",
+    color: "#54C5F8",
+    courseSlug: "flutter-development",
+    orbit: { radius: 1.95, inclination: 0.14, phase: (4 * Math.PI) / 3, speed: 0.30 },
   },
   {
     slug: "frontend",

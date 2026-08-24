@@ -106,3 +106,1617 @@ Error: Cannot find module 'c:\Users\user\Desktop\it-adis\backend\dist\main'
 Node.js v24.13.0
 [2J[3J[H[[90m14:03:32[0m] File change detected. Starting incremental compilation...
 
+[2J[3J[H[[90m14:16:34[0m] File change detected. Starting incremental compilation...
+
+[2J[3J[H[[90m22:01:20[0m] File change detected. Starting incremental compilation...
+
+[[90m22:01:21[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m22:01:22[0m] File change detected. Starting incremental compilation...
+
+[[90m22:01:22[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m22:01:25[0m] File change detected. Starting incremental compilation...
+
+[[90m22:01:25[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m22:01:34[0m] File change detected. Starting incremental compilation...
+
+[[90m22:01:34[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m22:01:38[0m] File change detected. Starting incremental compilation...
+
+[[90m22:01:38[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m22:01:41[0m] File change detected. Starting incremental compilation...
+
+[[90m22:01:41[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m22:01:42[0m] File change detected. Starting incremental compilation...
+
+[[90m22:01:42[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m22:01:46[0m] File change detected. Starting incremental compilation...
+
+[[90m22:01:47[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m22:01:52[0m] File change detected. Starting incremental compilation...
+
+[[90m22:01:52[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m22:01:56[0m] File change detected. Starting incremental compilation...
+
+[[90m22:01:56[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m22:01:56[0m] File change detected. Starting incremental compilation...
+
+[[90m22:01:56[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m22:01:59[0m] File change detected. Starting incremental compilation...
+
+[[90m22:01:59[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m22:02:03[0m] File change detected. Starting incremental compilation...
+
+[[90m22:02:03[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:06 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:06 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +15ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:06 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +15ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:06 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:06 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +14ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:06 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:06 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:06 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:06 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:06 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:06 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:06 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +783ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:07 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 23264  - [39m23.08.2026, 22:02:11 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +4105ms[39m
+[31m[Nest] 23264  - [39m23.08.2026, 22:02:11 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3001[39m[38;5;3m +3ms[39m
+node:net:1940
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at ExpressAdapter.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\platform-express\adapters\express-adapter.js:95:32)
+    at c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:183:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:173:16)
+    at async bootstrap (c:\Users\user\Desktop\it-adis\backend\src\main.ts:48:3) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v24.13.0
+[2J[3J[H[[90m22:03:07[0m] File change detected. Starting incremental compilation...
+
+[[90m22:03:07[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +15ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +4ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +82ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 43156  - [39m23.08.2026, 22:03:09 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +0ms[39m
+[2J[3J[H[[90m22:03:10[0m] File change detected. Starting incremental compilation...
+
+[[90m22:03:11[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +14ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +4ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +66ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:13 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 26164  - [39m23.08.2026, 22:03:16 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2836ms[39m
+[31m[Nest] 26164  - [39m23.08.2026, 22:03:16 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3001[39m[38;5;3m +1ms[39m
+node:net:1940
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at ExpressAdapter.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\platform-express\adapters\express-adapter.js:95:32)
+    at c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:183:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:173:16)
+    at async bootstrap (c:\Users\user\Desktop\it-adis\backend\src\main.ts:48:3) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v24.13.0
+[2J[3J[H[[90m23:17:17[0m] File change detected. Starting incremental compilation...
+
+[[90m23:17:19[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m23:17:19[0m] File change detected. Starting incremental compilation...
+
+[[90m23:17:20[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +26ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +8ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +3ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +123ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:23 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46504  - [39m23.08.2026, 23:17:25 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2350ms[39m
+[31m[Nest] 46504  - [39m23.08.2026, 23:17:25 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3001[39m[38;5;3m +1ms[39m
+node:net:1940
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at ExpressAdapter.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\platform-express\adapters\express-adapter.js:95:32)
+    at c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:183:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:173:16)
+    at async bootstrap (c:\Users\user\Desktop\it-adis\backend\src\main.ts:48:3) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v24.13.0
+[2J[3J[H[[90m14:15:23[0m] File change detected. Starting incremental compilation...
+
+[[90m14:15:24[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:15:25[0m] File change detected. Starting incremental compilation...
+
+[[90m14:15:26[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:15:26[0m] File change detected. Starting incremental compilation...
+
+[[90m14:15:26[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:15:29[0m] File change detected. Starting incremental compilation...
+
+[[90m14:15:29[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:15:40[0m] File change detected. Starting incremental compilation...
+
+[[90m14:15:40[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:15:44[0m] File change detected. Starting incremental compilation...
+
+[[90m14:15:44[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:15:47[0m] File change detected. Starting incremental compilation...
+
+[[90m14:15:47[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:15:48[0m] File change detected. Starting incremental compilation...
+
+[[90m14:15:48[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:15:50[0m] File change detected. Starting incremental compilation...
+
+[[90m14:15:50[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:15:51[0m] File change detected. Starting incremental compilation...
+
+[[90m14:15:51[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:15:56[0m] File change detected. Starting incremental compilation...
+
+[[90m14:15:56[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:16:03[0m] File change detected. Starting incremental compilation...
+
+[[90m14:16:03[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:16:06[0m] File change detected. Starting incremental compilation...
+
+[[90m14:16:06[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:16:07[0m] File change detected. Starting incremental compilation...
+
+[[90m14:16:07[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:16:11[0m] File change detected. Starting incremental compilation...
+
+[[90m14:16:11[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:16:14[0m] File change detected. Starting incremental compilation...
+
+[[90m14:16:14[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:18 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +16ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +13ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +13ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +903ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46244  - [39m24.08.2026, 14:16:19 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +0ms[39m
+c:\Users\user\Desktop\it-adis\backend\node_modules\@prisma\client\runtime\library.js:112
+You may have to run ${qe("prisma generate")} for your changes to take effect.`,this.config.clientVersion);return t}}parseEngineResponse(t){if(!t)throw new B("Response from the Engine was empty",{clientVersion:this.config.clientVersion});try{return JSON.parse(t)}catch{throw new B("Unable to JSON.parse response from engine",{clientVersion:this.config.clientVersion})}}async loadEngine(){if(!this.engine){this.QueryEngineConstructor||(this.library=await this.libraryLoader.loadLibrary(this.config),this.QueryEngineConstructor=this.library.QueryEngine);try{let t=new WeakRef(this),{adapter:r}=this.config;r&&Ae("Using driver adapter: %O",r),this.engine=new this.QueryEngineConstructor({datamodel:this.datamodel,env:process.env,logQueries:this.config.logQueries??!1,ignoreEnvVarErrors:!0,datasourceOverrides:this.datasourceOverrides??{},logLevel:this.logLevel,configDir:this.config.cwd,engineProtocol:"json"},n=>{t.deref()?.logger(n)},r)}catch(t){let r=t,n=this.parseInitError(r.message);throw typeof n=="string"?r:new R(n.message,this.config.clientVersion,n.error_code)}}}logger(t){let r=this.parseEngineResponse(t);if(r){if("span"in r){this.config.tracingHelper.createEngineSpan(r);return}r.level=r?.level.toLowerCase()??"unknown",fm(r)?this.logEmitter.emit("query",{timestamp:new Date,query:r.query,params:r.params,duration:Number(r.duration_ms),target:r.module_path}):gm(r)?this.loggerRustPanic=new le(lo(this,`${r.message}: ${r.reason} in ${r.file}:${r.line}:${r.column}`),this.config.clientVersion):this.logEmitter.emit(r.level,{timestamp:new Date,message:r.message,target:r.module_path})}}parseInitError(t){try{return JSON.parse(t)}catch{}return t}parseRequestError(t){try{return JSON.parse(t)}catch{}return t}onBeforeExit(){throw new Error('"beforeExit" hook is not applicable to the library engine since Prisma 5.0.0, it is only relevant and implemented for the binary engine. Please add your event listener to the `process` object directly instead.')}async start(){if(await this.libraryInstantiationPromise,await this.libraryStoppingPromise,this.libraryStartingPromise)return Ae(`library already starting, this.libraryStarted: ${this.libraryStarted}`),this.libraryStartingPromise;if(this.libraryStarted)return;let t=async()=>{Ae("library starting");try{let r={traceparent:this.config.tracingHelper.getTraceParent()};await this.engine?.connect(JSON.stringify(r)),this.libraryStarted=!0,Ae("library started")}catch(r){let n=this.parseInitError(r.message);throw typeof n=="string"?r:new R(n.message,this.config.clientVersion,n.error_code)}finally{this.libraryStartingPromise=void 0}};return this.libraryStartingPromise=this.config.tracingHelper.runInChildSpan("connect",t),this.libraryStartingPromise}async stop(){if(await this.libraryStartingPromise,await this.executingQueryPromise,this.libraryStoppingPromise)return Ae("library is already stopping"),this.libraryStoppingPromise;if(!this.libraryStarted)return;let t=async()=>{await new Promise(n=>setTimeout(n,5)),Ae("library stopping");let r={traceparent:this.config.tracingHelper.getTraceParent()};await this.engine?.disconnect(JSON.stringify(r)),this.libraryStarted=!1,this.libraryStoppingPromise=void 0,Ae("library stopped")};return this.libraryStoppingPromise=this.config.tracingHelper.runInChildSpan("disconnect",t),this.libraryStoppingPromise}version(){return this.versionInfo=this.library?.version(),this.versionInfo?.version??"unknown"}debugPanic(t){return this.library?.debugPanic(t)}async request(t,{traceparent:r,interactiveTransaction:n}){Ae(`sending request, this.libraryStarted: ${this.libraryStarted}`);let i=JSON.stringify({traceparent:r}),o=JSON.stringify(t);try{await this.start(),this.executingQueryPromise=this.engine?.query(o,i,n?.id),this.lastQuery=o;let s=this.parseEngineResponse(await this.executingQueryPromise);if(s.errors)throw s.errors.length===1?this.buildQueryError(s.errors[0]):new B(JSON.stringify(s.errors),{clientVersion:this.config.clientVersion});if(this.loggerRustPanic)throw this.loggerRustPanic;return{data:s,elapsed:0}}catch(s){if(s instanceof R)throw s;if(s.code==="GenericFailure"&&s.message?.startsWith("PANIC:"))throw new le(lo(this,s.message),this.config.clientVersion);let a=this.parseRequestError(s.message);throw typeof a=="string"?s:new B(`${a.message}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+PrismaClientInitializationError: Can't reach database server at `aws-0-ap-northeast-1.pooler.supabase.com:6543`
+
+Please make sure your database server is running at `aws-0-ap-northeast-1.pooler.supabase.com:6543`.
+    at t (c:\Users\user\Desktop\it-adis\backend\node_modules\@prisma\client\runtime\library.js:112:2488)
+    at async Proxy.onModuleInit (c:\Users\user\Desktop\it-adis\backend\src\prisma\prisma.service.ts:7:5)
+    at async Promise.all (index 0)
+    at async callModuleInitHook (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\hooks\on-module-init.hook.js:43:5)
+    at async NestApplication.callInitHook (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application-context.js:234:13)
+    at async NestApplication.init (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:100:9)
+    at async NestApplication.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:170:13)
+    at async bootstrap (c:\Users\user\Desktop\it-adis\backend\src\main.ts:48:3) {
+  clientVersion: '5.22.0',
+  errorCode: 'P1001'
+}
+
+Node.js v24.13.0
+[2J[3J[H[[90m14:19:09[0m] File change detected. Starting incremental compilation...
+
+[2J[3J[H[[90m14:19:10[0m] File change detected. Starting incremental compilation...
+
+[2J[3J[H[[90m14:19:32[0m] File change detected. Starting incremental compilation...
+
+[[90m14:19:32[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +15ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +14ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +13ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +92ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:35 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 46800  - [39m24.08.2026, 14:19:39 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +4393ms[39m
+[31m[Nest] 46800  - [39m24.08.2026, 14:19:39 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3001[39m[38;5;3m +3ms[39m
+node:net:1940
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at ExpressAdapter.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\platform-express\adapters\express-adapter.js:95:32)
+    at c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:183:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:173:16)
+    at async bootstrap (c:\Users\user\Desktop\it-adis\backend\src\main.ts:48:3) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v24.13.0
+[2J[3J[H[[90m14:20:09[0m] File change detected. Starting incremental compilation...
+
+[96msrc/content/content.service.ts[0m:[93m28[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m28[0m     return this.prisma.teacher.findMany({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m36[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m36[0m     return this.prisma.teacher.findMany({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m42[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m42[0m     return this.prisma.teacher.create({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m53[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m53[0m     return this.prisma.teacher.update({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m65[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m65[0m     return this.prisma.teacher.delete({ where: { id } });
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m71[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m71[0m     return this.prisma.review.findMany({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m78[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m78[0m     return this.prisma.review.findMany({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m84[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m84[0m     return this.prisma.review.create({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m91[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m91[0m     return this.prisma.review.update({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m102[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m102[0m     return this.prisma.review.delete({ where: { id } });
+[7m   [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m112[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'siteContent' does not exist on type 'PrismaService'.
+
+[7m112[0m     return this.prisma.siteContent.upsert({
+[7m   [0m [91m                       ~~~~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m120[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'siteContent' does not exist on type 'PrismaService'.
+
+[7m120[0m     return this.prisma.siteContent.upsert({
+[7m   [0m [91m                       ~~~~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m131[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m131[0m     return this.prisma.pageView.create({ data: dto });
+[7m   [0m [91m                       ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m150[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m150[0m         this.prisma.pageView.count(),
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m151[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m151[0m         this.prisma.pageView.count({ where: { createdAt: { gte: since } } }),
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m152[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m152[0m         this.prisma.pageView.count({ where: { createdAt: { gte: startOfToday } } }),
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m153[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m153[0m         this.prisma.pageView.findMany({
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m158[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m158[0m         this.prisma.pageView.groupBy({
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m203[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m203[0m         ? await this.prisma.teacher.findUnique({ where: { id } })
+[7m   [0m [91m                            ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m204[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m204[0m         : await this.prisma.review.findUnique({ where: { id } });
+[7m   [0m [91m                            ~~~~~~[0m
+
+[[90m14:20:09[0m] Found 20 errors. Watching for file changes.
+
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +16ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +4ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +76ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:11 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 47252  - [39m24.08.2026, 14:20:14 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3074ms[39m
+[31m[Nest] 47252  - [39m24.08.2026, 14:20:14 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3001[39m[38;5;3m +2ms[39m
+node:net:1940
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at ExpressAdapter.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\platform-express\adapters\express-adapter.js:95:32)
+    at c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:183:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:173:16)
+    at async bootstrap (c:\Users\user\Desktop\it-adis\backend\src\main.ts:48:3) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v24.13.0
+[2J[3J[H[[90m14:20:50[0m] File change detected. Starting incremental compilation...
+
+[96msrc/content/content.service.ts[0m:[93m28[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m28[0m     return this.prisma.teacher.findMany({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m36[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m36[0m     return this.prisma.teacher.findMany({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m42[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m42[0m     return this.prisma.teacher.create({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m53[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m53[0m     return this.prisma.teacher.update({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m65[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m65[0m     return this.prisma.teacher.delete({ where: { id } });
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m71[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m71[0m     return this.prisma.review.findMany({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m78[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m78[0m     return this.prisma.review.findMany({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m84[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m84[0m     return this.prisma.review.create({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m91[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m91[0m     return this.prisma.review.update({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m102[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m102[0m     return this.prisma.review.delete({ where: { id } });
+[7m   [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m112[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'siteContent' does not exist on type 'PrismaService'.
+
+[7m112[0m     return this.prisma.siteContent.upsert({
+[7m   [0m [91m                       ~~~~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m120[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'siteContent' does not exist on type 'PrismaService'.
+
+[7m120[0m     return this.prisma.siteContent.upsert({
+[7m   [0m [91m                       ~~~~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m131[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m131[0m     return this.prisma.pageView.create({ data: dto });
+[7m   [0m [91m                       ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m150[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m150[0m         this.prisma.pageView.count(),
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m151[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m151[0m         this.prisma.pageView.count({ where: { createdAt: { gte: since } } }),
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m152[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m152[0m         this.prisma.pageView.count({ where: { createdAt: { gte: startOfToday } } }),
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m153[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m153[0m         this.prisma.pageView.findMany({
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m158[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m158[0m         this.prisma.pageView.groupBy({
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m203[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m203[0m         ? await this.prisma.teacher.findUnique({ where: { id } })
+[7m   [0m [91m                            ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m204[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m204[0m         : await this.prisma.review.findUnique({ where: { id } });
+[7m   [0m [91m                            ~~~~~~[0m
+
+[[90m14:20:51[0m] Found 20 errors. Watching for file changes.
+
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +17ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +3ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +82ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 9820  - [39m24.08.2026, 14:20:57 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3716ms[39m
+[31m[Nest] 9820  - [39m24.08.2026, 14:20:57 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3001[39m[38;5;3m +2ms[39m
+node:net:1940
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at ExpressAdapter.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\platform-express\adapters\express-adapter.js:95:32)
+    at c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:183:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:173:16)
+    at async bootstrap (c:\Users\user\Desktop\it-adis\backend\src\main.ts:48:3) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v24.13.0
+[2J[3J[H[[90m14:21:11[0m] File change detected. Starting incremental compilation...
+
+[96msrc/content/content.service.ts[0m:[93m28[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m28[0m     return this.prisma.teacher.findMany({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m36[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m36[0m     return this.prisma.teacher.findMany({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m42[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m42[0m     return this.prisma.teacher.create({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m53[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m53[0m     return this.prisma.teacher.update({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m65[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m65[0m     return this.prisma.teacher.delete({ where: { id } });
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m71[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m71[0m     return this.prisma.review.findMany({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m78[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m78[0m     return this.prisma.review.findMany({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m84[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m84[0m     return this.prisma.review.create({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m91[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m91[0m     return this.prisma.review.update({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m102[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m102[0m     return this.prisma.review.delete({ where: { id } });
+[7m   [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m112[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'siteContent' does not exist on type 'PrismaService'.
+
+[7m112[0m     return this.prisma.siteContent.upsert({
+[7m   [0m [91m                       ~~~~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m120[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'siteContent' does not exist on type 'PrismaService'.
+
+[7m120[0m     return this.prisma.siteContent.upsert({
+[7m   [0m [91m                       ~~~~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m131[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m131[0m     return this.prisma.pageView.create({ data: dto });
+[7m   [0m [91m                       ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m150[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m150[0m         this.prisma.pageView.count(),
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m151[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m151[0m         this.prisma.pageView.count({ where: { createdAt: { gte: since } } }),
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m152[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m152[0m         this.prisma.pageView.count({ where: { createdAt: { gte: startOfToday } } }),
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m153[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m153[0m         this.prisma.pageView.findMany({
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m158[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m158[0m         this.prisma.pageView.groupBy({
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m203[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m203[0m         ? await this.prisma.teacher.findUnique({ where: { id } })
+[7m   [0m [91m                            ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m204[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m204[0m         : await this.prisma.review.findUnique({ where: { id } });
+[7m   [0m [91m                            ~~~~~~[0m
+
+[[90m14:21:11[0m] Found 20 errors. Watching for file changes.
+
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:13 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +18ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +15ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +14ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +91ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:14 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45004  - [39m24.08.2026, 14:21:17 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3127ms[39m
+[31m[Nest] 45004  - [39m24.08.2026, 14:21:17 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3001[39m[38;5;3m +5ms[39m
+node:net:1940
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at ExpressAdapter.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\platform-express\adapters\express-adapter.js:95:32)
+    at c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:183:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:173:16)
+    at async bootstrap (c:\Users\user\Desktop\it-adis\backend\src\main.ts:48:3) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v24.13.0
+[2J[3J[H[[90m14:21:34[0m] File change detected. Starting incremental compilation...
+
+[96msrc/content/content.service.ts[0m:[93m28[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m28[0m     return this.prisma.teacher.findMany({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m36[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m36[0m     return this.prisma.teacher.findMany({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m42[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m42[0m     return this.prisma.teacher.create({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m53[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m53[0m     return this.prisma.teacher.update({
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m65[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m65[0m     return this.prisma.teacher.delete({ where: { id } });
+[7m  [0m [91m                       ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m71[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m71[0m     return this.prisma.review.findMany({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m78[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m78[0m     return this.prisma.review.findMany({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m84[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m84[0m     return this.prisma.review.create({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m91[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m91[0m     return this.prisma.review.update({
+[7m  [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m102[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m102[0m     return this.prisma.review.delete({ where: { id } });
+[7m   [0m [91m                       ~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m112[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'siteContent' does not exist on type 'PrismaService'.
+
+[7m112[0m     return this.prisma.siteContent.upsert({
+[7m   [0m [91m                       ~~~~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m120[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'siteContent' does not exist on type 'PrismaService'.
+
+[7m120[0m     return this.prisma.siteContent.upsert({
+[7m   [0m [91m                       ~~~~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m131[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m131[0m     return this.prisma.pageView.create({ data: dto });
+[7m   [0m [91m                       ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m150[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m150[0m         this.prisma.pageView.count(),
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m151[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m151[0m         this.prisma.pageView.count({ where: { createdAt: { gte: since } } }),
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m152[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m152[0m         this.prisma.pageView.count({ where: { createdAt: { gte: startOfToday } } }),
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m153[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m153[0m         this.prisma.pageView.findMany({
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m158[0m:[93m21[0m - [91merror[0m[90m TS2339: [0mProperty 'pageView' does not exist on type 'PrismaService'.
+
+[7m158[0m         this.prisma.pageView.groupBy({
+[7m   [0m [91m                    ~~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m203[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'teacher' does not exist on type 'PrismaService'.
+
+[7m203[0m         ? await this.prisma.teacher.findUnique({ where: { id } })
+[7m   [0m [91m                            ~~~~~~~[0m
+
+[96msrc/content/content.service.ts[0m:[93m204[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'review' does not exist on type 'PrismaService'.
+
+[7m204[0m         : await this.prisma.review.findUnique({ where: { id } });
+[7m   [0m [91m                            ~~~~~~[0m
+
+[[90m14:21:34[0m] Found 20 errors. Watching for file changes.
+
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +17ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +5ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +3ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mContentModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +99ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mContentController {/}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/teachers, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, POST} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/site-content, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/site-content, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/analytics/track, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:36 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/analytics, GET} route[39m[38;5;3m +0ms[39m
+[2J[3J[H[[90m14:21:38[0m] File change detected. Starting incremental compilation...
+
+[[90m14:21:39[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 31340  - [39m24.08.2026, 14:21:40 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3125ms[39m
+[31m[Nest] 31340  - [39m24.08.2026, 14:21:40 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3001[39m[38;5;3m +3ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +18ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +4ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +3ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mContentModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +83ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +4ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mContentController {/}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/site-content, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/site-content, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/analytics/track, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:42 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/analytics, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 24872  - [39m24.08.2026, 14:21:45 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2999ms[39m
+[31m[Nest] 24872  - [39m24.08.2026, 14:21:45 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3001[39m[38;5;3m +2ms[39m
+node:net:1940
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at ExpressAdapter.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\platform-express\adapters\express-adapter.js:95:32)
+    at c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:183:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:173:16)
+    at async bootstrap (c:\Users\user\Desktop\it-adis\backend\src\main.ts:48:3) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v24.13.0
+[2J[3J[H[[90m14:22:11[0m] File change detected. Starting incremental compilation...
+
+[[90m14:22:13[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +17ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +4ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mContentModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +90ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mContentController {/}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/:id, PATCH} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/site-content, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/site-content, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/analytics/track, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/analytics, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 48056  - [39m24.08.2026, 14:22:18 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3299ms[39m
+[31m[Nest] 48056  - [39m24.08.2026, 14:22:18 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3001[39m[38;5;3m +3ms[39m
+node:net:1940
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at ExpressAdapter.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\platform-express\adapters\express-adapter.js:95:32)
+    at c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:183:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:173:16)
+    at async bootstrap (c:\Users\user\Desktop\it-adis\backend\src\main.ts:48:3) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v24.13.0
+[2J[3J[H[[90m14:25:21[0m] File change detected. Starting incremental compilation...
+
+[96msrc/public/public.controller.ts[0m:[93m21[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'getReviews' does not exist on type 'PublicService'.
+
+[7m21[0m     return this.publicService.getReviews();
+[7m  [0m [91m                              ~~~~~~~~~~[0m
+
+[96msrc/public/public.controller.ts[0m:[93m28[0m:[93m31[0m - [91merror[0m[90m TS2339: [0mProperty 'getTeachers' does not exist on type 'PublicService'.
+
+[7m28[0m     return this.publicService.getTeachers();
+[7m  [0m [91m                              ~~~~~~~~~~~[0m
+
+[[90m14:25:22[0m] Found 2 errors. Watching for file changes.
+
+[2J[3J[H[[90m14:25:59[0m] File change detected. Starting incremental compilation...
+
+[[90m14:25:59[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 32108  - [39m24.08.2026, 14:26:01 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 32108  - [39m24.08.2026, 14:26:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +24ms[39m
+[32m[Nest] 32108  - [39m24.08.2026, 14:26:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +15ms[39m
+[32m[Nest] 32108  - [39m24.08.2026, 14:26:01 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[31m[Nest] 32108  - [39m24.08.2026, 14:26:01 [31m  ERROR[39m [38;5;3m[ExceptionHandler] [39m[31mNest can't resolve dependencies of the PublicService (PrismaService, ?). Please make sure that the argument ContentService at index [1] is available in the PublicModule context.
+
+Potential solutions:
+- Is PublicModule a valid NestJS module?
+- If ContentService is a provider, is it part of the current PublicModule?
+- If ContentService is exported from a separate @Module, is that module imported within PublicModule?
+  @Module({
+    imports: [ /* the Module containing ContentService */ ]
+  })
+[39m
+Error: Nest can't resolve dependencies of the PublicService (PrismaService, ?). Please make sure that the argument ContentService at index [1] is available in the PublicModule context.
+
+Potential solutions:
+- Is PublicModule a valid NestJS module?
+- If ContentService is a provider, is it part of the current PublicModule?
+- If ContentService is exported from a separate @Module, is that module imported within PublicModule?
+  @Module({
+    imports: [ /* the Module containing ContentService */ ]
+  })
+
+    at Injector.lookupComponentInParentModules (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\injector\injector.js:262:19)
+    at async Injector.resolveComponentInstance (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\injector\injector.js:215:33)
+    at async resolveParam (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\injector\injector.js:129:38)
+    at async Promise.all (index 1)
+    at async Injector.resolveConstructorParams (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\injector\injector.js:144:27)
+    at async Injector.loadInstance (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\injector\injector.js:70:13)
+    at async Injector.loadProvider (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\injector\injector.js:98:9)
+    at async c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\injector\instance-loader.js:56:13
+    at async Promise.all (index 3)
+    at async InstanceLoader.createInstancesOfProviders (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\injector\instance-loader.js:55:9)
+[2J[3J[H[[90m14:26:16[0m] File change detected. Starting incremental compilation...
+
+[[90m14:26:16[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +22ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +5ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +3ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mContentModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +120ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mContentController {/}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/:id, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/site-content, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/site-content, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/analytics/track, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/analytics, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45096  - [39m24.08.2026, 14:26:20 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2494ms[39m
+[31m[Nest] 45096  - [39m24.08.2026, 14:26:20 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3001[39m[38;5;3m +3ms[39m
+node:net:1940
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at ExpressAdapter.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\platform-express\adapters\express-adapter.js:95:32)
+    at c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:183:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:173:16)
+    at async bootstrap (c:\Users\user\Desktop\it-adis\backend\src\main.ts:48:3) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v24.13.0
+[2J[3J[H[[90m14:27:02[0m] File change detected. Starting incremental compilation...
+
+[[90m14:27:02[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +18ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +4ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mContentModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +99ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/read, PATCH} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mContentController {/}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/site-content, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/site-content, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/analytics/track, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:05 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/analytics, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 37620  - [39m24.08.2026, 14:27:08 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2812ms[39m
+[31m[Nest] 37620  - [39m24.08.2026, 14:27:08 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3001[39m[38;5;3m +2ms[39m
+node:net:1940
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at ExpressAdapter.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\platform-express\adapters\express-adapter.js:95:32)
+    at c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:183:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:173:16)
+    at async bootstrap (c:\Users\user\Desktop\it-adis\backend\src\main.ts:48:3) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v24.13.0
+[2J[3J[H[[90m14:34:05[0m] File change detected. Starting incremental compilation...
+
+[[90m14:34:05[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +27ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +15ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +19ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mContentModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +136ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/read, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mContentController {/}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/site-content, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/site-content, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/analytics/track, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:10 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/analytics, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 13104  - [39m24.08.2026, 14:34:14 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +4352ms[39m
+[31m[Nest] 13104  - [39m24.08.2026, 14:34:14 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3001[39m[38;5;3m +5ms[39m
+node:net:1940
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at ExpressAdapter.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\platform-express\adapters\express-adapter.js:95:32)
+    at c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:183:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:173:16)
+    at async bootstrap (c:\Users\user\Desktop\it-adis\backend\src\main.ts:48:3) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v24.13.0
+[2J[3J[H[[90m14:51:49[0m] File change detected. Starting incremental compilation...
+
+[[90m14:51:50[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +16ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +11ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPassportModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +9ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPublicModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mCoursesModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mApplicationsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAdminModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mContentModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mCoursesController {/courses}:[39m[38;5;3m +116ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/courses/:slug, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mApplicationsController {/applications}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/status, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/applications/:id/read, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/profile, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAdminController {/admin}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/dashboard, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/courses, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/applications, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/recent-activity, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mPublicController {/public}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/stats, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/reviews, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/public/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mContentController {/}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/teachers, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/teachers/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/site-content, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/site-content, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/analytics/track, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:53 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/admin/analytics, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 45168  - [39m24.08.2026, 14:51:55 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2388ms[39m
+[31m[Nest] 45168  - [39m24.08.2026, 14:51:55 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use :::3001[39m[38;5;3m +2ms[39m
+node:net:1940
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3001
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at ExpressAdapter.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\platform-express\adapters\express-adapter.js:95:32)
+    at c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:183:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (c:\Users\user\Desktop\it-adis\backend\node_modules\@nestjs\core\nest-application.js:173:16)
+    at async bootstrap (c:\Users\user\Desktop\it-adis\backend\src\main.ts:48:3) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3001
+}
+
+Node.js v24.13.0

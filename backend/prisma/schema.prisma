@@ -55,6 +55,9 @@ model Application {
   message   String?
   program   String
   status    ApplicationStatus @default(PENDING)
+  /// Drives the unread badge in the admin sidebar.
+  isRead    Boolean           @default(false)
+  readAt    DateTime?
   createdAt DateTime          @default(now())
   updatedAt DateTime          @updatedAt
 
@@ -73,4 +76,98 @@ model AdminUser {
   updatedAt    DateTime @updatedAt
 
   @@map("admin_users")
+}
+
+// ── Site content, managed from the admin panel ──────────────────
+//
+// Teachers, reviews and the About copy used to be string literals inside
+// public.service.ts, so changing a tutor's name meant a code change and a
+// redeploy. They are rows now.
+//
+// One caveat worth knowing: the site runs in en/ru/kg, but these tables hold
+// a single copy of each string. Whatever an administrator types shows in all
+// three languages. Adding per-locale columns later is additive and safe.
+
+model Teacher {
+  id        String   @id @default(cuid())
+  name      String
+  role      String
+  bio       String
+  tags      String[]
+  /// Shown when there is no photo. Derived from the name if left blank.
+  initials  String
+  /// Tailwind gradient pair, e.g. "from-green-500 to-emerald-700".
+  color     String   @default("from-green-500 to-emerald-700")
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isActive, order])
+  @@map("teachers")
+}
+
+model Review {
+  id          String   @id @default(cuid())
+  name        String
+  role        String
+  text        String
+  /// 1-5. Constrained in the DTO rather than the schema, since Prisma has no
+  /// check constraints and a bad value should fail loudly at the edge.
+  stars       Int      @default(5)
+  /// Free text rather than a relation: a graduate's course may since have been
+  /// renamed or archived, and the testimonial should still read correctly.
+  course      String
+  initials    String
+  color       String   @default("from-green-500 to-emerald-700")
+  order       Int      @default(0)
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([isPublished, order])
+  @@map("reviews")
+}
+
+///
+/// Singleton row holding the editable About copy and the headline statistics.
+/// Pinned to id "site" so there can only ever be one.
+///
+model SiteContent {
+  id             String   @id @default("site")
+  aboutTitle     String   @default("")
+  aboutBody      String   @default("")
+  /// Headline figures. statCourses is computed from the catalogue, not stored,
+  /// so it cannot drift out of step with the courses table.
+  statStudents   Int      @default(2500)
+  statEmployed   Int      @default(95)
+  statYears      Int      @default(3)
+  contactEmail   String   @default("hello@itadis.edu")
+  contactPhone   String   @default("+996 (700) 123-456")
+  contactAddress String   @default("Bishkek, Kyrgyzstan")
+  updatedAt      DateTime @updatedAt
+
+  @@map("site_content")
+}
+
+///
+/// One row per page view, written by a beacon from the browser.
+///
+/// Deliberately stores no IP address and no cookie — `visitorId` is a random
+/// id kept in the visitor's own sessionStorage, which makes "unique visitors"
+/// countable without identifying anyone or needing a consent banner. Vercel
+/// Analytics runs alongside this and is the accurate source; this table exists
+/// so the admin dashboard can show live numbers without leaving the panel.
+///
+model PageView {
+  id        String   @id @default(cuid())
+  path      String
+  locale    String?
+  referrer  String?
+  visitorId String
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([path, createdAt])
+  @@map("page_views")
 }

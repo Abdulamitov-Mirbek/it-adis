@@ -1,113 +1,98 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { adminAPI } from '@/lib/admin-api';
-import { RecentActivity as ActivityType } from '@/lib/types/admin';
+import { useCallback } from "react";
+import { ArrowRight } from "lucide-react";
+import { Link } from "@/i18n/navigation";
+import { adminAPI } from "@/lib/admin-api";
+import { Card, CardHeader, StatusBadge } from "./ui/primitives";
+import { EmptyState, ErrorState, Skeleton } from "./ui/states";
+import { formatDateTime, statusMeta } from "./status";
+import { useAdminQuery } from "./useAdminQuery";
 
+/** The latest applications, as a feed — the one thing worth seeing on opening
+ *  the panel without navigating anywhere. */
 export function RecentActivity() {
-  const [activity, setActivity] = useState<ActivityType | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
+  const { data, error, isLoading, reload } = useAdminQuery(
+    useCallback(() => adminAPI.getRecentActivity(), [])
+  );
 
-  useEffect(() => {
-    const fetchActivity = async () => {
-      try {
-        const data = await adminAPI.getRecentActivity();
-        setActivity(data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch recent activity');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchActivity();
-  }, []);
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'PENDING':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'REVIEWING':
-        return 'bg-blue-100 text-blue-800';
-      case 'ACCEPTED':
-        return 'bg-green-100 text-green-800';
-      case 'REJECTED':
-        return 'bg-red-100 text-red-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
-    }
-  };
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-  };
-
-  if (isLoading) {
-    return (
-      <div className="bg-white p-6 rounded-lg shadow border border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
-        <div className="space-y-4">
-          {[...Array(3)].map((_, i) => (
-            <div key={i} className="animate-pulse">
-              <div className="h-4 bg-gray-200 rounded mb-2"></div>
-              <div className="h-3 bg-gray-200 rounded w-2/3"></div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="bg-white p-6 rounded-lg shadow border border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <p className="text-red-700">Error loading activity: {error}</p>
-        </div>
-      </div>
-    );
-  }
+  const applications = data?.recentApplications ?? [];
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow border border-gray-200">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Applications</h3>
-      
-      {!activity || activity.recentApplications.length === 0 ? (
-        <p className="text-gray-500 text-center py-4">No recent applications</p>
-      ) : (
-        <div className="space-y-4">
-          {activity.recentApplications.map((app) => (
-            <div key={app.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-              <div className="flex-1">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
-                    <span className="text-emerald-600 font-semibold text-sm">
-                      {app.applicantName.split(' ').map(n => n[0]).join('')}
-                    </span>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-900">{app.applicantName}</p>
-                    <p className="text-xs text-gray-600">Applied to {app.courseName}</p>
-                  </div>
-                </div>
+    <Card>
+      <CardHeader
+        title="Recent applications"
+        description="The most recent submissions from the website"
+        action={
+          <Link
+            href="/admin/applications"
+            className="inline-flex items-center gap-1 text-[13px] font-medium text-green-400 hover:text-green-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 rounded"
+          >
+            View all
+            <ArrowRight size={14} aria-hidden="true" />
+          </Link>
+        }
+      />
+
+      {isLoading && (
+        <div className="divide-y divide-dark-border" aria-hidden="true">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <div key={index} className="flex items-center gap-4 px-5 py-3.5">
+              <Skeleton className="w-8 h-8 rounded-full shrink-0" />
+              <div className="flex-1 space-y-1.5">
+                <Skeleton className="h-3.5 w-40" />
+                <Skeleton className="h-3 w-24" />
               </div>
-              <div className="flex items-center space-x-3">
-                <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(app.status)}`}>
-                  {app.status}
-                </span>
-                <span className="text-xs text-gray-500">{formatDate(app.createdAt)}</span>
-              </div>
+              <Skeleton className="h-5 w-20 rounded-md" />
             </div>
           ))}
         </div>
       )}
-    </div>
+
+      {!isLoading && error && (
+        <ErrorState message={error.message} code={error.code} onRetry={reload} />
+      )}
+
+      {!isLoading && !error && applications.length === 0 && (
+        <EmptyState
+          title="No applications yet"
+          description="New submissions from the website will appear here as they arrive."
+        />
+      )}
+
+      {!isLoading && !error && applications.length > 0 && (
+        <ul className="divide-y divide-dark-border">
+          {applications.map((application) => {
+            const { label, tone } = statusMeta(application.status);
+            return (
+              <li
+                key={application.id}
+                className="flex items-center gap-4 px-5 py-3.5 hover:bg-white/[0.03] transition-colors"
+              >
+                <span
+                  className="grid place-items-center w-8 h-8 rounded-full bg-green-500/15 text-green-300 ring-1 ring-green-500/20 text-xs font-semibold shrink-0"
+                  aria-hidden="true"
+                >
+                  {application.applicantName?.[0]?.toUpperCase() ?? "?"}
+                </span>
+
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-medium text-green-50 truncate">
+                    {application.applicantName}
+                  </p>
+                  <p className="text-[13px] text-green-100/50 truncate">
+                    {application.courseName || "No course selected"}
+                    <span className="text-green-100/25 mx-1.5" aria-hidden="true">·</span>
+                    {formatDateTime(application.createdAt)}
+                  </p>
+                </div>
+
+                <StatusBadge tone={tone} label={label} />
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </Card>
   );
 }

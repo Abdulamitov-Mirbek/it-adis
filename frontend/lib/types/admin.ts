@@ -25,11 +25,13 @@ export interface Course {
   slug: string;
   title: string;
   description: string;
+  longDesc?: string;
   duration: string;
   level: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED' | 'ALL_LEVELS';
   price: number;
   isActive: boolean;
   isFeatured: boolean;
+  order: number;
   tags: string[];
   createdAt: string;
   updatedAt: string;

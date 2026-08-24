@@ -1,217 +1,226 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { adminAPI } from '@/lib/admin-api';
-import { Application, Pagination } from '@/lib/types/admin';
+import { useCallback, useState } from "react";
+import { Mail, Phone } from "lucide-react";
+import { adminAPI, ApiRequestError } from "@/lib/admin-api";
+import type { Application } from "@/lib/types/admin";
+import { Card, CardHeader, Select } from "./ui/primitives";
+import { EmptyState, ErrorState, TableSkeleton } from "./ui/states";
+import { Pagination, TableWrap, Td, Th, Tr } from "./ui/DataTable";
+import { APPLICATION_STATUSES, formatDate, statusMeta } from "./status";
+import { useAdminQuery } from "./useAdminQuery";
 
-export function ApplicationsTable() {
-  const [applications, setApplications] = useState<Application[]>([]);
-  const [pagination, setPagination] = useState<Pagination | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [statusFilter, setStatusFilter] = useState<string>('');
+const PAGE_SIZE = 10;
 
-  const fetchApplications = async (page: number, status?: string) => {
+/** Inline status control. Writing the status was impossible before this — the
+ *  panel could list applications but never act on one. */
+function StatusControl({
+  application,
+  onChanged,
+}: {
+  application: Application;
+  onChanged: (updated: Application["status"]) => void;
+}) {
+  const [saving, setSaving] = useState(false);
+  const [failed, setFailed] = useState<string | null>(null);
+
+  const handleChange = async (next: Application["status"]) => {
+    if (next === application.status) return;
+
+    const previous = application.status;
+    setSaving(true);
+    setFailed(null);
+    // Optimistic: the row updates immediately, and reverts below if the write
+    // is rejected. Waiting on the round trip made the select feel broken.
+    onChanged(next);
+
     try {
-      setIsLoading(true);
-      const data = await adminAPI.getApplications(page, 10, status || undefined);
-      setApplications(data.applications);
-      setPagination(data.pagination);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to fetch applications');
+      await adminAPI.updateApplicationStatus(application.id, next);
+    } catch (error) {
+      onChanged(previous);
+      setFailed(
+        error instanceof ApiRequestError ? error.message : "Could not save the change"
+      );
     } finally {
-      setIsLoading(false);
+      setSaving(false);
     }
   };
-
-  useEffect(() => {
-    fetchApplications(currentPage, statusFilter);
-  }, [currentPage, statusFilter]);
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'PENDING':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'REVIEWING':
-        return 'bg-blue-100 text-blue-800';
-      case 'ACCEPTED':
-        return 'bg-green-100 text-green-800';
-      case 'REJECTED':
-        return 'bg-red-100 text-red-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
-    }
-  };
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-  };
-
-  const statusOptions = [
-    { value: '', label: 'All Applications' },
-    { value: 'PENDING', label: 'Pending' },
-    { value: 'REVIEWING', label: 'Reviewing' },
-    { value: 'ACCEPTED', label: 'Accepted' },
-    { value: 'REJECTED', label: 'Rejected' },
-  ];
-
-  if (isLoading) {
-    return (
-      <div className="bg-white shadow rounded-lg">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h2 className="text-xl font-semibold text-gray-900">Applications</h2>
-        </div>
-        <div className="p-6">
-          <div className="animate-pulse space-y-4">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="h-20 bg-gray-200 rounded"></div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="bg-white shadow rounded-lg p-6">
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <p className="text-red-700">Error loading applications: {error}</p>
-          <button
-            onClick={() => fetchApplications(currentPage, statusFilter)}
-            className="mt-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
-          >
-            Retry
-          </button>
-        </div>
-      </div>
-    );
-  }
 
   return (
-    <div className="bg-white shadow rounded-lg">
-      <div className="px-6 py-4 border-b border-gray-200">
-        <div className="flex justify-between items-center">
-          <div>
-            <h2 className="text-xl font-semibold text-gray-900">Applications Management</h2>
-            <p className="text-sm text-gray-600">Review and manage student applications</p>
-          </div>
-          <div>
-            <select
-              value={statusFilter}
-              onChange={(e) => {
-                setStatusFilter(e.target.value);
-                setCurrentPage(1);
-              }}
-              className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-            >
-              {statusOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Applicant
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Course
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Contact
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Status
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Applied
-              </th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {applications.map((application) => (
-              <tr key={application.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div>
-                    <div className="text-sm font-medium text-gray-900">{application.name}</div>
-                    <div className="text-sm text-gray-500">{application.program}</div>
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">
-                    {application.course?.title || 'General Inquiry'}
-                  </div>
-                  {application.course && (
-                    <div className="text-sm text-gray-500">{application.course.slug}</div>
-                  )}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">{application.email}</div>
-                  {application.phone && (
-                    <div className="text-sm text-gray-500">{application.phone}</div>
-                  )}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(application.status)}`}>
-                    {application.status}
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {formatDate(application.createdAt)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {applications.length === 0 && (
-        <div className="px-6 py-8 text-center">
-          <p className="text-gray-500">No applications found.</p>
-        </div>
-      )}
-
-      {/* Pagination */}
-      {pagination && pagination.pages > 1 && (
-        <div className="px-6 py-4 border-t border-gray-200">
-          <div className="flex items-center justify-between">
-            <div className="text-sm text-gray-700">
-              Showing page {pagination.page} of {pagination.pages} ({pagination.total} total applications)
-            </div>
-            <div className="flex space-x-2">
-              <button
-                onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-                disabled={currentPage === 1}
-                className="px-3 py-1 border border-gray-300 rounded text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
-              >
-                Previous
-              </button>
-              <button
-                onClick={() => setCurrentPage(Math.min(pagination.pages, currentPage + 1))}
-                disabled={currentPage === pagination.pages}
-                className="px-3 py-1 border border-gray-300 rounded text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        </div>
+    <div className="flex flex-col items-start gap-1">
+      <Select
+        aria-label={`Status for ${application.name}`}
+        value={application.status}
+        disabled={saving}
+        onChange={(event) => handleChange(event.target.value as Application["status"])}
+        className="h-8 text-[13px] w-36"
+      >
+        {APPLICATION_STATUSES.map((status) => (
+          <option key={status} value={status}>
+            {statusMeta(status).label}
+          </option>
+        ))}
+      </Select>
+      {failed && (
+        <span className="text-[11px] text-red-300 max-w-36" role="alert">
+          {failed}
+        </span>
       )}
     </div>
+  );
+}
+
+export function ApplicationsTable() {
+  const [page, setPage] = useState(1);
+  const [statusFilter, setStatusFilter] = useState<string>("");
+
+  const { data, error, isLoading, reload, setData } = useAdminQuery(
+    useCallback(
+      () => adminAPI.getApplications(page, PAGE_SIZE, statusFilter || undefined),
+      [page, statusFilter]
+    )
+  );
+
+  const applyLocalStatus = useCallback(
+    (id: string, status: Application["status"]) => {
+      setData((current) =>
+        current
+          ? {
+              ...current,
+              applications: current.applications.map((application) =>
+                application.id === id ? { ...application, status } : application
+              ),
+            }
+          : current
+      );
+    },
+    [setData]
+  );
+
+  const applications = data?.applications ?? [];
+
+  return (
+    <Card>
+      <CardHeader
+        title="Applications"
+        description="Every submission from the website, newest first"
+        action={
+          <Select
+            aria-label="Filter by status"
+            value={statusFilter}
+            onChange={(event) => {
+              setStatusFilter(event.target.value);
+              // A filter change reshuffles the result set, so page 3 of the old
+              // filter is meaningless against the new one.
+              setPage(1);
+            }}
+            className="h-9 text-[13px] w-40"
+          >
+            <option value="">All statuses</option>
+            {APPLICATION_STATUSES.map((status) => (
+              <option key={status} value={status}>
+                {statusMeta(status).label}
+              </option>
+            ))}
+          </Select>
+        }
+      />
+
+      {isLoading && <TableSkeleton rows={PAGE_SIZE} columns={5} />}
+
+      {!isLoading && error && (
+        <ErrorState message={error.message} code={error.code} onRetry={reload} />
+      )}
+
+      {!isLoading && !error && applications.length === 0 && (
+        <EmptyState
+          title={statusFilter ? "No applications with that status" : "No applications yet"}
+          description={
+            statusFilter
+              ? "Try clearing the filter to see everything that has come in."
+              : "Submissions from the website's application form will appear here."
+          }
+        />
+      )}
+
+      {!isLoading && !error && applications.length > 0 && (
+        <>
+          <TableWrap>
+            <thead>
+              <tr>
+                <Th>Applicant</Th>
+                <Th>Contact</Th>
+                <Th>Programme</Th>
+                <Th>Submitted</Th>
+                <Th>Status</Th>
+              </tr>
+            </thead>
+            <tbody>
+              {applications.map((application) => (
+                <Tr key={application.id}>
+                  <Td>
+                    <div className="min-w-0">
+                      <p className="font-medium text-green-50 truncate">
+                        {application.name}
+                      </p>
+                      {application.message && (
+                        <p
+                          className="text-[13px] text-green-100/45 truncate max-w-xs"
+                          title={application.message}
+                        >
+                          {application.message}
+                        </p>
+                      )}
+                    </div>
+                  </Td>
+
+                  <Td>
+                    <div className="space-y-0.5">
+                      <a
+                        href={`mailto:${application.email}`}
+                        className="flex items-center gap-1.5 text-[13px] text-green-100/70 hover:text-green-300 transition-colors"
+                      >
+                        <Mail size={13} className="text-green-100/35 shrink-0" aria-hidden="true" />
+                        <span className="truncate max-w-[14rem]">{application.email}</span>
+                      </a>
+                      {application.phone && (
+                        <a
+                          href={`tel:${application.phone}`}
+                          className="flex items-center gap-1.5 text-[13px] text-green-100/70 hover:text-green-300 transition-colors"
+                        >
+                          <Phone size={13} className="text-green-100/35 shrink-0" aria-hidden="true" />
+                          {application.phone}
+                        </a>
+                      )}
+                    </div>
+                  </Td>
+
+                  <Td>
+                    <span className="text-green-100/80">
+                      {application.course?.title ?? application.program}
+                    </span>
+                  </Td>
+
+                  <Td className="text-green-100/50 whitespace-nowrap tabular-nums">
+                    {formatDate(application.createdAt)}
+                  </Td>
+
+                  <Td>
+                    <StatusControl
+                      application={application}
+                      onChanged={(status) => applyLocalStatus(application.id, status)}
+                    />
+                  </Td>
+                </Tr>
+              ))}
+            </tbody>
+          </TableWrap>
+
+          {data?.pagination && (
+            <Pagination pagination={data.pagination} onPageChange={setPage} />
+          )}
+        </>
+      )}
+    </Card>
   );
 }

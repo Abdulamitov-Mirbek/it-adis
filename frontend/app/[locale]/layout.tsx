@@ -5,8 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
-import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
-import { CustomCursor } from "@/components/ui/CustomCursor";
+import { SiteChrome } from "@/components/providers/SiteChrome";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -55,10 +54,7 @@ export default async function LocaleLayout({
     <html lang={locale} className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="noise-bg antialiased">
         <NextIntlClientProvider messages={messages}>
-          <SmoothScrollProvider>
-            <CustomCursor />
-            {children}
-          </SmoothScrollProvider>
+          <SiteChrome>{children}</SiteChrome>
         </NextIntlClientProvider>
       </body>
     </html>

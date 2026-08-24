@@ -1,37 +1,75 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { adminAPI } from '@/lib/admin-api';
-import { DashboardStats as StatsType } from '@/lib/types/admin';
+import { useCallback } from "react";
+import {
+  BookOpen,
+  ClipboardList,
+  Clock,
+  TrendingUp,
+  type LucideIcon,
+} from "lucide-react";
+import { adminAPI } from "@/lib/admin-api";
+import { cn } from "@/lib/utils";
+import { Card } from "./ui/primitives";
+import { ErrorState, Skeleton } from "./ui/states";
+import { useAdminQuery } from "./useAdminQuery";
+
+/** Four figures across the top: the shape of the business at a glance. */
+
+function StatCard({
+  label,
+  value,
+  hint,
+  icon: Icon,
+  accent,
+}: {
+  label: string;
+  value: string | number;
+  hint?: string;
+  icon: LucideIcon;
+  accent: string;
+}) {
+  return (
+    <Card className="p-5">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-[13px] font-medium text-green-100/50">{label}</p>
+          <p className="mt-2 font-display text-3xl font-bold text-green-50 tabular-nums tracking-tight">
+            {value}
+          </p>
+          {hint && <p className="mt-1 text-xs text-green-100/40">{hint}</p>}
+        </div>
+        <span
+          className={cn("grid place-items-center w-9 h-9 rounded-lg shrink-0", accent)}
+          aria-hidden="true"
+        >
+          <Icon size={17} />
+        </span>
+      </div>
+    </Card>
+  );
+}
+
+function StatSkeleton() {
+  return (
+    <Card className="p-5">
+      <Skeleton className="h-3 w-24" />
+      <Skeleton className="h-7 w-16 mt-3" />
+      <Skeleton className="h-3 w-20 mt-2" />
+    </Card>
+  );
+}
 
 export function DashboardStats() {
-  const [stats, setStats] = useState<StatsType | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const data = await adminAPI.getDashboardStats();
-        setStats(data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch stats');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchStats();
-  }, []);
+  const { data, error, isLoading, reload } = useAdminQuery(
+    useCallback(() => adminAPI.getDashboardStats(), [])
+  );
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {[...Array(4)].map((_, i) => (
-          <div key={i} className="bg-white p-6 rounded-lg shadow animate-pulse">
-            <div className="h-4 bg-gray-200 rounded mb-2"></div>
-            <div className="h-8 bg-gray-200 rounded"></div>
-          </div>
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {Array.from({ length: 4 }).map((_, index) => (
+          <StatSkeleton key={index} />
         ))}
       </div>
     );
@@ -39,83 +77,44 @@ export function DashboardStats() {
 
   if (error) {
     return (
-      <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-        <p className="text-red-700">Error loading stats: {error}</p>
-      </div>
+      <Card>
+        <ErrorState message={error.message} code={error.code} onRetry={reload} />
+      </Card>
     );
   }
 
-  if (!stats) return null;
+  if (!data) return null;
 
-  const statCards = [
-    {
-      title: 'Total Courses',
-      value: stats.totalCourses,
-      icon: '📚',
-      color: 'text-blue-600',
-      bgColor: 'bg-blue-50',
-    },
-    {
-      title: 'Total Applications',
-      value: stats.totalApplications,
-      icon: '📝',
-      color: 'text-green-600',
-      bgColor: 'bg-green-50',
-    },
-    {
-      title: 'Pending Applications',
-      value: stats.applicationsByStatus.pending,
-      icon: '⏳',
-      color: 'text-yellow-600',
-      bgColor: 'bg-yellow-50',
-    },
-    {
-      title: 'Acceptance Rate',
-      value: `${stats.acceptanceRate}%`,
-      icon: '✅',
-      color: 'text-emerald-600',
-      bgColor: 'bg-emerald-50',
-    },
-  ];
+  const pending = data.applicationsByStatus?.pending ?? 0;
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">Dashboard Overview</h2>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {statCards.map((card, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg shadow border border-gray-200">
-            <div className="flex items-center">
-              <div className={`p-3 rounded-lg ${card.bgColor} mr-4`}>
-                <span className="text-2xl">{card.icon}</span>
-              </div>
-              <div>
-                <p className="text-sm font-medium text-gray-600">{card.title}</p>
-                <p className={`text-2xl font-bold ${card.color}`}>{card.value}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Applications Status Breakdown */}
-      <div className="bg-white p-6 rounded-lg shadow border border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Applications Status</h3>
-        <div className="grid grid-cols-3 gap-4">
-          <div className="text-center p-4 bg-yellow-50 rounded-lg">
-            <p className="text-2xl font-bold text-yellow-600">{stats.applicationsByStatus.pending}</p>
-            <p className="text-sm text-yellow-700">Pending</p>
-          </div>
-          <div className="text-center p-4 bg-green-50 rounded-lg">
-            <p className="text-2xl font-bold text-green-600">{stats.applicationsByStatus.accepted}</p>
-            <p className="text-sm text-green-700">Accepted</p>
-          </div>
-          <div className="text-center p-4 bg-red-50 rounded-lg">
-            <p className="text-2xl font-bold text-red-600">{stats.applicationsByStatus.rejected}</p>
-            <p className="text-sm text-red-700">Rejected</p>
-          </div>
-        </div>
-      </div>
+    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <StatCard
+        label="Total applications"
+        value={data.totalApplications}
+        icon={ClipboardList}
+        accent="bg-blue-500/10 text-blue-300 ring-1 ring-blue-500/20"
+      />
+      <StatCard
+        label="Awaiting review"
+        value={pending}
+        hint={pending > 0 ? "Needs your attention" : "All caught up"}
+        icon={Clock}
+        accent={pending > 0 ? "bg-amber-500/10 text-amber-300 ring-1 ring-amber-500/20" : "bg-white/5 text-green-100/40 ring-1 ring-white/10"}
+      />
+      <StatCard
+        label="Active courses"
+        value={data.totalCourses}
+        icon={BookOpen}
+        accent="bg-green-500/10 text-green-300 ring-1 ring-green-500/20"
+      />
+      <StatCard
+        label="Acceptance rate"
+        value={data.acceptanceRate}
+        hint={`${data.applicationsByStatus?.accepted ?? 0} accepted`}
+        icon={TrendingUp}
+        accent="bg-violet-500/10 text-violet-300 ring-1 ring-violet-500/20"
+      />
     </div>
   );
 }

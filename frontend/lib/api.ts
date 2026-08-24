@@ -33,7 +33,8 @@ export interface Stats {
 }
 
 export interface Review {
-  id: number;
+  /** Number in the legacy hardcoded fallback, cuid once stored in the DB. */
+  id: number | string;
   name: string;
   role: string;
   initials: string;
@@ -43,8 +44,22 @@ export interface Review {
   course: string;
 }
 
+export interface SiteContent {
+  id: string;
+  aboutTitle: string;
+  aboutBody: string;
+  statStudents: number;
+  statEmployed: number;
+  statYears: number;
+  contactEmail: string;
+  contactPhone: string;
+  contactAddress: string;
+  updatedAt: string;
+}
+
 export interface Teacher {
-  id: number;
+  /** Number in the legacy hardcoded fallback, cuid once stored in the DB. */
+  id: number | string;
   name: string;
   role: string;
   bio: string;
@@ -97,6 +112,10 @@ class API {
 
   async getTeachers(): Promise<Teacher[]> {
     return this.request<Teacher[]>('/public/teachers');
+  }
+
+  async getSiteContent(): Promise<SiteContent> {
+    return this.request<SiteContent>('/public/site-content');
   }
 }
 

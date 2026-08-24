@@ -38,9 +38,24 @@ export class ApplicationsService {
   }
 
   async updateStatus(id: string, status: ApplicationStatus) {
+    // Acting on an application implies it has been seen, so moving it out of
+    // PENDING also clears the unread badge. Otherwise an administrator who
+    // works entirely from the status dropdown never clears the counter.
     return this.prisma.application.update({
       where: { id },
-      data: { status },
+      data: { status, isRead: true, readAt: new Date() },
     });
+  }
+
+  async markRead(id: string, isRead: boolean) {
+    return this.prisma.application.update({
+      where: { id },
+      data: { isRead, readAt: isRead ? new Date() : null },
+    });
+  }
+
+  /** Drives the sidebar badge. */
+  countUnread() {
+    return this.prisma.application.count({ where: { isRead: false } });
   }
 }
