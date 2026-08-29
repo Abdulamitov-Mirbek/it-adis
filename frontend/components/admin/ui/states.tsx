@@ -16,7 +16,7 @@ import { Button } from "./primitives";
 export function Skeleton({ className }: { className?: string }) {
   return (
     <div
-      className={cn("animate-pulse rounded bg-white/8", className)}
+      className={cn("animate-pulse rounded bg-slate-100", className)}
       aria-hidden="true"
     />
   );
@@ -50,12 +50,12 @@ export function EmptyState({
 }) {
   return (
     <div className="flex flex-col items-center justify-center px-6 py-16 text-center">
-      <div className="grid place-items-center w-11 h-11 rounded-full bg-white/5 text-green-100/40 mb-4">
+      <div className="grid place-items-center w-11 h-11 rounded-full bg-slate-50 text-slate-500 mb-4">
         <Inbox size={20} aria-hidden="true" />
       </div>
-      <p className="text-sm font-semibold text-green-50">{title}</p>
+      <p className="text-sm font-semibold text-slate-900">{title}</p>
       {description && (
-        <p className="text-[13px] text-green-100/50 mt-1 max-w-sm">{description}</p>
+        <p className="text-[13px] text-slate-500 mt-1 max-w-sm">{description}</p>
       )}
       {action && <div className="mt-5">{action}</div>}
     </div>
@@ -85,15 +85,15 @@ export function ErrorState({
 
   return (
     <div className="flex flex-col items-center justify-center px-6 py-16 text-center">
-      <div className="grid place-items-center w-11 h-11 rounded-full bg-red-500/10 text-red-400 mb-4">
+      <div className="grid place-items-center w-11 h-11 rounded-full bg-red-50 text-red-600 mb-4">
         <Icon size={20} aria-hidden="true" />
       </div>
-      <p className="text-sm font-semibold text-green-50">
+      <p className="text-sm font-semibold text-slate-900">
         {isConnectivity ? "Cannot reach the server" : "Something went wrong"}
       </p>
-      <p className="text-[13px] text-green-100/50 mt-1 max-w-md">{message}</p>
+      <p className="text-[13px] text-slate-500 mt-1 max-w-md">{message}</p>
       {isConnectivity && (
-        <p className="text-xs text-green-100/35 mt-2 max-w-md">
+        <p className="text-xs text-slate-500 mt-2 max-w-md">
           If this persists, check that BACKEND_API_URL is set correctly in the
           deployment settings.
         </p>

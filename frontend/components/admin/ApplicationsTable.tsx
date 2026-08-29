@@ -62,7 +62,7 @@ function StatusControl({
         ))}
       </Select>
       {failed && (
-        <span className="text-[11px] text-red-300 max-w-36" role="alert">
+        <span className="text-[11px] text-red-700 max-w-36" role="alert">
           {failed}
         </span>
       )}
@@ -160,12 +160,12 @@ export function ApplicationsTable() {
                 <Tr key={application.id}>
                   <Td>
                     <div className="min-w-0">
-                      <p className="font-medium text-green-50 truncate">
+                      <p className="font-medium text-slate-900 truncate">
                         {application.name}
                       </p>
                       {application.message && (
                         <p
-                          className="text-[13px] text-green-100/45 truncate max-w-xs"
+                          className="text-[13px] text-slate-500 truncate max-w-xs"
                           title={application.message}
                         >
                           {application.message}
@@ -178,17 +178,17 @@ export function ApplicationsTable() {
                     <div className="space-y-0.5">
                       <a
                         href={`mailto:${application.email}`}
-                        className="flex items-center gap-1.5 text-[13px] text-green-100/70 hover:text-green-300 transition-colors"
+                        className="flex items-center gap-1.5 text-[13px] text-slate-600 hover:text-green-700 transition-colors"
                       >
-                        <Mail size={13} className="text-green-100/35 shrink-0" aria-hidden="true" />
+                        <Mail size={13} className="text-slate-500 shrink-0" aria-hidden="true" />
                         <span className="truncate max-w-[14rem]">{application.email}</span>
                       </a>
                       {application.phone && (
                         <a
                           href={`tel:${application.phone}`}
-                          className="flex items-center gap-1.5 text-[13px] text-green-100/70 hover:text-green-300 transition-colors"
+                          className="flex items-center gap-1.5 text-[13px] text-slate-600 hover:text-green-700 transition-colors"
                         >
-                          <Phone size={13} className="text-green-100/35 shrink-0" aria-hidden="true" />
+                          <Phone size={13} className="text-slate-500 shrink-0" aria-hidden="true" />
                           {application.phone}
                         </a>
                       )}
@@ -196,12 +196,12 @@ export function ApplicationsTable() {
                   </Td>
 
                   <Td>
-                    <span className="text-green-100/80">
+                    <span className="text-slate-600">
                       {application.course?.title ?? application.program}
                     </span>
                   </Td>
 
-                  <Td className="text-green-100/50 whitespace-nowrap tabular-nums">
+                  <Td className="text-slate-500 whitespace-nowrap tabular-nums">
                     {formatDate(application.createdAt)}
                   </Td>
 

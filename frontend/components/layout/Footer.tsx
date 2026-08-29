@@ -34,8 +34,8 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-dark border-t border-green-900/30 overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent" aria-hidden="true" />
+    <footer className="relative bg-white border-t border-slate-200 overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" aria-hidden="true" />
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-5 blur-3xl" style={{ background: "radial-gradient(circle, #22c55e, transparent)" }} aria-hidden="true" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
@@ -48,45 +48,45 @@ export function Footer() {
                 The navbar carries the horizontal version of the same logo. */}
             <div className="relative self-start">
               <div
-                className="absolute -inset-6 bg-green-500 blur-3xl opacity-10 rounded-full"
+                className="absolute -inset-6 bg-green-600 blur-3xl opacity-10 rounded-full"
                 aria-hidden="true"
               />
               <ITAdisLogo width={132} showTagline className="relative" />
             </div>
-            <p className="text-green-100/70 text-sm leading-relaxed max-w-xs">{t("tagline")}</p>
+            <p className="text-slate-600 text-sm leading-relaxed max-w-xs">{t("tagline")}</p>
 
             {/* Contact details — the fastest way to reach the school, so they
                 sit in the brand column rather than buried in a link list. */}
             <ul className="flex flex-col gap-2.5">
               <li>
                 <a href={`mailto:${CONTACT_EMAIL}`}
-                  className="inline-flex items-center gap-2.5 text-sm text-green-100/75 hover:text-green-300 transition-colors focus:outline-none focus:text-green-300"
+                  className="inline-flex items-center gap-2.5 text-sm text-slate-600 hover:text-green-700 transition-colors focus:outline-none focus:text-green-700"
                 >
-                  <Mail size={15} className="text-green-400 shrink-0" aria-hidden="true" />
+                  <Mail size={15} className="text-green-700 shrink-0" aria-hidden="true" />
                   {CONTACT_EMAIL}
                 </a>
               </li>
               <li>
                 <a href={`tel:${CONTACT_PHONE_HREF}`}
-                  className="inline-flex items-center gap-2.5 text-sm text-green-100/75 hover:text-green-300 transition-colors focus:outline-none focus:text-green-300"
+                  className="inline-flex items-center gap-2.5 text-sm text-slate-600 hover:text-green-700 transition-colors focus:outline-none focus:text-green-700"
                 >
-                  <Phone size={15} className="text-green-400 shrink-0" aria-hidden="true" />
+                  <Phone size={15} className="text-green-700 shrink-0" aria-hidden="true" />
                   {CONTACT_PHONE}
                 </a>
               </li>
               <li>
                 <a href={BRANCH_2GIS_MAIN} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 text-sm text-green-100/75 hover:text-green-300 transition-colors focus:outline-none focus:text-green-300"
+                  className="inline-flex items-center gap-2.5 text-sm text-slate-600 hover:text-green-700 transition-colors focus:outline-none focus:text-green-700"
                 >
-                  <MapPin size={15} className="text-green-400 shrink-0" aria-hidden="true" />
+                  <MapPin size={15} className="text-green-700 shrink-0" aria-hidden="true" />
                   {t("branch1")}
                 </a>
               </li>
               <li>
                 <a href={BRANCH_2GIS_SECOND} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 text-sm text-green-100/75 hover:text-green-300 transition-colors focus:outline-none focus:text-green-300"
+                  className="inline-flex items-center gap-2.5 text-sm text-slate-600 hover:text-green-700 transition-colors focus:outline-none focus:text-green-700"
                 >
-                  <MapPin size={15} className="text-green-400 shrink-0" aria-hidden="true" />
+                  <MapPin size={15} className="text-green-700 shrink-0" aria-hidden="true" />
                   {t("branch2")}
                 </a>
               </li>
@@ -95,7 +95,7 @@ export function Footer() {
             <div className="flex gap-3">
               {SOCIAL_ICONS.filter((s) => s.href).map(({ label, path, href }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  className="w-9 h-9 rounded-xl glass border border-green-900/40 flex items-center justify-center text-green-400/70 hover:text-green-300 hover:border-green-500/40 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-500/40"
+                  className="w-9 h-9 rounded-xl glass border border-slate-200 flex items-center justify-center text-green-700 hover:text-green-700 hover:border-green-200 transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-600/40"
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" width={16} height={16} aria-hidden="true">
                     <path d={path} />
@@ -108,11 +108,11 @@ export function Footer() {
           {/* Link columns */}
           {Object.entries(LINKS).map(([section, items]) => (
             <div key={section}>
-              <h4 className="font-semibold text-white text-sm mb-4">{section}</h4>
+              <h4 className="font-semibold text-slate-900 text-sm mb-4">{section}</h4>
               <ul className="flex flex-col gap-2.5">
                 {items.map((item) => (
                   <li key={item}>
-                    <a href="#" className="text-sm text-green-100/68 hover:text-green-300 transition-colors duration-200 focus:outline-none focus:text-green-300">
+                    <a href="#" className="text-sm text-slate-500 hover:text-green-700 transition-colors duration-200 focus:outline-none focus:text-green-700">
                       {item}
                     </a>
                   </li>
@@ -122,9 +122,9 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="pt-8 border-t border-green-900/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-green-100/62">© {new Date().getFullYear()} IT ADIS. {t("copyright")}</p>
-          <p className="text-xs text-green-100/62">Built with ❤️ and <span className="text-green-500">{t("energy")}</span></p>
+        <div className="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-slate-500">© {new Date().getFullYear()} IT ADIS. {t("copyright")}</p>
+          <p className="text-xs text-slate-500">Built with ❤️ and <span className="text-green-700">{t("energy")}</span></p>
         </div>
       </div>
     </footer>

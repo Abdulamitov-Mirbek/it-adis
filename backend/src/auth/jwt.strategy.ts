@@ -1,12 +1,13 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { PrismaService } from '../prisma/prisma.service';
+import { SupabaseService, unwrap } from '../supabase/supabase.service';
+import { TABLES } from '../supabase/types';
 import { requireJwtSecret } from '../config/secrets';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(private prisma: PrismaService) {
+  constructor(private db: SupabaseService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
@@ -15,9 +16,16 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: any) {
-    const adminUser = await this.prisma.adminUser.findUnique({
-      where: { id: payload.sub },
-    });
+    // Re-checked on every request rather than trusted from the token: a deleted
+    // admin's outstanding token stops working immediately.
+    const adminUser = unwrap<{ id: string } | null>(
+      await this.db
+        .from(TABLES.adminUsers)
+        .select('id')
+        .eq('id', payload.sub)
+        .maybeSingle(),
+      'auth.jwtValidate',
+    );
 
     if (!adminUser) {
       throw new UnauthorizedException();

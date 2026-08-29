@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <AdminProvider>
-      <div className="admin-scope min-h-screen bg-dark text-green-50">
+      <div className="admin-scope min-h-screen bg-dark text-slate-900">
         {children}
       </div>
     </AdminProvider>

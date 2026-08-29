@@ -5,7 +5,6 @@
 #
 # Safe to re-run. Options:
 #   --no-pull      rebuild the working tree as-is instead of fetching origin
-#   --skip-migrate skip `prisma migrate deploy`
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -13,11 +12,12 @@ ROOT="$PWD"
 ENV_FILE="$ROOT/.env.production"
 
 PULL=1
-MIGRATE=1
 for arg in "$@"; do
   case "$arg" in
-    --no-pull)      PULL=0 ;;
-    --skip-migrate) MIGRATE=0 ;;
+    --no-pull) PULL=0 ;;
+    # Accepted and ignored: there is no migration step any more (Prisma is
+    # gone), and rejecting it would break anyone's existing deploy command.
+    --skip-migrate) ;;
     *) echo "unknown option: $arg"; exit 1 ;;
   esac
 done
@@ -88,7 +88,8 @@ load_env "$ENV_FILE"
 
 : "${SITE_DOMAIN:?SITE_DOMAIN must be set in .env.production}"
 : "${JWT_SECRET:?JWT_SECRET must be set in .env.production}"
-: "${DATABASE_URL:?DATABASE_URL must be set in .env.production}"
+: "${SUPABASE_URL:?SUPABASE_URL must be set in .env.production}"
+: "${SUPABASE_SECRET_KEY:?SUPABASE_SECRET_KEY must be set in .env.production}"
 
 # ── Code ──────────────────────────────────────────────────────────────────────
 
@@ -120,21 +121,18 @@ if [[ ! -x node_modules/.bin/nest ]]; then
   exit 1
 fi
 
-npx prisma generate
 npm run build
 
-if [[ $MIGRATE -eq 1 ]]; then
-  # Runs before either service restarts, so a failed migration leaves the
-  # currently-running version untouched rather than half-upgrading the site.
-  echo "==> Applying database migrations"
-  npx prisma migrate deploy
-fi
+# No `prisma generate` and no `prisma migrate deploy`. The backend reaches
+# Supabase over PostgREST now, so there is no client to generate, and schema
+# changes are made in the Supabase SQL editor — backend/supabase/*.sql records
+# what the API expects. `migrate deploy` had become a guaranteed failure here
+# anyway: it exits P3005 against a database that already has tables.
 
 # Reclaim the build-only packages now the compiled output exists. `node
 # dist/main` needs prod dependencies only — this is exactly what the Docker
 # runner stage does — and on an 8 GB volume those ~255 packages are worth
-# having back. The prisma CLI survives because it is a prod dependency, so
-# migrations still work on the next deploy.
+# having back.
 echo "==> Pruning backend build dependencies"
 npm prune --omit=dev
 

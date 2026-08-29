@@ -1,10 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
-import { ApplicationStatus } from '@prisma/client';
+import { SupabaseService, unwrap, unwrapCount } from '../supabase/supabase.service';
+import { Application, ApplicationStatus, Course, TABLES } from '../supabase/types';
+
+/** PostgREST returns an aggregate embed as `applications: [{ count: n }]`. */
+type CourseWithApplicationCount = Course & { applications?: Array<{ count: number }> };
 
 @Injectable()
 export class AdminService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private db: SupabaseService) {}
+
+  /** `head: true` fetches no rows at all — only the Content-Range count header. */
+  private count(table: string, apply?: (q: any) => any) {
+    const base = this.db.from(table).select('*', { count: 'exact', head: true });
+    return apply ? apply(base) : base;
+  }
 
   async getDashboardStats() {
     const [
@@ -15,13 +24,15 @@ export class AdminService {
       rejectedApplications,
       unreadApplications,
     ] = await Promise.all([
-      this.prisma.course.count({ where: { isActive: true } }),
-      this.prisma.application.count(),
-      this.prisma.application.count({ where: { status: ApplicationStatus.PENDING } }),
-      this.prisma.application.count({ where: { status: ApplicationStatus.ACCEPTED } }),
-      this.prisma.application.count({ where: { status: ApplicationStatus.REJECTED } }),
-      this.prisma.application.count({ where: { isRead: false } }),
-    ]);
+      this.count(TABLES.courses, (q) => q.eq('isActive', true)),
+      this.count(TABLES.applications),
+      this.count(TABLES.applications, (q) => q.eq('status', ApplicationStatus.PENDING)),
+      this.count(TABLES.applications, (q) => q.eq('status', ApplicationStatus.ACCEPTED)),
+      this.count(TABLES.applications, (q) => q.eq('status', ApplicationStatus.REJECTED)),
+      this.count(TABLES.applications, (q) => q.eq('isRead', false)),
+    ]).then((results) =>
+      results.map((r, i) => unwrapCount(r, `admin.dashboard[${i}]`)),
+    );
 
     return {
       totalCourses,
@@ -39,25 +50,25 @@ export class AdminService {
   async getCourses(page: number = 1, limit: number = 10) {
     const skip = (page - 1) * limit;
 
-    const [courses, total] = await Promise.all([
-      this.prisma.course.findMany({
-        where: { isActive: true },
-        skip,
-        take: limit,
-        orderBy: { createdAt: 'desc' },
-        include: {
-          _count: {
-            select: {
-              applications: true,
-            },
-          },
-        },
-      }),
-      this.prisma.course.count({ where: { isActive: true } }),
-    ]);
+    // One request, not two: asking for `count: 'exact'` alongside a ranged
+    // select returns the page and the unpaginated total together, which is what
+    // Prisma needed a second `count()` query for.
+    const result = await this.db
+      .from(TABLES.courses)
+      .select('*, applications(count)', { count: 'exact' })
+      .eq('isActive', true)
+      .order('createdAt', { ascending: false })
+      .range(skip, skip + limit - 1);
+
+    const rows = unwrap<CourseWithApplicationCount[]>(result, 'admin.getCourses');
+    const total = result.count ?? 0;
 
     return {
-      courses,
+      courses: rows.map(({ applications, ...course }) => ({
+        ...course,
+        // Kept in Prisma's shape so the admin panel needs no change.
+        _count: { applications: applications?.[0]?.count ?? 0 },
+      })),
       pagination: {
         page,
         limit,
@@ -69,25 +80,18 @@ export class AdminService {
 
   async getApplications(page: number = 1, limit: number = 10, status?: ApplicationStatus) {
     const skip = (page - 1) * limit;
-    const where = status ? { status } : {};
 
-    const [applications, total] = await Promise.all([
-      this.prisma.application.findMany({
-        where,
-        skip,
-        take: limit,
-        orderBy: { createdAt: 'desc' },
-        include: {
-          course: {
-            select: {
-              title: true,
-              slug: true,
-            },
-          },
-        },
-      }),
-      this.prisma.application.count({ where }),
-    ]);
+    let query = this.db
+      .from(TABLES.applications)
+      .select('*, course:courses(title, slug)', { count: 'exact' })
+      .order('createdAt', { ascending: false })
+      .range(skip, skip + limit - 1);
+
+    if (status) query = query.eq('status', status);
+
+    const result = await query;
+    const applications = unwrap<Application[]>(result, 'admin.getApplications');
+    const total = result.count ?? 0;
 
     return {
       applications,
@@ -101,17 +105,16 @@ export class AdminService {
   }
 
   async getRecentActivity() {
-    const recentApplications = await this.prisma.application.findMany({
-      take: 5,
-      orderBy: { createdAt: 'desc' },
-      include: {
-        course: {
-          select: {
-            title: true,
-          },
-        },
-      },
-    });
+    const recentApplications = unwrap<
+      Array<Application & { course: { title: string } | null }>
+    >(
+      await this.db
+        .from(TABLES.applications)
+        .select('*, course:courses(title)')
+        .order('createdAt', { ascending: false })
+        .limit(5),
+      'admin.getRecentActivity',
+    );
 
     return {
       recentApplications: recentApplications.map(app => ({

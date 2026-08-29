@@ -5,7 +5,7 @@ services:
     region: oregon
     plan: free
     rootDir: backend
-    buildCommand: npm install && npm run build && npx prisma generate
+    buildCommand: npm install && npm run build
     startCommand: node dist/main
     healthCheckPath: /public/stats
     envVars:
@@ -13,9 +13,9 @@ services:
         value: production
       - key: PORT
         value: 3001
-      - key: DATABASE_URL
+      - key: SUPABASE_URL
         sync: false
-      - key: DIRECT_URL
+      - key: SUPABASE_SECRET_KEY
         sync: false
       - key: JWT_SECRET
         sync: false

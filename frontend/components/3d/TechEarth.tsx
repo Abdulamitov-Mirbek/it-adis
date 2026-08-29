@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Stars, Html, useTexture } from "@react-three/drei";
+import { Html, useTexture } from "@react-three/drei";
 import { useTranslations } from "next-intl";
 import * as THREE from "three";
 import { TECHNOLOGIES, techIconPath, type TechDef } from "@/lib/tech-data";
@@ -414,7 +414,7 @@ function TechChip({
               whiteSpace: "nowrap",
               padding: "7px 14px",
               borderRadius: 999,
-              background: "rgba(4,13,7,0.9)",
+              background: "rgba(15,23,42,0.92)",
               border: `1px solid ${tech.color}55`,
               color: tech.color,
               fontSize: 13,
@@ -517,9 +517,11 @@ function Scene({
     <>
       <FitCamera maxRadius={maxRadius} />
 
-      {quality !== "low" && (
-        <Stars radius={80} depth={50} count={900} factor={2.4} fade speed={0.4} />
-      )}
+      {/* The starfield that used to sit here was white points on a black
+          page. The canvas now composites over a white hero, where they are
+          invisible against the background and read as dust where they cross
+          the globe. Deleted rather than recoloured: "stars" on a white sky is
+          not an idea that survives the theme change. */}
 
       <Suspense fallback={null}>
         <Earth quality={quality} />

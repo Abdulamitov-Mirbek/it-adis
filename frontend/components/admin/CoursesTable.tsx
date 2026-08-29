@@ -84,7 +84,7 @@ export function CoursesTable() {
 
         {actionError && (
           <p
-            className="mx-5 mt-4 rounded-lg bg-red-500/10 border border-red-500/25 px-3 py-2 text-[13px] text-red-300"
+            className="mx-5 mt-4 rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-[13px] text-red-700"
             role="alert"
           >
             {actionError}
@@ -133,17 +133,17 @@ export function CoursesTable() {
                       <Td>
                         <div className="min-w-0">
                           <div className="flex items-center gap-2">
-                            <p className="font-medium text-green-50 truncate">
+                            <p className="font-medium text-slate-900 truncate">
                               {course.title}
                             </p>
                             {course.isFeatured && <Badge tone="amber">Featured</Badge>}
                           </div>
-                          <p className="text-[13px] text-green-100/50 truncate max-w-sm">
+                          <p className="text-[13px] text-slate-500 truncate max-w-sm">
                             {course.description}
                           </p>
-                          <p className="text-[11px] text-green-100/35 font-mono mt-0.5">
+                          <p className="text-[11px] text-slate-500 font-mono mt-0.5">
                             /{course.slug}
-                            <span className="text-green-100/25 mx-1.5" aria-hidden="true">
+                            <span className="text-slate-500 mx-1.5" aria-hidden="true">
                               ·
                             </span>
                             added {formatDate(course.createdAt)}
@@ -155,9 +155,9 @@ export function CoursesTable() {
                         <Badge tone={level.tone}>{level.label}</Badge>
                       </Td>
 
-                      <Td className="text-green-100/70 whitespace-nowrap">{course.duration}</Td>
+                      <Td className="text-slate-600 whitespace-nowrap">{course.duration}</Td>
 
-                      <Td align="right" className="tabular-nums text-green-50">
+                      <Td align="right" className="tabular-nums text-slate-900">
                         {course._count?.applications ?? 0}
                       </Td>
 
@@ -183,7 +183,7 @@ export function CoursesTable() {
                             <Button
                               variant="ghost"
                               size="sm"
-                              className="text-green-100/50 hover:text-red-300 hover:bg-red-500/10"
+                              className="text-slate-500 hover:text-red-700 hover:bg-red-50"
                               loading={pendingDelete === course.slug}
                               onClick={() => handleDelete(course)}
                               aria-label={`Archive ${course.title}`}

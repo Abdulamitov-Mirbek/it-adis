@@ -1,8 +1,8 @@
 [Unit]
 Description=IT ADIS API (NestJS)
 Documentation=https://github.com/mmrek07-gif/it-adis
-# network-online, not just network: the API opens a Postgres connection to
-# Supabase on startup, and "network" is satisfied before DNS is usable.
+# network-online, not just network: the API talks to the Supabase REST API over
+# HTTPS, and "network" is satisfied before DNS is usable.
 After=network-online.target
 Wants=network-online.target
 
@@ -41,8 +41,9 @@ ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectControlGroups=true
 RestrictSUIDSGID=true
-# ProtectSystem=strict makes the entire filesystem read-only; Prisma needs a
-# writable path for its engine's temp files.
+# ProtectSystem=strict makes the entire filesystem read-only. Nothing in the
+# API writes to disk now that Prisma's query engine is gone, but the path stays
+# writable so a future log file or cache does not fail in a confusing way.
 ReadWritePaths=/opt/itadis/backend
 
 [Install]

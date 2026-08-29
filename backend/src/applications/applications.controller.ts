@@ -13,7 +13,7 @@ import { ApiTags, ApiOperation, ApiBearerAuth } from "@nestjs/swagger";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { ApplicationsService } from "./applications.service";
 import { CreateApplicationDto } from "./dto/create-application.dto";
-import { ApplicationStatus } from "@prisma/client";
+import { ApplicationStatus } from "../supabase/types";
 
 @ApiTags("applications")
 @Controller("applications")

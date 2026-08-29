@@ -84,7 +84,7 @@ export default async function TechPage({
   const others = TECHNOLOGIES.filter((x) => x.slug !== tech.slug);
 
   return (
-    <main className="bg-dark min-h-screen">
+    <main className="bg-white min-h-screen">
       <Navbar />
 
       {/* ── Hero ─────────────────────────────────────── */}
@@ -107,7 +107,7 @@ export default async function TechPage({
         <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-green-300/75 hover:text-green-300 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400 rounded"
+            className="inline-flex items-center gap-2 text-sm text-green-700 hover:text-green-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-green-600 rounded"
           >
             <ArrowLeft size={15} />
             {t("backHome")}
@@ -122,10 +122,7 @@ export default async function TechPage({
             </div>
 
             <div>
-              <p
-                className="text-xs font-semibold uppercase tracking-[0.2em] mb-2"
-                style={{ color: accent }}
-              >
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] mb-2 text-slate-500">
                 {t("eyebrow")}
               </p>
               <h1 className="font-display text-[2.15rem] sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.08]">
@@ -134,7 +131,7 @@ export default async function TechPage({
             </div>
           </div>
 
-          <p className="mt-6 text-lg sm:text-xl md:text-2xl text-green-100/82 leading-relaxed max-w-3xl">
+          <p className="mt-6 text-lg sm:text-xl md:text-2xl text-slate-600 leading-relaxed max-w-3xl">
             {tagline}
           </p>
         </div>
@@ -143,7 +140,7 @@ export default async function TechPage({
       <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 pb-20 sm:pb-24 flex flex-col gap-14 sm:gap-24">
         {/* ── What it is ─────────────────────────────── */}
         <Section title={t("sections.what")} accent={accent}>
-          <p className="text-base sm:text-lg text-green-100/82 leading-relaxed max-w-3xl">
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl">
             {what}
           </p>
         </Section>
@@ -154,12 +151,12 @@ export default async function TechPage({
             {why.map((reason, i) => (
               <li key={i} className="flex gap-4">
                 <span
-                  className="shrink-0 grid place-items-center w-7 h-7 rounded-lg text-xs font-bold mt-0.5"
-                  style={{ background: `${accent}1f`, color: accent }}
+                  className="shrink-0 grid place-items-center w-7 h-7 rounded-lg text-xs font-bold mt-0.5 text-slate-700"
+                  style={{ background: `${accent}24` }}
                 >
                   {i + 1}
                 </span>
-                <span className="text-green-100/82 leading-relaxed">{reason}</span>
+                <span className="text-slate-600 leading-relaxed">{reason}</span>
               </li>
             ))}
           </ul>
@@ -181,7 +178,7 @@ export default async function TechPage({
                   <Check size={17} />
                 </div>
                 <h3 className="font-display font-bold text-lg mb-2">{item.title}</h3>
-                <p className="text-sm text-green-100/75 leading-relaxed">{item.desc}</p>
+                <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
               </article>
             ))}
           </div>
@@ -189,27 +186,24 @@ export default async function TechPage({
 
         {/* ── Careers ────────────────────────────────── */}
         <Section title={t("sections.careers")} accent={accent}>
-          <div className="glass rounded-2xl border border-white/8 overflow-hidden">
-            <div className="hidden sm:grid grid-cols-[1fr_auto] gap-4 px-5 sm:px-6 py-3 text-xs uppercase tracking-wider text-green-300/65 border-b border-white/8">
+          <div className="glass rounded-2xl border border-slate-200 overflow-hidden">
+            <div className="hidden sm:grid grid-cols-[1fr_auto] gap-4 px-5 sm:px-6 py-3 text-xs uppercase tracking-wider text-green-700 border-b border-slate-200">
               <span>{t("role")}</span>
               <span>{t("salary")}</span>
             </div>
             {careers.map((c) => (
               <div
                 key={c.role}
-                className="grid sm:grid-cols-[1fr_auto] gap-1 sm:gap-4 px-5 sm:px-6 py-4 border-b border-white/5 last:border-0"
+                className="grid sm:grid-cols-[1fr_auto] gap-1 sm:gap-4 px-5 sm:px-6 py-4 border-b border-slate-200 last:border-0"
               >
-                <span className="font-medium text-green-50/90">{c.role}</span>
-                <span
-                  className="text-sm font-semibold tabular-nums"
-                  style={{ color: accent }}
-                >
+                <span className="font-medium text-slate-700">{c.role}</span>
+                <span className="text-sm font-semibold tabular-nums text-green-700">
                   {c.salary}
                 </span>
               </div>
             ))}
           </div>
-          <p className="mt-3 text-xs text-green-100/55 leading-relaxed max-w-2xl">
+          <p className="mt-3 text-xs text-slate-500 leading-relaxed max-w-2xl">
             {t("careerNote")}
           </p>
         </Section>
@@ -225,7 +219,7 @@ export default async function TechPage({
             {roadmap.map((step, i) => (
               <li key={step.phase} className="relative">
                 <span
-                  className="absolute -left-8 top-1.5 w-[15px] h-[15px] rounded-full border-2 bg-dark"
+                  className="absolute -left-8 top-1.5 w-[15px] h-[15px] rounded-full border-2 bg-white"
                   style={{ borderColor: accent }}
                   aria-hidden="true"
                 />
@@ -238,7 +232,7 @@ export default async function TechPage({
                   </span>
                   {step.phase}
                 </h3>
-                <p className="mt-1.5 text-green-100/78 leading-relaxed max-w-2xl">
+                <p className="mt-1.5 text-slate-600 leading-relaxed max-w-2xl">
                   {step.detail}
                 </p>
               </li>
@@ -262,11 +256,11 @@ export default async function TechPage({
             <h2 className="font-display text-2xl sm:text-4xl font-bold leading-tight">
               {t("ctaTitle")}
             </h2>
-            <p className="mt-3 text-green-100/78 max-w-xl mx-auto">{t("ctaBody")}</p>
+            <p className="mt-3 text-slate-600 max-w-xl mx-auto">{t("ctaBody")}</p>
             <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:justify-center">
               <Link
                 href="/#courses"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold text-dark transition-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold text-white transition-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark"
                 style={{ background: accent, boxShadow: `0 0 34px ${accent}44` }}
               >
                 {t("ctaButton")}
@@ -274,7 +268,7 @@ export default async function TechPage({
               </Link>
               <Link
                 href="/#contact"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold border border-white/15 text-green-100/82 hover:border-white/30 hover:text-green-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold border border-slate-200 text-slate-600 hover:border-slate-200 hover:text-slate-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
               >
                 {t("ctaSecondary")}
               </Link>
@@ -284,7 +278,7 @@ export default async function TechPage({
 
         {/* ── Other technologies ─────────────────────── */}
         <nav aria-label={t("allTech")}>
-          <h2 className="font-display text-sm uppercase tracking-[0.2em] text-green-300/65 mb-5">
+          <h2 className="font-display text-sm uppercase tracking-[0.2em] text-green-700 mb-5">
             {t("allTech")}
           </h2>
           <ul className="flex flex-wrap gap-3">
@@ -292,7 +286,7 @@ export default async function TechPage({
               <li key={other.slug}>
                 <Link
                   href={`/tech/${other.slug}`}
-                  className="inline-flex min-h-[44px] items-center gap-2.5 rounded-full glass border border-white/12 pl-4 pr-5 py-2.5 text-sm font-medium text-green-100/82 hover:border-white/20 hover:text-green-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
+                  className="inline-flex min-h-[44px] items-center gap-2.5 rounded-full glass border border-white/12 pl-4 pr-5 py-2.5 text-sm font-medium text-slate-600 hover:border-slate-200 hover:text-slate-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
                 >
                   <span style={{ color: other.color }}>
                     <TechIcon tech={other} size={17} />

@@ -47,11 +47,11 @@ export function AdminLogin() {
 
       <div className="relative w-full max-w-sm">
         <div className="flex flex-col items-center text-center mb-7">
-          <span className="grid place-items-center w-11 h-11 rounded-xl bg-green-500 text-dark font-bold mb-4">
+          <span className="grid place-items-center w-11 h-11 rounded-xl bg-green-600 text-white font-bold mb-4">
             IA
           </span>
-          <h1 className="font-display text-xl font-semibold text-green-50">IT ADIS Administration</h1>
-          <p className="text-[13px] text-green-100/50 mt-1">
+          <h1 className="font-display text-xl font-semibold text-slate-900">IT ADIS Administration</h1>
+          <p className="text-[13px] text-slate-500 mt-1">
             Sign in to manage courses and applications
           </p>
         </div>
@@ -86,7 +86,7 @@ export function AdminLogin() {
 
             {error && (
               <p
-                className="rounded-lg bg-red-500/10 border border-red-500/25 px-3 py-2 text-[13px] text-red-300"
+                className="rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-[13px] text-red-700"
                 role="alert"
               >
                 {error}
@@ -106,7 +106,7 @@ export function AdminLogin() {
 
         {/* The previous version printed the live administrator email and
             password on this page, in production, to anyone who loaded it. */}
-        <p className="text-center text-xs text-green-100/35 mt-6">
+        <p className="text-center text-xs text-slate-500 mt-6">
           Authorised personnel only.
         </p>
       </div>

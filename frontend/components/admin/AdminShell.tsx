@@ -53,15 +53,15 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
             aria-current={isActive ? "page" : undefined}
             className={cn(
               "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-              "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400",
+              "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600",
               isActive
-                ? "bg-green-500/10 text-green-300 shadow-[inset_2px_0_0_0_var(--color-green-400)]"
-                : "text-green-100/60 hover:bg-white/5 hover:text-green-50"
+                ? "bg-green-50 text-green-700 shadow-[inset_2px_0_0_0_var(--color-green-400)]"
+                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
             )}
           >
             <Icon
               size={18}
-              className={isActive ? "text-green-400" : "text-green-100/40"}
+              className={isActive ? "text-green-700" : "text-slate-500"}
               aria-hidden="true"
             />
             {label}
@@ -75,14 +75,14 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
 function Brand() {
   return (
     <div className="flex items-center gap-2.5 h-16 px-5 border-b border-dark-border">
-      <span className="grid place-items-center w-8 h-8 rounded-lg bg-green-500 text-dark font-bold text-sm shrink-0">
+      <span className="grid place-items-center w-8 h-8 rounded-lg bg-green-700 text-white font-bold text-sm shrink-0">
         IA
       </span>
       <span className="min-w-0">
-        <span className="block text-sm font-semibold text-green-50 leading-tight truncate">
+        <span className="block text-sm font-semibold text-slate-900 leading-tight truncate">
           IT ADIS
         </span>
-        <span className="block text-[11px] text-green-100/45 leading-tight">
+        <span className="block text-[11px] text-slate-500 leading-tight">
           Administration
         </span>
       </span>
@@ -119,10 +119,10 @@ export function AdminShell({
       <div className="min-h-screen grid place-items-center bg-dark">
         <div className="text-center">
           <div
-            className="w-8 h-8 mx-auto mb-3 rounded-full border-2 border-white/10 border-t-green-400 animate-spin"
+            className="w-8 h-8 mx-auto mb-3 rounded-full border-2 border-slate-200 border-t-green-400 animate-spin"
             aria-hidden="true"
           />
-          <p className="text-sm text-green-100/50">
+          <p className="text-sm text-slate-500">
             {isLoading ? "Checking your session…" : "Redirecting to sign in…"}
           </p>
         </div>
@@ -170,7 +170,7 @@ export function AdminShell({
           <button
             type="button"
             onClick={() => setMobileNavOpen((open) => !open)}
-            className="lg:hidden grid place-items-center w-9 h-9 -ml-1 rounded-lg text-green-100/60 hover:bg-white/5 hover:text-green-50"
+            className="lg:hidden grid place-items-center w-9 h-9 -ml-1 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900"
             aria-label={mobileNavOpen ? "Close navigation" : "Open navigation"}
             aria-expanded={mobileNavOpen}
           >
@@ -178,9 +178,9 @@ export function AdminShell({
           </button>
 
           <div className="min-w-0 flex-1">
-            <h1 className="text-[15px] font-semibold text-green-50 truncate">{title}</h1>
+            <h1 className="text-[15px] font-semibold text-slate-900 truncate">{title}</h1>
             {description && (
-              <p className="text-xs text-green-100/45 truncate">{description}</p>
+              <p className="text-xs text-slate-500 truncate">{description}</p>
             )}
           </div>
 
@@ -188,16 +188,16 @@ export function AdminShell({
 
           <div className="hidden sm:flex items-center gap-2.5 pl-3 ml-1 border-l border-dark-border">
             <span
-              className="grid place-items-center w-8 h-8 rounded-full bg-green-500/15 text-green-300 text-xs font-semibold ring-1 ring-green-500/25"
+              className="grid place-items-center w-8 h-8 rounded-full bg-green-100 text-green-700 text-xs font-semibold ring-1 ring-green-600/30"
               aria-hidden="true"
             >
               {initialsOf(user.name)}
             </span>
             <span className="min-w-0">
-              <span className="block text-[13px] font-medium text-green-50 leading-tight truncate max-w-[10rem]">
+              <span className="block text-[13px] font-medium text-slate-900 leading-tight truncate max-w-[10rem]">
                 {user.name}
               </span>
-              <span className="block text-[11px] text-green-100/45 leading-tight truncate max-w-[10rem]">
+              <span className="block text-[11px] text-slate-500 leading-tight truncate max-w-[10rem]">
                 {user.email}
               </span>
             </span>

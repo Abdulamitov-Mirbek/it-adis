@@ -147,10 +147,10 @@ export function CourseFormDialog({
         >
           <div className="flex items-start justify-between gap-4 px-6 py-4 border-b border-dark-border sticky top-0 bg-dark-card rounded-t-2xl z-10">
             <div>
-              <Dialog.Title className="font-display text-base font-semibold text-green-50">
+              <Dialog.Title className="font-display text-base font-semibold text-slate-900">
                 {isEdit ? "Edit course" : "New course"}
               </Dialog.Title>
-              <Dialog.Description className="text-[13px] text-green-100/50 mt-0.5">
+              <Dialog.Description className="text-[13px] text-slate-500 mt-0.5">
                 {isEdit
                   ? "Changes appear on the public site immediately."
                   : "The course goes live on the website as soon as it is active."}
@@ -159,7 +159,7 @@ export function CourseFormDialog({
             <Dialog.Close asChild>
               <button
                 type="button"
-                className="grid place-items-center w-8 h-8 rounded-lg text-green-100/40 hover:bg-white/5 hover:text-green-50 transition-colors"
+                className="grid place-items-center w-8 h-8 rounded-lg text-slate-500 hover:bg-slate-50 hover:text-slate-900 transition-colors"
                 aria-label="Close"
               >
                 <X size={16} />
@@ -286,21 +286,21 @@ export function CourseFormDialog({
 
             <fieldset className="flex flex-wrap gap-x-6 gap-y-3 pt-1">
               <legend className="sr-only">Visibility</legend>
-              <label className="flex items-center gap-2 text-[13px] text-green-100/80 cursor-pointer">
+              <label className="flex items-center gap-2 text-[13px] text-slate-600 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={form.isActive}
                   onChange={(event) => set("isActive", event.target.checked)}
-                  className="w-4 h-4 rounded border-white/20 bg-white/5 text-green-500 focus:ring-green-500/40"
+                  className="w-4 h-4 rounded border-slate-200 bg-slate-50 text-green-700 focus:ring-green-600/30"
                 />
                 Active, visible on the website
               </label>
-              <label className="flex items-center gap-2 text-[13px] text-green-100/80 cursor-pointer">
+              <label className="flex items-center gap-2 text-[13px] text-slate-600 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={form.isFeatured}
                   onChange={(event) => set("isFeatured", event.target.checked)}
-                  className="w-4 h-4 rounded border-white/20 bg-white/5 text-green-500 focus:ring-green-500/40"
+                  className="w-4 h-4 rounded border-slate-200 bg-slate-50 text-green-700 focus:ring-green-600/30"
                 />
                 Featured
               </label>
@@ -308,7 +308,7 @@ export function CourseFormDialog({
 
             {error && (
               <p
-                className="rounded-lg bg-red-500/10 border border-red-500/25 px-3 py-2 text-[13px] text-red-300"
+                className="rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-[13px] text-red-700"
                 role="alert"
               >
                 {error}

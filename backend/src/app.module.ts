@@ -2,7 +2,7 @@ import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { APP_GUARD } from "@nestjs/core";
 import { ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
-import { PrismaModule } from "./prisma/prisma.module";
+import { SupabaseModule } from "./supabase/supabase.module";
 import { CoursesModule } from "./courses/courses.module";
 import { ApplicationsModule } from "./applications/applications.module";
 import { AuthModule } from "./auth/auth.module";
@@ -26,7 +26,7 @@ import { HealthController } from "./health/health.controller";
       { name: "burst", ttl: 1_000, limit: 10 },
       { name: "sustained", ttl: 60_000, limit: 100 },
     ]),
-    PrismaModule,
+    SupabaseModule,
     CoursesModule,
     ApplicationsModule,
     AuthModule,

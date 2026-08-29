@@ -82,11 +82,11 @@ export function Contact() {
     }
   };
 
-  const inputCls = "px-4 py-3 rounded-xl bg-white/5 border border-green-900/40 text-white placeholder-green-100/30 text-sm focus:outline-none focus:border-green-500/60 focus:bg-white/8 transition-all";
+  const inputCls = "px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-green-200 focus:bg-slate-100 transition-all";
 
   return (
-    <section ref={sectionRef} id="contact" className="relative section-padding bg-dark overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent" aria-hidden="true" />
+    <section ref={sectionRef} id="contact" className="relative section-padding bg-white overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" aria-hidden="true" />
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full opacity-10 blur-3xl"
           style={{ background: "radial-gradient(circle, #22c55e, transparent 70%)" }} />
@@ -94,15 +94,15 @@ export function Contact() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-green-500/30 text-green-300 text-sm font-medium mb-5">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-green-200 text-green-700 text-sm font-medium mb-5">
+            <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse" aria-hidden="true" />
             {t("badge")}
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold mb-4">
             {t("title1")}{" "}
             <span className="gradient-text">{t("titleGreen")}</span>
           </h2>
-          <p className="text-green-100/70 text-lg max-w-xl mx-auto">{t("subtitle")}</p>
+          <p className="text-slate-600 text-lg max-w-xl mx-auto">{t("subtitle")}</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -118,15 +118,15 @@ export function Contact() {
                   key={label}
                   href={href}
                   {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="flex items-start gap-4 glass border border-green-900/30 rounded-2xl p-5 hover:border-green-500/30 transition-all focus:outline-none focus:ring-2 focus:ring-green-500/40"
+                  className="flex items-start gap-4 glass border border-slate-200 rounded-2xl p-5 hover:border-green-200 transition-all focus:outline-none focus:ring-2 focus:ring-green-600/40"
                 >
-                  <div className="p-3 rounded-xl bg-green-500/10 text-green-400 shrink-0" aria-hidden="true">
+                  <div className="p-3 rounded-xl bg-green-50 text-green-700 shrink-0" aria-hidden="true">
                     <Icon size={20} />
                   </div>
                   <div>
-                    <div className="text-xs text-green-400 font-medium mb-0.5">{label}</div>
-                    <div className="font-semibold text-white">{value}</div>
-                    <div className="text-xs text-green-100/78 mt-0.5">{sub}</div>
+                    <div className="text-xs text-green-700 font-medium mb-0.5">{label}</div>
+                    <div className="font-semibold text-slate-900">{value}</div>
+                    <div className="text-xs text-slate-600 mt-0.5">{sub}</div>
                   </div>
                 </a>
               ))}
@@ -137,45 +137,45 @@ export function Contact() {
           {/* Form */}
           <div ref={rightRef}>
             {submitted ? (
-              <div className="glass border border-green-500/30 rounded-3xl p-12 flex flex-col items-center justify-center gap-5 text-center min-h-[500px]">
-                <div className="w-20 h-20 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center animate-pulse-green">
-                  <CheckCircle2 size={36} className="text-green-400" aria-hidden="true" />
+              <div className="glass border border-green-200 rounded-3xl p-12 flex flex-col items-center justify-center gap-5 text-center min-h-[500px]">
+                <div className="w-20 h-20 rounded-full bg-green-50 border border-green-200 flex items-center justify-center animate-pulse-green">
+                  <CheckCircle2 size={36} className="text-green-700" aria-hidden="true" />
                 </div>
-                <h3 className="font-display text-2xl font-bold text-white">{t("success.title")}</h3>
-                <p className="text-green-100/75 max-w-sm">{t("success.desc")}</p>
+                <h3 className="font-display text-2xl font-bold text-slate-900">{t("success.title")}</h3>
+                <p className="text-slate-600 max-w-sm">{t("success.desc")}</p>
                 <button onClick={() => setSubmitted(false)}
-                  className="mt-2 px-6 py-3 rounded-xl text-sm font-medium glass border border-green-500/30 text-green-300 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-green-500/40"
+                  className="mt-2 px-6 py-3 rounded-xl text-sm font-medium glass border border-green-200 text-green-700 hover:bg-green-50 hover:border-green-300 transition-all focus:outline-none focus:ring-2 focus:ring-green-600/40"
                 >
                   {t("success.again")}
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="glass border border-green-900/30 rounded-3xl p-8 flex flex-col gap-5" noValidate>
+              <form onSubmit={handleSubmit} className="glass border border-slate-200 rounded-3xl p-8 flex flex-col gap-5" noValidate>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="text-sm font-medium text-green-100/70">{t("form.name")} *</label>
+                    <label htmlFor="name" className="text-sm font-medium text-slate-600">{t("form.name")} *</label>
                     <input id="name" type="text" name="name" value={form.name} onChange={handleChange} required placeholder={t("form.namePh")} className={inputCls} />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label htmlFor="email" className="text-sm font-medium text-green-100/70">{t("form.email")} *</label>
+                    <label htmlFor="email" className="text-sm font-medium text-slate-600">{t("form.email")} *</label>
                     <input id="email" type="email" name="email" value={form.email} onChange={handleChange} required placeholder={t("form.emailPh")} className={inputCls} />
                   </div>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="phone" className="text-sm font-medium text-green-100/70">{t("form.phone")}</label>
+                  <label htmlFor="phone" className="text-sm font-medium text-slate-600">{t("form.phone")}</label>
                   <input id="phone" type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder={t("form.phonePh")} className={inputCls} />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="program" className="text-sm font-medium text-green-100/70">{t("form.program")} *</label>
+                  <label htmlFor="program" className="text-sm font-medium text-slate-600">{t("form.program")} *</label>
                   <select id="program" name="program" value={form.program} onChange={handleChange} required
-                    className="px-4 py-3 rounded-xl bg-dark-card border border-green-900/40 text-white text-sm focus:outline-none focus:border-green-500/60 transition-all appearance-none"
+                    className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-green-200 transition-all appearance-none"
                   >
                     <option value="" disabled>{t("form.programPh")}</option>
                     {programs.map((p) => <option key={p} value={p}>{p}</option>)}
                   </select>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="message" className="text-sm font-medium text-green-100/70">{t("form.message")}</label>
+                  <label htmlFor="message" className="text-sm font-medium text-slate-600">{t("form.message")}</label>
                   <textarea id="message" name="message" value={form.message} onChange={handleChange} rows={4}
                     placeholder={t("form.messagePh")}
                     className={cn(inputCls, "resize-none")}
@@ -194,7 +194,7 @@ export function Contact() {
                   </div>
                 )}
 
-                <p className="text-xs text-center text-green-100/75">{t("form.privacy")}</p>
+                <p className="text-xs text-center text-slate-600">{t("form.privacy")}</p>
               </form>
             )}
           </div>

@@ -26,7 +26,7 @@ export function RecentActivity() {
         action={
           <Link
             href="/admin/applications"
-            className="inline-flex items-center gap-1 text-[13px] font-medium text-green-400 hover:text-green-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 rounded"
+            className="inline-flex items-center gap-1 text-[13px] font-medium text-green-700 hover:text-green-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 rounded"
           >
             View all
             <ArrowRight size={14} aria-hidden="true" />
@@ -67,22 +67,22 @@ export function RecentActivity() {
             return (
               <li
                 key={application.id}
-                className="flex items-center gap-4 px-5 py-3.5 hover:bg-white/[0.03] transition-colors"
+                className="flex items-center gap-4 px-5 py-3.5 hover:bg-slate-50 transition-colors"
               >
                 <span
-                  className="grid place-items-center w-8 h-8 rounded-full bg-green-500/15 text-green-300 ring-1 ring-green-500/20 text-xs font-semibold shrink-0"
+                  className="grid place-items-center w-8 h-8 rounded-full bg-green-100 text-green-700 ring-1 ring-green-600/30 text-xs font-semibold shrink-0"
                   aria-hidden="true"
                 >
                   {application.applicantName?.[0]?.toUpperCase() ?? "?"}
                 </span>
 
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-medium text-green-50 truncate">
+                  <p className="text-sm font-medium text-slate-900 truncate">
                     {application.applicantName}
                   </p>
-                  <p className="text-[13px] text-green-100/50 truncate">
+                  <p className="text-[13px] text-slate-500 truncate">
                     {application.courseName || "No course selected"}
-                    <span className="text-green-100/25 mx-1.5" aria-hidden="true">·</span>
+                    <span className="text-slate-500 mx-1.5" aria-hidden="true">·</span>
                     {formatDateTime(application.createdAt)}
                   </p>
                 </div>

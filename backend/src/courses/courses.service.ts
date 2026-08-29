@@ -1,41 +1,71 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { PrismaService } from "../prisma/prisma.service";
+import { SupabaseService, newId, nowIso, unwrap } from "../supabase/supabase.service";
+import { Course, TABLES } from "../supabase/types";
 import { CreateCourseDto } from "./dto/create-course.dto";
 
 @Injectable()
 export class CoursesService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private db: SupabaseService) {}
 
-  findAll(featuredOnly?: boolean) {
-    return this.prisma.course.findMany({
-      where: {
-        isActive: true,
-        ...(featuredOnly ? { isFeatured: true } : {}),
-      },
-      orderBy: { order: "asc" },
-    });
+  async findAll(featuredOnly?: boolean): Promise<Course[]> {
+    let query = this.db
+      .from(TABLES.courses)
+      .select("*")
+      .eq("isActive", true)
+      .order("order", { ascending: true });
+
+    if (featuredOnly) query = query.eq("isFeatured", true);
+
+    return unwrap<Course[]>(await query, "courses.findAll");
   }
 
-  async findOne(slug: string) {
-    const course = await this.prisma.course.findUnique({ where: { slug } });
+  async findOne(slug: string): Promise<Course> {
+    // maybeSingle, not single: PostgREST turns "no rows" into an error for
+    // single(), which would surface as a 500 instead of the 404 we want.
+    const course = unwrap<Course | null>(
+      await this.db.from(TABLES.courses).select("*").eq("slug", slug).maybeSingle(),
+      "courses.findOne"
+    );
     if (!course) throw new NotFoundException(`Course "${slug}" not found`);
     return course;
   }
 
-  create(dto: CreateCourseDto) {
-    return this.prisma.course.create({ data: dto });
+  async create(dto: CreateCourseDto): Promise<Course> {
+    const now = nowIso();
+    return unwrap<Course>(
+      await this.db
+        .from(TABLES.courses)
+        .insert({ id: newId(), ...dto, createdAt: now, updatedAt: now })
+        .select()
+        .single(),
+      "courses.create"
+    );
   }
 
-  async update(slug: string, dto: Partial<CreateCourseDto>) {
+  async update(slug: string, dto: Partial<CreateCourseDto>): Promise<Course> {
     await this.findOne(slug);
-    return this.prisma.course.update({ where: { slug }, data: dto });
+    return unwrap<Course>(
+      await this.db
+        .from(TABLES.courses)
+        .update({ ...dto, updatedAt: nowIso() })
+        .eq("slug", slug)
+        .select()
+        .single(),
+      "courses.update"
+    );
   }
 
-  async remove(slug: string) {
+  /** Archive rather than delete, so applications keep pointing at a real row. */
+  async remove(slug: string): Promise<Course> {
     await this.findOne(slug);
-    return this.prisma.course.update({
-      where: { slug },
-      data: { isActive: false },
-    });
+    return unwrap<Course>(
+      await this.db
+        .from(TABLES.courses)
+        .update({ isActive: false, updatedAt: nowIso() })
+        .eq("slug", slug)
+        .select()
+        .single(),
+      "courses.remove"
+    );
   }
 }

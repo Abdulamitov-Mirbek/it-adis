@@ -60,8 +60,12 @@ export function Navbar() {
         ref={navRef}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          // glass-light rather than glass: a translucent blurred bar lets the
+          // page tint show through as it scrolls under, which is the whole
+          // point of a sticky nav on a light site. `shadow-lg shadow-black/20`
+          // was tuned for a black page and reads as a grey smear on white.
           scrolled
-            ? "glass border-b border-green-900/40 py-3 shadow-lg shadow-black/20"
+            ? "glass-light border-b border-slate-200 py-3 shadow-soft"
             : "bg-transparent py-5"
         )}
       >
@@ -77,7 +81,7 @@ export function Navbar() {
               <div className="relative">
                 <ITAdisLogoInline height={34} />
                 {/* subtle glow behind logo */}
-                <div className="absolute inset-0 bg-green-500 blur-2xl opacity-0 group-hover:opacity-10 transition-opacity rounded-full pointer-events-none" />
+                <div className="absolute inset-0 bg-green-600 blur-2xl opacity-0 group-hover:opacity-10 transition-opacity rounded-full pointer-events-none" />
               </div>
             </button>
 
@@ -87,10 +91,10 @@ export function Navbar() {
                 <li key={link.href}>
                   <button
                     onClick={() => scrollTo(link.href)}
-                    className="relative px-4 py-2 text-sm font-medium text-green-100/70 hover:text-green-300 transition-colors duration-200 group"
+                    className="relative px-4 py-2 text-sm font-medium text-slate-600 hover:text-green-700 transition-colors duration-200 group"
                   >
                     {link.label}
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-green-400 group-hover:w-3/4 transition-all duration-300 rounded-full" />
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-green-600 group-hover:w-3/4 transition-all duration-300 rounded-full" />
                   </button>
                 </li>
               ))}
@@ -112,7 +116,7 @@ export function Navbar() {
               <LanguageSwitcher />
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="p-2 rounded-lg text-green-300 hover:text-green-400 hover:bg-green-900/20 transition-colors"
+                className="p-2 rounded-lg text-green-700 hover:text-green-700 hover:bg-green-900/20 transition-colors"
                 aria-label="Toggle menu"
               >
                 {menuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -136,7 +140,7 @@ export function Navbar() {
             <button
               key={link.href}
               onClick={() => scrollTo(link.href)}
-              className="text-3xl font-display font-bold text-green-100/80 hover:text-green-400 transition-colors"
+              className="text-3xl font-display font-bold text-slate-600 hover:text-green-700 transition-colors"
               style={{ transitionDelay: `${i * 40}ms` }}
             >
               {link.label}

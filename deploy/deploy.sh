@@ -57,13 +57,10 @@ fi
 echo "==> Building images"
 compose build
 
-# Migrations run BEFORE the new containers start serving, in a throwaway
-# container. `migrate deploy` only applies committed migrations and never
-# generates or resets anything, so it is safe on every deploy — and because it
-# runs first, a failed migration leaves the previous version untouched and still
-# serving rather than half-upgrading the site.
-echo "==> Applying database migrations"
-compose run --rm --no-deps backend npx prisma migrate deploy
+# No migration step. Prisma has been removed; the schema lives in Supabase and
+# is changed there, through the SQL editor, using backend/supabase/*.sql as the
+# record of what the API expects. That also ends the P3005 failure this step hit
+# on every deploy once the database had rows in it.
 
 echo "==> Starting services"
 compose up -d --remove-orphans

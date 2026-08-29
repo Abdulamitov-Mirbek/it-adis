@@ -61,7 +61,7 @@ export function TechLinks({
                 style={{
                   borderColor: `${tech.color}66`,
                   color: tech.color,
-                  backgroundColor: "rgba(4,13,7,0.92)",
+                  backgroundColor: "rgba(255,255,255,0.96)",
                 }}
               >
                 <TechIcon tech={tech} size={16} />
@@ -84,15 +84,15 @@ export function TechLinks({
         <li key={tech.slug}>
           <Link
             href={`/tech/${tech.slug}`}
-            className="flex h-full min-h-[56px] items-center gap-3 rounded-2xl glass border border-white/10 px-3.5 py-3 transition-all duration-200 hover:border-green-500/40 active:scale-[0.97] focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
+            className="flex h-full min-h-[56px] items-center gap-3 rounded-2xl glass border border-slate-200 px-3.5 py-3 transition-all duration-200 hover:border-green-200 active:scale-[0.97] focus:outline-none focus-visible:ring-2 focus-visible:ring-green-600"
           >
             <span
               style={{ color: tech.color }}
-              className="shrink-0 grid place-items-center w-9 h-9 rounded-xl bg-white/5"
+              className="shrink-0 grid place-items-center w-9 h-9 rounded-xl bg-slate-50"
             >
               <TechIcon tech={tech} size={20} />
             </span>
-            <span className="text-[13px] font-semibold leading-tight text-green-50/90">
+            <span className="text-[13px] font-semibold leading-tight text-slate-700">
               {t(`items.${tech.key}.name`)}
             </span>
           </Link>

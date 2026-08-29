@@ -45,21 +45,21 @@ export function Reviews() {
 
   return (
     <section id="reviews" className="relative section-padding overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #040d07 0%, #071a0e 50%, #040d07 100%)" }}
+      style={{ background: "linear-gradient(180deg, #ffffff 0%, #f6fbf7 50%, #ffffff 100%)" }}
     >
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent" aria-hidden="true" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" aria-hidden="true" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div ref={headingRef} className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-green-500/30 text-green-300 text-sm font-medium mb-5">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-green-200 text-green-700 text-sm font-medium mb-5">
+            <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse" aria-hidden="true" />
             {t("badge")}
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold mb-4">
             {t("title1")}{" "}
             <span className="gradient-text">{t("titleGreen")}</span>
           </h2>
-          <p className="text-green-100/70 text-lg max-w-xl mx-auto">{t("subtitle")}</p>
+          <p className="text-slate-600 text-lg max-w-xl mx-auto">{t("subtitle")}</p>
         </div>
 
         {/* Carousel */}
@@ -72,14 +72,14 @@ export function Reviews() {
                 "transition-all duration-500 cursor-pointer",
                 offset === 0
                   ? "z-20 scale-100 opacity-100 w-full max-w-lg"
-                  : "hidden md:block z-10 scale-90 opacity-35 hover:opacity-55 w-80 shrink-0"
+                  : "hidden md:block z-10 scale-90 opacity-60 hover:opacity-85 w-80 shrink-0"
               )}
             >
               <div className={cn(
                 "glass border rounded-3xl p-8 relative overflow-hidden",
-                offset === 0 ? "border-green-500/30 glow-green-sm" : "border-green-900/30"
+                offset === 0 ? "border-green-200 glow-green-sm" : "border-slate-200"
               )}>
-                <div className="absolute top-5 right-5 text-green-500/15" aria-hidden="true">
+                <div className="absolute top-5 right-5 text-green-700" aria-hidden="true">
                   <Quote size={48} />
                 </div>
                 <div className="flex gap-1 mb-5" aria-label={`${review.stars} stars`}>
@@ -87,17 +87,17 @@ export function Reviews() {
                     <Star key={i} size={16} className="text-yellow-400 fill-yellow-400" aria-hidden="true" />
                   ))}
                 </div>
-                <p className="text-green-100/80 leading-relaxed mb-7 text-base relative z-10">
+                <p className="text-slate-600 leading-relaxed mb-7 text-base relative z-10">
                   &ldquo;{review.text}&rdquo;
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${review.color} flex items-center justify-center font-display font-bold text-white shrink-0`}>
+                  <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${review.color} flex items-center justify-center font-display font-bold text-slate-900 shrink-0`}>
                     {review.initials}
                   </div>
                   <div>
-                    <div className="font-semibold text-white">{review.name}</div>
-                    <div className="text-xs text-green-400">{review.role}</div>
-                    <div className="text-xs text-green-100/78 mt-0.5">Course: {review.course}</div>
+                    <div className="font-semibold text-slate-900">{review.name}</div>
+                    <div className="text-xs text-green-700">{review.role}</div>
+                    <div className="text-xs text-slate-600 mt-0.5">Course: {review.course}</div>
                   </div>
                 </div>
               </div>
@@ -108,7 +108,7 @@ export function Reviews() {
         {/* Controls */}
         <div className="flex items-center justify-center gap-4 mt-8">
           <button onClick={() => goTo(current - 1)} aria-label="Previous review"
-            className="w-10 h-10 rounded-full glass border border-green-900/40 text-green-400 hover:text-green-300 hover:border-green-500/40 flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-green-500/40"
+            className="w-10 h-10 rounded-full glass border border-slate-200 text-green-700 hover:text-green-700 hover:border-green-200 flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-green-600/40"
           >
             <ChevronLeft size={18} />
           </button>
@@ -117,14 +117,14 @@ export function Reviews() {
               <button key={i} onClick={() => goTo(i)} role="tab" aria-selected={i === current}
                 aria-label={`Go to review ${i + 1}`}
                 className={cn(
-                  "rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-500/40",
-                  i === current ? "w-6 h-2 bg-green-400" : "w-2 h-2 bg-green-900/60 hover:bg-green-700"
+                  "rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-600/40",
+                  i === current ? "w-6 h-2 bg-green-600" : "w-2 h-2 bg-green-900/60 hover:bg-green-700"
                 )}
               />
             ))}
           </div>
           <button onClick={() => goTo(current + 1)} aria-label="Next review"
-            className="w-10 h-10 rounded-full glass border border-green-900/40 text-green-400 hover:text-green-300 hover:border-green-500/40 flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-green-500/40"
+            className="w-10 h-10 rounded-full glass border border-slate-200 text-green-700 hover:text-green-700 hover:border-green-200 flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-green-600/40"
           >
             <ChevronRight size={18} />
           </button>

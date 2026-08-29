@@ -34,8 +34,8 @@ export function Th({
     <th
       scope="col"
       className={cn(
-        "px-5 py-3 bg-white/[0.03] border-b border-dark-border",
-        "text-[11px] font-semibold uppercase tracking-wider text-green-100/45",
+        "px-5 py-3 bg-slate-50 border-b border-dark-border",
+        "text-[11px] font-semibold uppercase tracking-wider text-slate-500",
         align === "right" && "text-right",
         align === "center" && "text-center",
         className
@@ -58,7 +58,7 @@ export function Td({
   return (
     <td
       className={cn(
-        "px-5 py-3.5 text-sm text-green-100/80 align-middle",
+        "px-5 py-3.5 text-sm text-slate-600 align-middle",
         align === "right" && "text-right",
         align === "center" && "text-center",
         className
@@ -71,7 +71,7 @@ export function Td({
 
 export function Tr({ children }: { children: React.ReactNode }) {
   return (
-    <tr className="border-b border-dark-border/60 last:border-0 hover:bg-white/[0.03] transition-colors">
+    <tr className="border-b border-dark-border/60 last:border-0 hover:bg-slate-50 transition-colors">
       {children}
     </tr>
   );
@@ -95,10 +95,10 @@ export function Pagination({
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-5 py-3 border-t border-dark-border">
-      <p className="text-[13px] text-green-100/50" aria-live="polite">
-        Showing <span className="font-medium text-green-50">{first}</span>–
-        <span className="font-medium text-green-50">{last}</span> of{" "}
-        <span className="font-medium text-green-50">{total}</span>
+      <p className="text-[13px] text-slate-500" aria-live="polite">
+        Showing <span className="font-medium text-slate-900">{first}</span>–
+        <span className="font-medium text-slate-900">{last}</span> of{" "}
+        <span className="font-medium text-slate-900">{total}</span>
       </p>
 
       <div className="flex items-center gap-2">
@@ -111,7 +111,7 @@ export function Pagination({
           <ChevronLeft size={14} aria-hidden="true" />
           Previous
         </Button>
-        <span className="text-[13px] text-green-100/50 tabular-nums px-1">
+        <span className="text-[13px] text-slate-500 tabular-nums px-1">
           {page} / {Math.max(pages, 1)}
         </span>
         <Button

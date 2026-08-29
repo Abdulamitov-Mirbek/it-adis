@@ -108,9 +108,15 @@ Fill in every value. Generate a **fresh** `JWT_SECRET` — not the dev one:
 node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"
 ```
 
-`DATABASE_URL` and `DIRECT_URL` come from Supabase → Project Settings →
-Database → Connection string. You need both: pooled (port 6543) for the app,
-direct (port 5432) for migrations.
+`SUPABASE_URL` and `SUPABASE_SECRET_KEY` come from Supabase → Project
+Settings → API. Use the **secret** (service_role) key, not the publishable one:
+the API reads `admin_users` and applicant contact details, which row-level
+security is meant to keep out of anonymous hands. That key never belongs in the
+frontend or in any `NEXT_PUBLIC_*` variable.
+
+There is no `DATABASE_URL` or `DIRECT_URL` any more. Prisma has been removed and
+the backend talks to Supabase over its REST API, so nothing here opens a
+Postgres connection.
 
 The file sits **outside** the git tree at `/opt/itadis/.env.production`, so
 `git pull` can never overwrite it.
@@ -151,10 +157,15 @@ frontend, installs the systemd units and Caddy config, restarts everything, then
 
 First build takes 5–10 minutes on a t3.small.
 
-Seed the course catalogue once, on the first deploy only:
+Seed the course catalogue once, on the first deploy only. Pick an admin
+password of your own — the one that used to be hardcoded in the seed script is
+in this repository's git history, and the script now refuses to run without one:
 
 ```bash
-cd /opt/itadis/backend && npx prisma db seed
+cd /opt/itadis/backend
+npm ci --include=dev            # the seed runs through ts-node
+SEED_ADMIN_PASSWORD='<a password you chose>' npm run seed
+npm prune --omit=dev
 ```
 
 ---
@@ -222,8 +233,15 @@ from an earlier root clone: `sudo chown -R ubuntu:ubuntu /opt/itadis`.
 `sudo journalctl -u caddy -n 50`. The rate limit is 5 certificates per domain
 per week — fix DNS *before* retrying repeatedly.
 
-**`prisma migrate deploy` fails on a pooled connection.** `DIRECT_URL` must be
-the port-5432 string, not the 6543 pooler.
+**Schema changes.** There is no migration step in the deploy. Apply DDL in the
+Supabase SQL editor, and keep `backend/supabase/*.sql` updated to match — it is
+the record of what the API expects, not something the deploy runs.
+
+**API 500s with "Database request failed".** The detail is in the backend log
+(`sudo journalctl -u itadis-backend -n 50`) rather than the HTTP response, so
+table and constraint names never reach a client. Usually a column renamed in
+Supabase without the matching change in `backend/src/supabase/types.ts` —
+PostgREST matches column names exactly, and these are camelCase.
 
 **Site loads but the API 500s.** `sudo journalctl -u itadis-backend -n 50`.
 Most often `JWT_SECRET` missing or too short — the API refuses to boot on

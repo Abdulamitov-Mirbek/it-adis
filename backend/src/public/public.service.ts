@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
+import { SupabaseService, unwrapCount } from '../supabase/supabase.service';
+import { TABLES } from '../supabase/types';
 import { ContentService } from '../content/content.service';
 
 /**
@@ -14,7 +15,7 @@ import { ContentService } from '../content/content.service';
 @Injectable()
 export class PublicService {
   constructor(
-    private prisma: PrismaService,
+    private db: SupabaseService,
     private content: ContentService,
   ) {}
 
@@ -23,8 +24,16 @@ export class PublicService {
       totalApplications,
       activeCourses,
     ] = await Promise.all([
-      this.prisma.application.count(),
-      this.prisma.course.count({ where: { isActive: true } }),
+      // head: true asks PostgREST for the count header and no rows at all.
+      this.db
+        .from(TABLES.applications)
+        .select('*', { count: 'exact', head: true })
+        .then((r) => unwrapCount(r, 'public.totalApplications')),
+      this.db
+        .from(TABLES.courses)
+        .select('*', { count: 'exact', head: true })
+        .eq('isActive', true)
+        .then((r) => unwrapCount(r, 'public.activeCourses')),
     ]);
 
     const siteContent = await this.content.getSiteContent();

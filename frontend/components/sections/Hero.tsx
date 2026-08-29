@@ -22,9 +22,9 @@ function EarthFallback() {
       aria-hidden="true"
     >
       <div className="relative w-56 h-56 lg:w-72 lg:h-72">
-        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-green-800/40 to-blue-900/30 blur-sm animate-pulse" />
-        <div className="absolute -inset-4 rounded-full border border-green-500/15" />
-        <div className="absolute -inset-10 rounded-full border border-green-500/10" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-green-100 to-blue-100 blur-sm animate-pulse" />
+        <div className="absolute -inset-4 rounded-full border border-green-200/70" />
+        <div className="absolute -inset-10 rounded-full border border-slate-200" />
       </div>
     </div>
   );
@@ -70,38 +70,41 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden bg-dark"
+      className="relative min-h-screen flex items-center overflow-hidden bg-white"
     >
-      {/* ── Animated background ───────────────────── */}
+      {/* ── Background ─────────────────────────────
+          On the dark theme this was three saturated glowing orbs over a neon
+          line grid. Both ideas invert badly: a bright orb on white turns into
+          a muddy smudge, and a 1px green grid reads as dirt on the screen.
+          What replaces them is a very soft tinted wash in the corners plus a
+          faint dot grid that fades out before it reaches the headline, so the
+          type always sits on clean white. */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
-          className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full opacity-20"
+          className="absolute -top-40 -left-40 w-[680px] h-[680px] rounded-full opacity-[0.55]"
           style={{
-            background: "radial-gradient(circle, #16a34a 0%, transparent 70%)",
-            animation: "float 8s ease-in-out infinite",
+            background:
+              "radial-gradient(circle, rgba(220,252,231,1) 0%, rgba(240,253,244,0.6) 45%, transparent 70%)",
+            animation: "float 12s ease-in-out infinite",
           }}
         />
         <div
-          className="absolute top-1/3 -right-40 w-[500px] h-[500px] rounded-full opacity-10"
+          className="absolute top-1/4 -right-52 w-[620px] h-[620px] rounded-full opacity-[0.5]"
           style={{
-            background: "radial-gradient(circle, #2563eb 0%, transparent 70%)",
-            animation: "float 10s ease-in-out 2s infinite",
+            background:
+              "radial-gradient(circle, rgba(219,234,254,1) 0%, rgba(239,246,255,0.6) 45%, transparent 70%)",
+            animation: "float 14s ease-in-out 2s infinite",
           }}
         />
+        {/* Masked so the grid is visible at the edges and gone behind the
+            headline — an unmasked grid competes with the type. */}
         <div
-          className="absolute bottom-0 left-1/3 w-[400px] h-[400px] rounded-full opacity-15"
+          className="absolute inset-0 dot-grid opacity-70"
           style={{
-            background: "radial-gradient(circle, #22c55e 0%, transparent 70%)",
-            animation: "float 7s ease-in-out 4s infinite",
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-[0.035]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(74,222,128,1) 1px, transparent 1px), linear-gradient(90deg, rgba(74,222,128,1) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-            animation: "grid-move 8s linear infinite",
+            maskImage:
+              "radial-gradient(ellipse 70% 60% at 50% 45%, transparent 30%, black 100%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 70% 60% at 50% 45%, transparent 30%, black 100%)",
           }}
         />
       </div>
@@ -125,10 +128,10 @@ export function Hero() {
                 >
                   <path
                     d="M2 8 Q75 2 150 8 Q225 14 298 6"
-                    stroke="#4ade80"
+                    stroke="#16a34a"
                     strokeWidth="3"
                     strokeLinecap="round"
-                    opacity="0.7"
+                    opacity="0.85"
                   />
                 </svg>
               </span>
@@ -138,7 +141,7 @@ export function Hero() {
 
             <p
               ref={subRef}
-              className="text-base sm:text-lg md:text-xl text-green-100/75 leading-relaxed max-w-xl"
+              className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-xl"
             >
               {t("subtitle")}
             </p>
@@ -176,7 +179,7 @@ export function Hero() {
                   <span className="font-display text-2xl sm:text-3xl font-bold gradient-text">
                     {s.value}
                   </span>
-                  <span className="text-sm text-green-100/70 mt-0.5">{s.label}</span>
+                  <span className="text-sm text-slate-600 mt-0.5">{s.label}</span>
                 </div>
               ))}
             </div>
@@ -189,10 +192,10 @@ export function Hero() {
               aria-hidden="true"
             >
               <div
-                className="w-72 h-72 rounded-full blur-3xl opacity-25"
+                className="w-[22rem] h-[22rem] rounded-full blur-3xl opacity-60"
                 style={{
                   background:
-                    "radial-gradient(circle, #22c55e 0%, #1d4ed8 45%, transparent 72%)",
+                    "radial-gradient(circle, rgba(187,247,208,0.9) 0%, rgba(191,219,254,0.6) 45%, transparent 72%)",
                 }}
               />
             </div>
@@ -203,14 +206,14 @@ export function Hero() {
               </Suspense>
             </CanvasErrorBoundary>
 
-            <p className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[11px] sm:text-xs text-green-400/70 tracking-widest uppercase whitespace-nowrap pointer-events-none">
+            <p className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[11px] sm:text-xs text-green-700 tracking-widest uppercase whitespace-nowrap pointer-events-none">
               {t("techHint")}
             </p>
           </div>
 
           {/* ── Technology list — visible on small screens ── */}
           <div className="lg:hidden">
-            <p className="text-xs text-green-400/80 mb-3 tracking-wide uppercase font-medium">
+            <p className="text-xs text-green-700 mb-3 tracking-wide uppercase font-medium">
               {t("techListLabel")}
             </p>
             <TechLinks variant="grid" />
@@ -219,7 +222,7 @@ export function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-green-500/40 pointer-events-none">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-green-700 pointer-events-none">
         <span className="text-xs tracking-widest uppercase">{t("scroll")}</span>
         <div className="w-px h-8 bg-gradient-to-b from-green-500/50 to-transparent animate-pulse" />
       </div>

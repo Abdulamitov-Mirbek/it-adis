@@ -1,6 +1,6 @@
 import { IsString, IsInt, IsBoolean, IsOptional, IsEnum, IsArray } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
-import { CourseLevel } from "@prisma/client";
+import { CourseLevel } from "../../supabase/types";
 
 export class CreateCourseDto {
   @ApiProperty()

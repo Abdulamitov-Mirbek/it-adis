@@ -1,12 +1,13 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { PrismaService } from '../prisma/prisma.service';
+import { SupabaseService, unwrap } from '../supabase/supabase.service';
+import { AdminUser, TABLES } from '../supabase/types';
 import * as bcrypt from 'bcryptjs';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private prisma: PrismaService,
+    private db: SupabaseService,
     private jwtService: JwtService,
   ) {}
 
@@ -26,9 +27,14 @@ export class AuthService {
   );
 
   async validateAdmin(email: string, password: string): Promise<any> {
-    const adminUser = await this.prisma.adminUser.findUnique({
-      where: { email },
-    });
+    const adminUser = unwrap<AdminUser | null>(
+      await this.db
+        .from(TABLES.adminUsers)
+        .select('*')
+        .eq('email', email)
+        .maybeSingle(),
+      'auth.validateAdmin',
+    );
 
     const hash = adminUser?.passwordHash ?? AuthService.DUMMY_HASH;
     const passwordMatches = await bcrypt.compare(password, hash);
@@ -58,15 +64,17 @@ export class AuthService {
   }
 
   async getProfile(userId: string) {
-    const adminUser = await this.prisma.adminUser.findUnique({
-      where: { id: userId },
-      select: {
-        id: true,
-        email: true,
-        name: true,
-        createdAt: true,
-      },
-    });
+    const adminUser = unwrap<Pick<
+      AdminUser,
+      'id' | 'email' | 'name' | 'createdAt'
+    > | null>(
+      await this.db
+        .from(TABLES.adminUsers)
+        .select('id, email, name, createdAt')
+        .eq('id', userId)
+        .maybeSingle(),
+      'auth.getProfile',
+    );
 
     if (!adminUser) {
       throw new UnauthorizedException('Admin user not found');

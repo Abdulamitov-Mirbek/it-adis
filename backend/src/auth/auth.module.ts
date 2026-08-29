@@ -4,12 +4,12 @@ import { PassportModule } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { JwtStrategy } from './jwt.strategy';
-import { PrismaModule } from '../prisma/prisma.module';
+import { SupabaseModule } from '../supabase/supabase.module';
 import { JWT_EXPIRES_IN, requireJwtSecret } from '../config/secrets';
 
 @Module({
   imports: [
-    PrismaModule,
+    SupabaseModule,
     PassportModule,
     JwtModule.registerAsync({
       // Async so the secret is read (and validated) at module init rather

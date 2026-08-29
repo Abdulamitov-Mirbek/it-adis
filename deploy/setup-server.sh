@@ -21,7 +21,7 @@ APP_DIR=/opt/itadis
 wait_for_apt() {
   for i in $(seq 1 60); do
     if ! fuser /var/lib/dpkg/lock-frontend /var/lib/apt/lists/lock \
-         /var/lib/dpkg/lock >/dev/null 2>&1; then
+          /var/lib/dpkg/lock >/dev/null 2>&1; then
       return 0
     fi
     echo "apt is locked by another process; waiting (${i}/60)"

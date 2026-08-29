@@ -65,8 +65,8 @@ services:
     environment:
       NODE_ENV: production
       PORT: 3001
-      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL in .env.production}
-      DIRECT_URL: ${DIRECT_URL:?set DIRECT_URL in .env.production}
+      SUPABASE_URL: ${SUPABASE_URL:?set SUPABASE_URL in .env.production}
+      SUPABASE_SECRET_KEY: ${SUPABASE_SECRET_KEY:?set SUPABASE_SECRET_KEY in .env.production}
       JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env.production}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-8h}
       # Only consulted for CORS. Nothing in a browser calls this service

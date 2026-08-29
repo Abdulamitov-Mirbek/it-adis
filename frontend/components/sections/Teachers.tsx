@@ -61,53 +61,53 @@ export function Teachers() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="teachers" className="relative section-padding bg-dark overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent" aria-hidden="true" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[200px] font-black text-green-900/5 select-none pointer-events-none whitespace-nowrap" aria-hidden="true">TEAM</div>
+    <section ref={sectionRef} id="teachers" className="relative section-padding bg-white overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" aria-hidden="true" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[200px] font-black text-slate-900/5 select-none pointer-events-none whitespace-nowrap" aria-hidden="true">TEAM</div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div ref={headingRef} className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-green-500/30 text-green-300 text-sm font-medium mb-5">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-green-200 text-green-700 text-sm font-medium mb-5">
+            <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse" aria-hidden="true" />
             {t("badge")}
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold mb-4">
             {t("title1")}{" "}
             <span className="gradient-text">{t("titleGreen")}</span>
           </h2>
-          <p className="text-green-100/70 text-lg max-w-xl mx-auto">{t("subtitle")}</p>
+          <p className="text-slate-600 text-lg max-w-xl mx-auto">{t("subtitle")}</p>
         </div>
 
         <div ref={cardsRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {TEACHERS.map((teacher) => (
             <div key={teacher.name}
-              className="group relative glass border border-green-900/30 rounded-3xl p-6 hover:border-green-500/30 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 overflow-hidden"
+              className="group relative glass border border-slate-200 rounded-3xl p-6 hover:border-green-200 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 overflow-hidden"
             >
-              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-green-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
 
               <div className="relative mb-5">
-                <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${teacher.color} flex items-center justify-center font-display text-2xl font-bold text-white shadow-xl`}>
+                <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${teacher.color} flex items-center justify-center font-display text-2xl font-bold text-slate-900 shadow-xl`}>
                   {teacher.initials}
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-green-500 border-2 border-dark flex items-center justify-center" aria-hidden="true">
+                <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-green-600 border-2 border-dark flex items-center justify-center" aria-hidden="true">
                   <div className="w-2 h-2 rounded-full bg-white" />
                 </div>
               </div>
 
-              <h3 className="font-display font-bold text-white text-lg mb-1 group-hover:text-green-300 transition-colors">{teacher.name}</h3>
-              <p className="text-green-400 text-xs font-medium mb-3">{teacher.role}</p>
-              <p className="text-green-100/72 text-sm leading-relaxed mb-5">{teacher.bio}</p>
+              <h3 className="font-display font-bold text-slate-900 text-lg mb-1 group-hover:text-green-700 transition-colors">{teacher.name}</h3>
+              <p className="text-green-700 text-xs font-medium mb-3">{teacher.role}</p>
+              <p className="text-slate-600 text-sm leading-relaxed mb-5">{teacher.bio}</p>
 
               <div className="flex flex-wrap gap-1.5 mb-5">
                 {teacher.tags.map((tag) => (
-                  <span key={tag} className="text-xs px-2 py-1 rounded-lg bg-green-500/10 text-green-300 border border-green-500/15">{tag}</span>
+                  <span key={tag} className="text-xs px-2 py-1 rounded-lg bg-green-50 text-green-700 border border-green-100">{tag}</span>
                 ))}
               </div>
 
-              <div className="flex gap-2 pt-4 border-t border-white/5">
+              <div className="flex gap-2 pt-4 border-t border-slate-200">
                 {SOCIAL.map(({ Icon, label }) => (
                   <button key={label} aria-label={label}
-                    className="p-1.5 rounded-lg text-green-100/75 hover:text-green-400 hover:bg-green-500/10 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-500/40"
+                    className="p-1.5 rounded-lg text-slate-600 hover:text-green-700 hover:bg-green-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-600/40"
                   >
                     <Icon size={15} />
                   </button>

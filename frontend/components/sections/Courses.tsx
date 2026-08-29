@@ -45,7 +45,7 @@ function CourseCard({
       className={cn(
         "relative group rounded-3xl p-6 border transition-all duration-500 cursor-pointer overflow-hidden bg-gradient-to-br",
         meta.gradient, meta.border,
-        "hover:scale-[1.02] hover:-translate-y-1 focus-within:ring-2 focus-within:ring-green-500/40"
+        "hover:scale-[1.02] hover:-translate-y-1 focus-within:ring-2 focus-within:ring-green-600/40"
       )}
       tabIndex={0}
       role="article"
@@ -68,32 +68,32 @@ function CourseCard({
         <div className={cn("p-3 rounded-2xl", meta.iconBg)}>
           <Icon size={22} aria-hidden="true" />
         </div>
-        <span className="text-xs font-semibold px-3 py-1 rounded-full glass border border-white/10 text-green-300">
+        <span className="text-xs font-semibold px-3 py-1 rounded-full glass border border-slate-200 text-green-700">
           {t(meta.badgeKey)}
         </span>
       </div>
 
       {/* Title */}
-      <h3 className="font-display text-xl font-bold text-white mb-2 group-hover:text-green-300 transition-colors">
+      <h3 className="font-display text-xl font-bold text-slate-900 mb-2 group-hover:text-green-700 transition-colors">
         {meta.course.title}
       </h3>
 
       {/* Description */}
-      <p className="text-sm text-green-100/75 leading-relaxed mb-5">
+      <p className="text-sm text-slate-600 leading-relaxed mb-5">
         {meta.course.description}
       </p>
 
       {/* Tags */}
       <div className="flex flex-wrap gap-2 mb-5">
         {meta.tags.map((tag) => (
-          <span key={tag} className="text-xs px-2.5 py-1 rounded-lg bg-white/5 text-green-200/70 border border-white/5">
+          <span key={tag} className="text-xs px-2.5 py-1 rounded-lg bg-slate-50 text-slate-500 border border-slate-200">
             {tag}
           </span>
         ))}
       </div>
 
       {/* Meta row */}
-      <div className="flex items-center justify-between text-xs text-green-100/70 pt-4 border-t border-white/5">
+      <div className="flex items-center justify-between text-xs text-slate-600 pt-4 border-t border-slate-200">
         <div className="flex items-center gap-1">
           <Clock size={12} aria-hidden="true" />
           <span>{meta.duration}</span>
@@ -110,10 +110,10 @@ function CourseCard({
 
       {/* Hover arrow */}
       <div
-        className="absolute bottom-5 right-5 w-8 h-8 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300"
+        className="absolute bottom-5 right-5 w-8 h-8 rounded-full bg-green-50 border border-green-100 flex items-center justify-center opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300"
         aria-hidden="true"
       >
-        <ArrowRight size={14} className="text-green-400" />
+        <ArrowRight size={14} className="text-green-700" />
       </div>
     </div>
   );
@@ -163,14 +163,14 @@ export function Courses() {
   }, []);
 
   return (
-    <section id="courses" className="relative section-padding bg-dark overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent" aria-hidden="true" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-green-500/20 to-transparent" aria-hidden="true" />
+    <section id="courses" className="relative section-padding bg-white overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" aria-hidden="true" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" aria-hidden="true" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={headingRef} className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-green-500/30 text-green-300 text-sm font-medium mb-5">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-green-200 text-green-700 text-sm font-medium mb-5">
+            <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse" aria-hidden="true" />
             {t("badge")}
           </div>
           <h2 className="font-display text-4xl sm:text-5xl font-bold mb-4">
@@ -179,7 +179,7 @@ export function Courses() {
             <br className="hidden sm:block" />
             {" "}{t("title2")}
           </h2>
-          <p className="text-lg text-green-100/70 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             {t("subtitle")}
           </p>
         </div>
@@ -187,13 +187,13 @@ export function Courses() {
         {isLoading && (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="rounded-3xl p-6 border border-green-500/30 bg-gradient-to-br from-green-600/20 to-green-900/10 animate-pulse">
-                <div className="h-32 bg-green-500/10 rounded mb-4"></div>
-                <div className="h-6 bg-green-500/10 rounded mb-2"></div>
-                <div className="h-4 bg-green-500/10 rounded mb-4"></div>
+              <div key={i} className="rounded-3xl p-6 border border-green-200 bg-gradient-to-br from-green-600/20 to-green-900/10 animate-pulse">
+                <div className="h-32 bg-green-50 rounded mb-4"></div>
+                <div className="h-6 bg-green-50 rounded mb-2"></div>
+                <div className="h-4 bg-green-50 rounded mb-4"></div>
                 <div className="flex gap-2 mb-4">
-                  <div className="h-6 w-16 bg-green-500/10 rounded"></div>
-                  <div className="h-6 w-20 bg-green-500/10 rounded"></div>
+                  <div className="h-6 w-16 bg-green-50 rounded"></div>
+                  <div className="h-6 w-20 bg-green-50 rounded"></div>
                 </div>
               </div>
             ))}
@@ -205,7 +205,7 @@ export function Courses() {
             <p className="text-red-400 mb-4">Error loading courses: {error}</p>
             <button 
               onClick={() => window.location.reload()}
-              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+              className="px-4 py-2 bg-green-600 text-slate-900 rounded-lg hover:bg-green-700 transition-colors"
             >
               Retry
             </button>
@@ -222,7 +222,7 @@ export function Courses() {
 
         {!isLoading && !error && courseMeta.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-green-100/70">No courses available at the moment.</p>
+            <p className="text-slate-600">No courses available at the moment.</p>
           </div>
         )}
 

@@ -1,53 +1,78 @@
 @import "tailwindcss";
 
+/* ══════════════════════════════════════════════════════════════════════════
+   IT ADIS — light theme, "soft modern" direction.
+
+   White canvas, near-black type, soft elevated cards, green primary with blue
+   secondary taken from the ITadis logo.
+
+   Contrast note, because this is the trap when moving a design from dark to
+   light: the old palette led with #22C55E, which scores 2.3:1 on white and is
+   unreadable as text or a button label. Every accent below is a step or two
+   darker than its dark-theme counterpart for exactly that reason. Do not
+   "brighten" them back.
+   ══════════════════════════════════════════════════════════════════════════ */
+
 @theme {
-  /* ── Green palette ─────────────────────────────── */
+  /* ── Green: primary action colour ───────────────────
+     700 is the lightest green that passes AA on white (4.8:1). Anything
+     lighter is decoration only — tints, borders, icon backgrounds. */
   --color-green-950: #052e16;
   --color-green-900: #14532d;
   --color-green-800: #166534;
-  --color-green-700: #15803d;
-  --color-green-600: #16a34a;
-  --color-green-500: #22c55e;
+  --color-green-700: #15803d;  /* primary — text & buttons */
+  --color-green-600: #16a34a;  /* hover on solid fills */
+  --color-green-500: #22c55e;  /* decorative only */
   --color-green-400: #4ade80;
   --color-green-300: #86efac;
   --color-green-200: #bbf7d0;
   --color-green-100: #dcfce7;
-  --color-green-50:  #f0fdf4;
-  /* neon accent */
-  --color-neon:      #39ff7e;
+  --color-green-50:  #f0fdf4;  /* tinted section background */
 
-  /* ── Blue accent palette ────────────────────────── */
+  /* ── Blue: secondary accent, from the logo mark ─────── */
+  --color-blue-800:  #1e40af;
+  --color-blue-700:  #1d4ed8;  /* secondary — text & accents */
   --color-blue-600:  #2563eb;
   --color-blue-500:  #3b82f6;
   --color-blue-400:  #60a5fa;
   --color-blue-300:  #93c5fd;
+  --color-blue-50:   #eff6ff;
 
-  /* ── Neutral / dark bg ──────────────────────────── */
-  --color-dark:      #040d07;
-  --color-dark-card: #0a1a0f;
-  --color-dark-border:#1a3325;
+  /* ── Surfaces ───────────────────────────────────────
+     `dark` and `dark-card` keep their names because the markup references
+     them in dozens of places; only the values flipped. Renaming them would
+     be honest but would touch every section for no visual gain. */
+  --color-dark:       #ffffff;  /* page background */
+  --color-dark-card:  #f8fafc;  /* alternating section / input background */
+  --color-dark-border:#e2e8f0;  /* hairline borders */
 
-  /* ── Font families ──────────────────────────────── */
+  /* ── Fonts ──────────────────────────────────────────── */
   --font-sans:       "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display:    "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
 
-  /* ── Easing ─────────────────────────────────────── */
+  /* ── Easing ─────────────────────────────────────────── */
   --ease-spring:     cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Elevation ──────────────────────────────────────
+     Layered rather than single shadows: a tight shadow for the contact edge
+     plus a wide soft one for ambient falloff. A single large blur reads as
+     grey haze on white. */
+  --shadow-soft:    0 1px 2px rgba(15, 23, 42, 0.04),
+                    0 4px 16px rgba(15, 23, 42, 0.06);
+  --shadow-soft-md: 0 2px 4px rgba(15, 23, 42, 0.05),
+                    0 8px 28px rgba(15, 23, 42, 0.08);
+  --shadow-soft-lg: 0 4px 8px rgba(15, 23, 42, 0.06),
+                    0 16px 48px rgba(15, 23, 42, 0.10);
 }
 
-/* ── Base reset ───────────────────────────────────────
+/* ── Base ─────────────────────────────────────────────
    Everything here MUST stay inside @layer base.
 
-   Tailwind emits its utilities into @layer utilities, and in the CSS cascade
-   an unlayered rule beats a layered one no matter how specific the layered
-   selector is. This reset used to sit outside any layer, so `* { margin: 0;
-   padding: 0 }` silently overrode every p-*, px-*, m-* and mx-auto in the
-   codebase — cards lost their padding, containers never centred, and the
-   admin sidebar overlapped the page because lg:pl-64 did nothing.
-
-   The margin/padding reset itself is redundant (Tailwind preflight already
-   does it) and is kept only for the box-sizing declaration. */
+   Tailwind emits utilities into @layer utilities, and in the CSS cascade an
+   unlayered rule beats a layered one regardless of specificity. This reset
+   once sat outside any layer, so `* { margin: 0; padding: 0 }` silently
+   overrode every p-*, px-*, m-* and mx-auto in the codebase. */
 @layer base {
   *,
   *::before,
@@ -62,96 +87,109 @@
   }
 
   body {
-    background-color: var(--color-dark);
-    color: #f0fdf4;
+    background-color: #ffffff;
+    color: #0f172a;
     font-family: var(--font-sans);
     overflow-x: hidden;
   }
 }
 
 /* ── Scrollbar ──────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-dark); }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-green-700);
-  border-radius: 3px;
+  background: #cbd5e1;
+  border-radius: 5px;
+  border: 2px solid #f1f5f9;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--color-green-500); }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
 /* ── Selection ──────────────────────────────────────── */
 ::selection {
-  background: var(--color-green-500);
-  color: var(--color-dark);
+  background: var(--color-green-100);
+  color: var(--color-green-900);
 }
 
 /* ── Lenis smooth scroll ─────────────────────────────── */
-html.lenis, html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
 .lenis.lenis-scrolling iframe { pointer-events: none; }
 
-/* ── Utility classes ─────────────────────────────────── */
+/* ══════════════════════════════════════════════════════
+   Utility classes
+   ══════════════════════════════════════════════════════ */
+
+/* Headline accent. Ends on blue so the pairing echoes the logo, and both
+   stops are dark enough to read as text rather than as a highlight. */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-green-400) 0%, var(--color-green-300) 50%, var(--color-blue-400) 100%);
+  background: linear-gradient(115deg, #15803d 0%, #0d9488 45%, #1d4ed8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* Kept for markup that still asks for it — on white a "white gradient" is
+   meaningless, so it resolves to plain near-black. */
 .gradient-text-white {
-  background: linear-gradient(135deg, #ffffff 0%, var(--color-green-200) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #0f172a;
+  -webkit-text-fill-color: #0f172a;
 }
 
+/* `.glass` was a frosted dark panel. On white the equivalent surface is an
+   opaque card: blur over a white page has nothing to refract and just looks
+   muddy. Same class name, correct light behaviour. */
 .glass {
-  background: rgba(10, 26, 15, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(74, 222, 128, 0.12);
+  background: #ffffff;
+  border: 1px solid var(--color-dark-border);
+  box-shadow: var(--shadow-soft);
 }
 
 .glass-light {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.9);
 }
 
-.glow-green {
-  box-shadow: 0 0 40px rgba(34, 197, 94, 0.25), 0 0 80px rgba(34, 197, 94, 0.1);
+/* A card that lifts on hover — the core interaction of this design. */
+.card-hover {
+  transition: transform 0.25s var(--ease-out-expo),
+              box-shadow 0.25s var(--ease-out-expo),
+              border-color 0.25s var(--ease-out-expo);
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft-lg);
+  border-color: rgba(21, 128, 61, 0.28);
 }
 
-.glow-green-sm {
-  box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+/* Neon glows do not exist on paper-white. These resolve to soft elevation so
+   any markup still calling them looks deliberate rather than broken. */
+.glow-green    { box-shadow: var(--shadow-soft-md); }
+.glow-green-sm { box-shadow: var(--shadow-soft); }
+.text-glow     { text-shadow: none; }
+
+.shadow-soft    { box-shadow: var(--shadow-soft); }
+.shadow-soft-md { box-shadow: var(--shadow-soft-md); }
+.shadow-soft-lg { box-shadow: var(--shadow-soft-lg); }
+
+/* Faint dotted grid for hero/section backgrounds. Replaces the dark theme's
+   glowing line grid, which on white read as dirt. */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(15, 23, 42, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
-.text-glow {
-  text-shadow: 0 0 40px rgba(74, 222, 128, 0.5);
-}
-
-.noise-bg::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.4;
-}
+.noise-bg::before { content: none; }
 
 /* ── Section spacing ──────────────────────────────────── */
+/* 5.5rem, not the dark theme's 7rem: large empty space reads as depth on a
+   black page and as an unfinished page on a white one. */
 .section-padding {
-  padding-top: 7rem;
-  padding-bottom: 7rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 
 @media (max-width: 768px) {
@@ -162,26 +200,20 @@ html.lenis, html.lenis body {
 }
 
 /* ── Animation helpers ────────────────────────────────── */
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-float-delayed {
-  animation: float 6s ease-in-out 2s infinite;
-}
-
-.animate-pulse-green {
-  animation: pulse-green 2s ease-in-out infinite;
-}
+.animate-float         { animation: float 6s ease-in-out infinite; }
+.animate-float-delayed { animation: float 6s ease-in-out 2s infinite; }
+.animate-pulse-green   { animation: pulse-green 2s ease-in-out infinite; }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-20px); }
+  50%      { transform: translateY(-20px); }
 }
 
+/* Softer than the dark-theme original: a 0.4-alpha ring that reads as a
+   tasteful pulse on black is a flashing blob on white. */
 @keyframes pulse-green {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-  50%       { box-shadow: 0 0 0 20px rgba(34, 197, 94, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.18); }
+  50%      { box-shadow: 0 0 0 12px rgba(21, 128, 61, 0); }
 }
 
 @keyframes spin-slow {
@@ -197,11 +229,21 @@ html.lenis, html.lenis body {
 
 @keyframes grid-move {
   from { transform: translateY(0); }
-  to   { transform: translateY(60px); }
+  to   { transform: translateY(28px); }
 }
 
-/* ── Sparkle button particle ─────────────────────────── */
 @keyframes sparkle-fly {
   0%   { transform: translate(-50%, -50%) scale(1); opacity: 1; }
   100% { transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0); opacity: 0; }
+}
+
+/* Respect the OS setting. The homepage leans on scroll and float animations;
+   for anyone who has asked for less motion, hold them still. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-delayed,
+  .animate-pulse-green {
+    animation: none;
+  }
+  html { scroll-behavior: auto; }
 }

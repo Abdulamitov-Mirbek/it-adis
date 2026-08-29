@@ -10,5 +10,5 @@
     // with MODULE_NOT_FOUND. Cache and output now live or die together.
     "tsBuildInfoFile": "./dist/tsconfig.build.tsbuildinfo"
   },
-  "exclude": ["node_modules", "test", "dist", "prisma", "**/*spec.ts"]
+  "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
 }

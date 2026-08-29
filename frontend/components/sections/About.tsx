@@ -98,7 +98,7 @@ export function About() {
       ref={sectionRef}
       id="about"
       className="relative section-padding overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #040d07 0%, #071a0e 50%, #040d07 100%)" }}
+      style={{ background: "linear-gradient(180deg, #ffffff 0%, #f6fbf7 50%, #ffffff 100%)" }}
     >
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full opacity-10 blur-3xl"
@@ -113,8 +113,8 @@ export function About() {
           {/* Left */}
           <div ref={leftRef} className="flex flex-col gap-8">
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-green-500/30 text-green-300 text-sm font-medium mb-5">
-                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" aria-hidden="true" />
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-green-200 text-green-700 text-sm font-medium mb-5">
+                <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse" aria-hidden="true" />
                 {t("badge")}
               </div>
               <h2 className="font-display text-4xl sm:text-5xl font-bold leading-tight">
@@ -128,8 +128,8 @@ export function About() {
             <div className="flex flex-col gap-3">
               {points.map((point) => (
                 <div key={point} className="flex items-start gap-3">
-                  <CheckCircle2 size={18} className="text-green-400 mt-0.5 shrink-0" aria-hidden="true" />
-                  <span className="text-green-100/70 text-sm">{point}</span>
+                  <CheckCircle2 size={18} className="text-green-700 mt-0.5 shrink-0" aria-hidden="true" />
+                  <span className="text-slate-600 text-sm">{point}</span>
                 </div>
               ))}
             </div>
@@ -150,20 +150,20 @@ export function About() {
               {statsLoading ? (
                 // Loading skeleton
                 [...Array(4)].map((_, i) => (
-                  <div key={i} className="glass border border-green-900/40 rounded-3xl p-6 animate-pulse">
-                    <div className="h-8 bg-green-500/10 rounded mb-2"></div>
-                    <div className="h-4 bg-green-500/10 rounded w-2/3"></div>
+                  <div key={i} className="glass border border-slate-200 rounded-3xl p-6 animate-pulse">
+                    <div className="h-8 bg-green-50 rounded mb-2"></div>
+                    <div className="h-4 bg-green-50 rounded w-2/3"></div>
                   </div>
                 ))
               ) : (
                 STATS.map((s) => (
                   <div key={s.labelKey}
-                    className="glass border border-green-900/40 rounded-3xl p-6 hover:border-green-500/30 transition-all duration-300 group"
+                    className="glass border border-slate-200 rounded-3xl p-6 hover:border-green-200 transition-all duration-300 group"
                   >
                     <div className="font-display text-4xl font-bold gradient-text mb-1">
                       <AnimatedCounter value={s.value} suffix={s.suffix} trigger={counted} />
                     </div>
-                    <div className="text-sm text-green-100/70">{t(`stats.${s.labelKey}` as "stats.students")}</div>
+                    <div className="text-sm text-slate-600">{t(`stats.${s.labelKey}` as "stats.students")}</div>
                   </div>
                 ))
               )}
@@ -172,16 +172,16 @@ export function About() {
             <div className="grid grid-cols-1 gap-3">
               {PILLARS.map(({ icon: Icon, key }) => (
                 <div key={key}
-                  className="flex items-start gap-4 glass border border-green-900/30 rounded-2xl p-4 hover:border-green-500/30 transition-all duration-300"
+                  className="flex items-start gap-4 glass border border-slate-200 rounded-2xl p-4 hover:border-green-200 transition-all duration-300"
                 >
-                  <div className="p-2.5 rounded-xl bg-green-500/10 text-green-400 shrink-0">
+                  <div className="p-2.5 rounded-xl bg-green-50 text-green-700 shrink-0">
                     <Icon size={18} aria-hidden="true" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-white text-sm mb-1">
+                    <h4 className="font-semibold text-slate-900 text-sm mb-1">
                       {t(`pillars.${key}.title` as "pillars.curriculum.title")}
                     </h4>
-                    <p className="text-xs text-green-100/70 leading-relaxed">
+                    <p className="text-xs text-slate-600 leading-relaxed">
                       {t(`pillars.${key}.desc` as "pillars.curriculum.desc")}
                     </p>
                   </div>
