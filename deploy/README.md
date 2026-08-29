@@ -1,225 +1,242 @@
-# Deploying IT ADIS to AWS EC2 (Ubuntu, x86_64)
+# Deploying IT ADIS to AWS EC2 — Ubuntu x86_64, no Docker
 
-One EC2 instance runs the whole site in Docker. Postgres stays on Supabase.
+Node runs both apps directly under systemd; Caddy terminates TLS in front.
+Postgres stays on Supabase. Deploys are `git pull` + rebuild + restart.
 
 ```
 internet ──▶ Caddy :80/:443 ──▶ Next.js :3000 ──▶ NestJS :3001 ──▶ Supabase
-             (auto HTTPS)        (public)          (internal only)
+             (auto HTTPS)        (systemd)         (systemd, loopback only)
 ```
 
 The browser only ever talks to Next.js. Its `/api/*` route handlers proxy to
-NestJS server-side over a private Docker network, so **the API is not reachable
-from the internet** and the security group never needs a port open for it.
+NestJS over `127.0.0.1`, so **the API is not reachable from the internet** and
+the security group never needs a port open for it.
 
-Target host: **Ubuntu Server 24.04 LTS, 64-bit (x86)**. All images are built
-natively on the instance, so they come out `linux/amd64` — no cross-build, no
-`--platform` flags, no QEMU emulation.
-
-Running cost: roughly **$17–22/month** (t3.small + 20 GB EBS + Elastic IP), plus
-whatever Supabase tier you are on.
+> The Docker files (`docker-compose.prod.yml`, root `Caddyfile`, the two
+> `Dockerfile`s, `deploy/user-data.sh`, `deploy/deploy.sh`) are still in the
+> repo and still work. They are simply not used by this path — ignore them, or
+> delete them once you are happy here.
 
 ---
 
-## 1. Launch the instance
+## 0. First: fix the disk
 
-EC2 → Launch instance:
+The Docker build failed with `ENOSPC: no space left on device`. That was never a
+Docker bug — the root volume filled up. Building natively needs less space, but
+not zero, so clear this before anything else.
 
-| Setting | Value |
-|---|---|
-| Name | `itadis-prod` |
-| AMI | **Ubuntu Server 24.04 LTS**, architecture **64-bit (x86)** |
-| Instance type | **t3.small** (2 vCPU, 2 GB) |
-| Key pair | Create one, download the `.pem`, keep it safe |
-| Storage | **20 GB** gp3 (the 8 GB default fills up with Docker images) |
+```bash
+df -h /                 # how much is actually free
+```
 
-> 22.04 LTS works too — the bootstrap reads the release codename from
-> `/etc/os-release` rather than hardcoding it. Do **not** pick a `t4g.*`
-> instance type: those are ARM and will not boot an x86 AMI.
+Reclaim what Docker took (safe — you are not using it any more):
 
-Under **Network settings → Edit**, create a security group with exactly three
-inbound rules:
+```bash
+sudo systemctl stop docker
+sudo docker system prune -af --volumes    # if docker is still installed
+sudo apt-get remove -y docker-ce docker-ce-cli containerd.io \
+  docker-buildx-plugin docker-compose-plugin
+sudo rm -rf /var/lib/docker
+sudo apt-get autoremove -y && sudo apt-get clean
+```
 
-| Type | Port | Source |
-|---|---|---|
-| SSH | 22 | **My IP** — not `0.0.0.0/0` |
-| HTTP | 80 | `0.0.0.0/0` |
-| HTTPS | 443 | `0.0.0.0/0` |
+Check again. **You want at least 5 GB free.** If you are still short, the volume
+is too small — the default AMI gives 8 GB, which is not enough:
 
-> Ports 3000 and 3001 stay closed. If you ever find yourself opening them,
-> something is misconfigured — Caddy is the only thing that should be reachable.
+1. EC2 console → **Elastic Block Store → Volumes** → select the volume →
+   **Actions → Modify volume** → set **20 GiB** → Modify.
+2. Wait for state `in-use - optimizing`, then on the box:
 
-Under **Advanced details → User data**, paste the entire contents of
-[`user-data.sh`](./user-data.sh). On first boot it installs Docker from Docker's
-official apt repository, adds 2 GB of swap and sets up a weekly image cleanup.
+```bash
+lsblk                                        # confirm the device name
+sudo growpart /dev/nvme0n1 1
+sudo resize2fs /dev/nvme0n1p1
+df -h /                                      # should now show ~20G
+```
 
-### Give it a fixed IP
-
-EC2 → **Elastic IPs** → Allocate → Associate with the instance. Without this the
-public IP changes on every stop/start and your DNS silently breaks.
+> Growing an EBS volume is online and non-destructive. You cannot shrink it
+> again, and the larger size is what you are billed for (~$0.08/GB/month).
 
 ---
 
-## 2. Point DNS at it
+## 1. Where the code lives
 
-At your registrar, create an **A record** for your domain → the Elastic IP.
-Add a second A record for `www` if you want it.
+Your current clone is at `/opt/itadis/it-adis` — one level deeper than the
+scripts expect. Flatten it:
 
-Check it has propagated before continuing — Caddy's certificate request will
-fail if the domain does not yet resolve to this host:
+```bash
+sudo rm -rf /opt/itadis
+sudo mkdir -p /opt/itadis
+sudo chown ubuntu:ubuntu /opt/itadis
+cd /opt/itadis
+git clone https://github.com/<your-account>/it-adis.git .    # note the dot
+```
+
+Also: **stop working as `root`.** Log in as `ubuntu`. The systemd units run the
+apps as `ubuntu`, and a tree owned by root will fail at runtime with permission
+errors that point nowhere useful.
+
+---
+
+## 2. Bootstrap the server
+
+Installs Node 22, Caddy, swap and `envsubst`. Once per instance:
+
+```bash
+cd /opt/itadis
+sudo bash deploy/setup-server.sh
+```
+
+It prints the versions it installed plus free disk and swap. Node must be
+**v22.x** — Ubuntu's own `nodejs` package is v18 and Next 16 will not build on
+it, which is why the script uses NodeSource.
+
+---
+
+## 3. Configure
+
+```bash
+cd /opt/itadis
+cp .env.production.example .env.production
+nano .env.production
+chmod 600 .env.production
+```
+
+Fill in every value. Generate a **fresh** `JWT_SECRET` — not the dev one:
+
+```bash
+node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"
+```
+
+`DATABASE_URL` and `DIRECT_URL` come from Supabase → Project Settings →
+Database → Connection string. You need both: pooled (port 6543) for the app,
+direct (port 5432) for migrations.
+
+The file sits **outside** the git tree at `/opt/itadis/.env.production`, so
+`git pull` can never overwrite it.
+
+---
+
+## 4. Point DNS at the box
+
+A record for your domain → the instance's **Elastic IP**. Verify before
+deploying, or Caddy's certificate request will fail:
 
 ```bash
 dig +short itadis.kg      # must print your Elastic IP
 ```
 
+Security group inbound rules — exactly three:
+
+| Type | Port | Source |
+|---|---|---|
+| SSH | 22 | **My IP** |
+| HTTP | 80 | `0.0.0.0/0` |
+| HTTPS | 443 | `0.0.0.0/0` |
+
+Ports 3000 and 3001 stay closed.
+
 ---
 
-## 3. First deploy
-
-The bootstrap takes 2–4 minutes. SSH in as **`ubuntu`** (not `ec2-user` — that
-is the Amazon Linux default and does not exist here):
-
-```bash
-chmod 400 itadis-prod.pem          # macOS/Linux only; SSH refuses loose perms
-ssh -i itadis-prod.pem ubuntu@<ELASTIC_IP>
-```
-
-Confirm the bootstrap finished before doing anything else:
-
-```bash
-cloud-init status --wait           # blocks until it prints "status: done"
-docker --version && docker compose version
-```
-
-> If `docker` says **permission denied**, your shell started before the docker
-> group was applied. Log out and back in, or run `newgrp docker`.
-
-Clone the repo and configure it:
+## 5. Deploy
 
 ```bash
 cd /opt/itadis
-git clone https://github.com/<your-account>/it-adis.git .
-
-cp .env.production.example .env.production
-nano .env.production
+./deploy/deploy-native.sh
 ```
 
-Fill in every value. For `JWT_SECRET`, **generate a fresh one** — do not reuse
-the development value:
+It checks free disk first, builds the backend, runs migrations, builds the
+frontend, installs the systemd units and Caddy config, restarts everything, then
+**polls the real endpoints** and prints logs if either fails to answer.
+
+First build takes 5–10 minutes on a t3.small.
+
+Seed the course catalogue once, on the first deploy only:
 
 ```bash
-docker run --rm node:22-alpine node -e \
-  "console.log(require('crypto').randomBytes(48).toString('base64url'))"
+cd /opt/itadis/backend && npx prisma db seed
 ```
-
-`DATABASE_URL` and `DIRECT_URL` come from Supabase → Project Settings →
-Database → Connection string. You need both: the pooled one (port 6543) for the
-app, the direct one (port 5432) for migrations.
-
-Lock the file down and deploy:
-
-```bash
-chmod 600 .env.production
-./deploy/deploy.sh
-```
-
-First build takes 5–10 minutes on a t3.small. When it finishes,
-`https://your-domain` should be live with a valid certificate.
 
 ---
 
-## 4. Deploying updates
+## 6. Updating
 
 ```bash
-ssh -i itadis-prod.pem ubuntu@<ELASTIC_IP>
-cd /opt/itadis && ./deploy/deploy.sh
+ssh ubuntu@<ELASTIC_IP>
+cd /opt/itadis && ./deploy/deploy-native.sh
 ```
 
-It pulls, rebuilds, runs `prisma migrate deploy`, restarts, then waits for the
-health checks and fails loudly with logs if anything comes up unhealthy.
-Migrations run **before** the new containers take over, so a failed migration
-leaves the previous version serving untouched.
+Flags: `--no-pull` (build the working tree as-is), `--skip-migrate`.
 
 ---
 
-## 5. Day-to-day
+## 7. Day-to-day
 
 ```bash
-cd /opt/itadis
-alias dc='docker compose -f docker-compose.prod.yml --env-file .env.production'
-
-dc ps                    # what is running and healthy
-dc logs -f               # all logs
-dc logs -f backend       # just the API
-dc restart backend       # restart one service
-dc down                  # stop everything
+sudo journalctl -u itadis-backend -u itadis-frontend -f   # live logs
+sudo journalctl -u itadis-backend -n 100 --no-pager       # recent API logs
+systemctl status itadis-backend itadis-frontend caddy
+sudo systemctl restart itadis-backend
+sudo systemctl reload caddy
+free -h && df -h /                                        # memory and disk
 ```
 
-**Seeding the course catalogue** (first deploy only — this overwrites courses):
-
-```bash
-dc run --rm --no-deps backend npx prisma db seed
-```
-
-**System maintenance** (Ubuntu applies security patches automatically via
-`unattended-upgrades`; kernel updates still need a reboot):
+System patches (Ubuntu auto-applies security updates; kernels need a reboot):
 
 ```bash
 sudo apt-get update && sudo apt-get upgrade -y
-[ -f /var/run/reboot-required ] && sudo reboot   # containers restart on boot
+[ -f /var/run/reboot-required ] && sudo reboot   # services come back on boot
 ```
 
 ---
 
-## 6. Things that will bite you
+## 8. Things that will bite you
 
-**`docker: permission denied`.** Your SSH session predates the docker group
-change from user-data. Log out and back in, or `newgrp docker`.
+**`ENOSPC` during npm install.** Disk again — see step 0. `deploy-native.sh`
+now refuses to start below 3 GB free rather than dying halfway.
 
-**Bootstrap looks like it did nothing.** Almost always the apt lock — Ubuntu
-runs `unattended-upgrades` on first boot and holds dpkg. `user-data.sh` waits up
-to 5 minutes for it. Check what happened with:
+**Build killed with no message.** Out of memory. `free -h` should show 2 GB of
+swap; if not, re-run `setup-server.sh`.
 
-```bash
-sudo cloud-init status --long
-sudo cat /var/log/cloud-init-output.log
-```
+**`Cannot find module 'dist/main'`.** The backend build did not run or failed.
+`cd /opt/itadis/backend && npm run build`, and check for TypeScript errors.
 
-**Certificate not issuing.** Caddy needs port 80 reachable from the internet for
-the ACME challenge, and DNS pointing here. Check `dc logs caddy`. The rate limit
-is 5 certificates per domain per week, so fix DNS *before* retrying in a loop.
+**Service won't start, logs mention permissions.** The tree is owned by root
+from an earlier root clone: `sudo chown -R ubuntu:ubuntu /opt/itadis`.
 
-**Build killed with no error.** Out of memory. The swap file should prevent it;
-confirm with `free -h` that swap is active and `swapon --show` lists `/swapfile`.
+**Certificate not issuing.** Caddy needs port 80 open and DNS resolving here.
+`sudo journalctl -u caddy -n 50`. The rate limit is 5 certificates per domain
+per week — fix DNS *before* retrying repeatedly.
 
 **`prisma migrate deploy` fails on a pooled connection.** `DIRECT_URL` must be
-the port-5432 connection string, not the 6543 pooler.
+the port-5432 string, not the 6543 pooler.
 
-**Site loads unstyled.** The frontend image did not get `.next/static`. Rebuild
-with `dc build --no-cache frontend`.
-
-**Disk full.** `docker system prune -af`, then check `df -h`. The weekly cron
-handles this normally.
+**Site loads but the API 500s.** `sudo journalctl -u itadis-backend -n 50`.
+Most often `JWT_SECRET` missing or too short — the API refuses to boot on
+either, by design.
 
 ---
 
-## 7. Before you call it done
+## 9. Before you call it done
 
-- [ ] `JWT_SECRET` in `.env.production` is freshly generated, not the dev value
-- [ ] `.env.production` is `chmod 600` and **not** committed to git
+- [ ] `JWT_SECRET` is freshly generated, not the dev value
+- [ ] `.env.production` is `chmod 600` and outside the git tree
 - [ ] Security group SSH rule is your IP, not `0.0.0.0/0`
 - [ ] `https://your-domain/api/docs` returns **404** (Swagger is off in prod)
-- [ ] Admin login works, and a 6th rapid login attempt returns **429**
+- [ ] A 6th rapid login attempt returns **429**
+- [ ] `curl http://127.0.0.1:3001/health` works **on the box**, and
+      `curl http://<ELASTIC_IP>:3001/health` **times out** from your laptop
 - [ ] Delete the stale `ADMIN_SECRET=itadis_admin_2026` line from any `.env`
-- [ ] Supabase → Settings → Database → restrict network access to the Elastic IP
-- [ ] `docker image inspect itadis-backend --format '{{.Architecture}}'` says
-      `amd64`
+- [ ] `sudo systemctl is-enabled itadis-backend itadis-frontend caddy` → all
+      `enabled`, so the site returns after a reboot
+- [ ] Reboot once and confirm the site comes back by itself
 
 ---
 
 ## What I have not verified
 
-The Compose file, the shell syntax and the build outputs all check out, but
-**the Docker images have never actually been built** — the Docker daemon was not
-running on the development machine. Expect to iterate on the first
-`./deploy/deploy.sh`; the Dockerfiles are conventional, but an untested build is
-an untested build.
+These files are syntax-checked and the runtime commands were tested locally
+(`next start` serves, `node dist/main` serves, `/health` answers), but **the
+full sequence has never run on an actual Ubuntu host** — no EC2 instance was
+available from here. Expect to iterate on the first run; the failure modes above
+are the ones to check first.

@@ -1,0 +1,42 @@
+# Caddy config for the Docker-free deployment.
+#
+# Install to /etc/caddy/Caddyfile — deploy-native.sh does this for you,
+# substituting $SITE_DOMAIN and $TLS_EMAIL from .env.production.
+#
+# Caddy obtains and renews a Let's Encrypt certificate automatically as soon as
+# the domain resolves to this host's public IP.
+#
+# Before DNS is pointed here, replace the site address with `:80` to serve over
+# plain HTTP on the EC2 public IP — Let's Encrypt cannot issue a certificate for
+# a bare IP, so leaving a domain here while DNS points elsewhere fails the ACME
+# challenge and Caddy serves nothing at all.
+
+{
+	email {$TLS_EMAIL}
+}
+
+{$SITE_DOMAIN} {
+	encode zstd gzip
+
+	# Everything goes to Next.js, /api included: those are Next route handlers
+	# that proxy to NestJS server-side over loopback. Do NOT add a route to
+	# :3001 here — publishing the API is exactly what this design avoids.
+	reverse_proxy 127.0.0.1:3000
+
+	# Caddy already sends HSTS on HTTPS sites. These duplicate next.config.ts on
+	# purpose: this layer also covers anything Caddy serves that never reaches
+	# Next, such as its own error pages.
+	header {
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy strict-origin-when-cross-origin
+		-Server
+	}
+
+	log {
+		output file /var/log/caddy/access.log {
+			roll_size 10MiB
+			roll_keep 5
+		}
+	}
+}

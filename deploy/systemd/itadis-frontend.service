@@ -1,0 +1,50 @@
+[Unit]
+Description=IT ADIS website (Next.js)
+Documentation=https://github.com/mmrek07-gif/it-adis
+After=network-online.target itadis-backend.service
+Wants=network-online.target
+# Ordering only, not a hard dependency: if the API is down the site should
+# still serve its pages and degrade to fallback content rather than refusing
+# to start.
+After=itadis-backend.service
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/opt/itadis/frontend
+
+EnvironmentFile=/opt/itadis/.env.production
+Environment=NODE_ENV=production
+Environment=PORT=3000
+# Server-side hop from the Next.js /api route handlers to NestJS. Loopback, so
+# the API never needs to be exposed beyond this host.
+Environment=BACKEND_API_URL=http://127.0.0.1:3001
+
+# Calling the next binary directly rather than `npm run start`: npm forks a
+# child, so systemd would track the npm wrapper instead of the server and
+# `systemctl stop` would leave the real process running on port 3000.
+ExecStart=/usr/bin/node node_modules/next/dist/bin/next start -p 3000
+
+Restart=always
+RestartSec=5
+StartLimitIntervalSec=0
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=itadis-frontend
+
+# ── Hardening ─────────────────────────────────────────────────────────────────
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+# Next writes its build cache under .next at runtime.
+ReadWritePaths=/opt/itadis/frontend
+
+[Install]
+WantedBy=multi-user.target

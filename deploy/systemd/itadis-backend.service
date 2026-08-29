@@ -1,0 +1,49 @@
+[Unit]
+Description=IT ADIS API (NestJS)
+Documentation=https://github.com/mmrek07-gif/it-adis
+# network-online, not just network: the API opens a Postgres connection to
+# Supabase on startup, and "network" is satisfied before DNS is usable.
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/opt/itadis/backend
+
+# One env file for both services, living outside the git tree so a `git pull`
+# can never overwrite it and `git status` can never show it.
+EnvironmentFile=/opt/itadis/.env.production
+Environment=NODE_ENV=production
+Environment=PORT=3001
+
+ExecStart=/usr/bin/node dist/main
+
+Restart=always
+RestartSec=5
+# Stop systemd giving up if the app crash-loops during a bad deploy; without
+# this it deactivates the unit after 5 restarts and the site stays down.
+StartLimitIntervalSec=0
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=itadis-backend
+
+# ── Hardening ─────────────────────────────────────────────────────────────────
+# The API is reachable from Caddy and parses untrusted input, so it runs with
+# the narrowest privileges that still let it work.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+# ProtectSystem=strict makes the entire filesystem read-only; Prisma needs a
+# writable path for its engine's temp files.
+ReadWritePaths=/opt/itadis/backend
+
+[Install]
+WantedBy=multi-user.target
