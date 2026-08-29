@@ -101,7 +101,25 @@ fi
 
 echo "==> Building backend"
 cd "$ROOT/backend"
-npm ci
+
+# --include=dev is NOT redundant.
+#
+# .env.production sets NODE_ENV=production, and load_env exports it above. npm
+# derives --omit=dev from NODE_ENV, so a plain `npm ci` here removes every
+# devDependency — including @nestjs/cli and typescript, the two things the build
+# needs. The failure is deeply unhelpful: `nest build` dies with
+# "npm ERR! could not determine executable to run", which says nothing about
+# missing dev packages. Same trap on the frontend, where tailwindcss and
+# typescript are devDependencies.
+npm ci --include=dev
+
+if [[ ! -x node_modules/.bin/nest ]]; then
+  echo "ERROR: @nestjs/cli is missing after install."
+  echo "       Something stripped devDependencies — check for NODE_ENV=production"
+  echo "       or an --omit=dev in ~/.npmrc, then retry."
+  exit 1
+fi
+
 npx prisma generate
 npm run build
 
@@ -112,16 +130,33 @@ if [[ $MIGRATE -eq 1 ]]; then
   npx prisma migrate deploy
 fi
 
+# Reclaim the build-only packages now the compiled output exists. `node
+# dist/main` needs prod dependencies only — this is exactly what the Docker
+# runner stage does — and on an 8 GB volume those ~255 packages are worth
+# having back. The prisma CLI survives because it is a prod dependency, so
+# migrations still work on the next deploy.
+echo "==> Pruning backend build dependencies"
+npm prune --omit=dev
+
 # ── Frontend ──────────────────────────────────────────────────────────────────
 
 echo "==> Building frontend"
 cd "$ROOT/frontend"
-npm ci
+
+# --include=dev for the same reason as the backend: tailwindcss and typescript
+# are devDependencies, and `next build` fails without them.
+npm ci --include=dev
+
 # NEXT_PUBLIC_* values are inlined into the client bundle at build time, so this
 # has to be exported for `next build` — setting it only in the systemd unit
 # would be too late and the canonical/OpenGraph URLs would stay localhost.
 export NEXT_PUBLIC_SITE_URL="https://${SITE_DOMAIN}"
 npm run build
+
+# Deliberately NOT pruned, unlike the backend: `next start` resolves parts of
+# the build output lazily at request time, and stripping packages after the fact
+# has been a recurring source of runtime module-not-found errors. The disk is
+# better spent here than on a subtle 500 in production.
 
 # ── Services ──────────────────────────────────────────────────────────────────
 

@@ -198,6 +198,20 @@ now refuses to start below 3 GB free rather than dying halfway.
 **Build killed with no message.** Out of memory. `free -h` should show 2 GB of
 swap; if not, re-run `setup-server.sh`.
 
+**`npm ERR! could not determine executable to run`** during the backend build.
+`@nestjs/cli` is missing. The cause is almost always `NODE_ENV=production` in
+the environment: npm derives `--omit=dev` from it and strips every
+devDependency, including the Nest CLI and TypeScript. `deploy-native.sh` passes
+`--include=dev` for exactly this reason. To fix a half-installed tree by hand:
+
+```bash
+cd /opt/itadis/backend && npm ci --include=dev && npm run build
+```
+
+The same trap hits the frontend, where tailwindcss and typescript are
+devDependencies — a `next build` that cannot find Tailwind is this, not a
+config problem.
+
 **`Cannot find module 'dist/main'`.** The backend build did not run or failed.
 `cd /opt/itadis/backend && npm run build`, and check for TypeScript errors.
 
