@@ -172,8 +172,8 @@ export default async function TechPage({
                 style={{ borderColor: `${accent}26` }}
               >
                 <div
-                  className="w-9 h-9 rounded-xl grid place-items-center mb-4"
-                  style={{ background: `${accent}1f`, color: accent }}
+                  className="w-9 h-9 rounded-xl grid place-items-center mb-4 text-slate-700"
+                  style={{ background: `${accent}2b` }}
                 >
                   <Check size={17} />
                 </div>
@@ -224,10 +224,7 @@ export default async function TechPage({
                   aria-hidden="true"
                 />
                 <h3 className="font-display font-bold text-lg">
-                  <span
-                    className="text-xs font-mono mr-3 opacity-70"
-                    style={{ color: accent }}
-                  >
+                  <span className="text-xs font-mono mr-3 text-slate-500">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {step.phase}
