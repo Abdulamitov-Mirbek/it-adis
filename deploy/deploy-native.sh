@@ -91,6 +91,23 @@ load_env "$ENV_FILE"
 : "${SUPABASE_URL:?SUPABASE_URL must be set in .env.production}"
 : "${SUPABASE_SECRET_KEY:?SUPABASE_SECRET_KEY must be set in .env.production}"
 
+# Let's Encrypt issues certificates for domain names only — never for a bare IP
+# address. Pointing Caddy at an IP and asking for HTTPS fails the ACME challenge
+# and leaves it serving nothing, so an IP (or an unset domain) is served over
+# plain HTTP on :80 instead, and HTTPS switches itself on the moment
+# SITE_DOMAIN becomes a real hostname.
+if [[ -z "${SITE_DOMAIN:-}" || "$SITE_DOMAIN" =~ ^[0-9]+(\.[0-9]+){3}$ ]]; then
+  SITE_ADDRESS=":80"
+  SITE_URL="http://${SITE_DOMAIN:-localhost}"
+  TLS_MODE="plain HTTP (no certificate — Let's Encrypt cannot issue for an IP)"
+else
+  SITE_ADDRESS="$SITE_DOMAIN"
+  SITE_URL="https://${SITE_DOMAIN}"
+  TLS_MODE="HTTPS with an automatic Let's Encrypt certificate"
+fi
+export SITE_ADDRESS
+
+
 # ── Code ──────────────────────────────────────────────────────────────────────
 
 if [[ $PULL -eq 1 ]]; then
@@ -148,7 +165,7 @@ npm ci --include=dev
 # NEXT_PUBLIC_* values are inlined into the client bundle at build time, so this
 # has to be exported for `next build` — setting it only in the systemd unit
 # would be too late and the canonical/OpenGraph URLs would stay localhost.
-export NEXT_PUBLIC_SITE_URL="https://${SITE_DOMAIN}"
+export NEXT_PUBLIC_SITE_URL="$SITE_URL"
 npm run build
 
 # Deliberately NOT pruned, unlike the backend: `next start` resolves parts of
@@ -169,11 +186,28 @@ sudo systemctl enable itadis-backend itadis-frontend >/dev/null
 echo "==> Installing Caddy config"
 sudo mkdir -p /var/log/caddy
 sudo chown caddy:caddy /var/log/caddy
-# envsubst rather than Caddy's own {$VAR}: Caddy only reads those from its
-# process environment, and the systemd caddy unit does not load .env.production.
-export SITE_DOMAIN TLS_EMAIL
-envsubst '${SITE_DOMAIN} ${TLS_EMAIL}' < deploy/Caddyfile | sudo tee /etc/caddy/Caddyfile >/dev/null
-sudo caddy validate --config /etc/caddy/Caddyfile
+
+# envsubst, not Caddy's own {$VAR}: the systemd caddy unit does not load
+# .env.production, so Caddy would expand those to empty. Only ${SITE_ADDRESS} is
+# substituted — naming TLS_EMAIL here too is what previously mangled the global
+# block into a literal `{}`.
+{
+  # The ACME contact address is prepended rather than kept in the template, so
+  # that the global block is absent entirely when there is nothing to put in it.
+  # `email` with an empty value is a parse error, not a no-op.
+  if [[ "$SITE_ADDRESS" != ":80" && -n "${TLS_EMAIL:-}" ]]; then
+    printf '{\n\temail %s\n}\n\n' "$TLS_EMAIL"
+  fi
+  envsubst '${SITE_ADDRESS}' < deploy/Caddyfile
+} | sudo tee /etc/caddy/Caddyfile >/dev/null
+
+if ! sudo caddy validate --config /etc/caddy/Caddyfile; then
+  echo
+  echo "ERROR: the generated Caddyfile is invalid. It is at /etc/caddy/Caddyfile:"
+  sudo sed -n '1,25p' /etc/caddy/Caddyfile
+  exit 1
+fi
+echo "    serving ${SITE_ADDRESS} — ${TLS_MODE}"
 
 echo "==> Restarting services"
 sudo systemctl restart itadis-backend
@@ -204,6 +238,6 @@ if [[ $ok -ne 1 ]]; then
 fi
 
 echo
-echo "==> Deployed. https://${SITE_DOMAIN}"
+echo "==> Deployed. ${SITE_URL}  (${TLS_MODE})"
 echo "    logs:   sudo journalctl -u itadis-backend -u itadis-frontend -f"
 echo "    status: systemctl status itadis-backend itadis-frontend caddy"

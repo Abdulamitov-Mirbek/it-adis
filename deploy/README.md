@@ -123,7 +123,26 @@ The file sits **outside** the git tree at `/opt/itadis/.env.production`, so
 
 ---
 
-## 4. Point DNS at the box
+## 4. No domain yet? Use the IP
+
+You can run the whole site on the server's IP before any DNS exists. Put the
+Elastic IP in `SITE_DOMAIN`:
+
+```bash
+SITE_DOMAIN=13.60.233.228
+```
+
+The deploy detects an IP and serves **plain HTTP on port 80** — reachable at
+`http://13.60.233.228`. It cannot serve HTTPS: Let's Encrypt issues
+certificates for domain names only, and requesting one for a bare IP fails the
+ACME challenge and leaves Caddy serving nothing.
+
+When you get a domain, change `SITE_DOMAIN` to it, re-run the deploy, and HTTPS
+switches on by itself.
+
+---
+
+## 4b. Point DNS at the box
 
 A record for your domain → the instance's **Elastic IP**. Verify before
 deploying, or Caddy's certificate request will fail:
@@ -228,6 +247,13 @@ config problem.
 
 **Service won't start, logs mention permissions.** The tree is owned by root
 from an earlier root clone: `sudo chown -R ubuntu:ubuntu /opt/itadis`.
+
+**`Error during parsing: Unexpected '{}' at end of line`** from
+`caddy validate`. Fixed — the template used Caddy's `{$VAR}` syntax while the
+deploy also ran `envsubst` over it, and `envsubst` substituted the `$VAR`
+*inside* the braces, collapsing `{$TLS_EMAIL}` to a literal `{}`. Pull the
+latest `deploy/Caddyfile` and `deploy/deploy-native.sh`. If you hand-edited
+`/etc/caddy/Caddyfile`, the deploy overwrites it anyway.
 
 **Certificate not issuing.** Caddy needs port 80 open and DNS resolving here.
 `sudo journalctl -u caddy -n 50`. The rate limit is 5 certificates per domain

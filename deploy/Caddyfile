@@ -1,21 +1,23 @@
-# Caddy config for the Docker-free deployment.
+# Caddy config template for the Docker-free deployment.
 #
-# Install to /etc/caddy/Caddyfile — deploy-native.sh does this for you,
-# substituting $SITE_DOMAIN and $TLS_EMAIL from .env.production.
+# deploy-native.sh renders this to /etc/caddy/Caddyfile with envsubst and then
+# validates it. Do not use Caddy's own {$VAR} placeholder syntax in this file:
+# envsubst also matches the $VAR inside those braces, so `{$TLS_EMAIL}` came out
+# as a literal `{}` and Caddy failed with "Unexpected '{}' at end of line" —
+# whether or not the variable was set. Only bare ${VAR} belongs here.
 #
-# Caddy obtains and renews a Let's Encrypt certificate automatically as soon as
-# the domain resolves to this host's public IP.
+# SITE_ADDRESS is computed by the script, not copied from .env.production:
 #
-# Before DNS is pointed here, replace the site address with `:80` to serve over
-# plain HTTP on the EC2 public IP — Let's Encrypt cannot issue a certificate for
-# a bare IP, so leaving a domain here while DNS points elsewhere fails the ACME
-# challenge and Caddy serves nothing at all.
+#   * a real domain  -> `itadis.kg`, and Caddy fetches a Let's Encrypt
+#     certificate automatically as soon as DNS points here
+#   * an IP, or no domain yet -> `:80`, plain HTTP. Let's Encrypt cannot issue
+#     a certificate for a bare IP address, so asking for HTTPS on one fails the
+#     ACME challenge and Caddy then serves nothing at all.
+#
+# The global options block (with the ACME contact email) is prepended by the
+# script, and only when a domain and TLS_EMAIL are both present.
 
-{
-	email {$TLS_EMAIL}
-}
-
-{$SITE_DOMAIN} {
+${SITE_ADDRESS} {
 	encode zstd gzip
 
 	# Everything goes to Next.js, /api included: those are Next route handlers
