@@ -1,0 +1,93 @@
+# Production stack for a single EC2 host.
+#
+# Shape of the deployment:
+#
+#   internet ──▶ caddy :80/:443 ──▶ frontend :3000 ──▶ backend :3001 ──▶ Supabase
+#
+# Only Caddy publishes ports. The browser never talks to NestJS directly — it
+# calls Next.js route handlers under /api, which proxy server-side to the
+# backend over the internal Docker network. So the API is not reachable from the
+# internet at all, and the security group only ever needs 80, 443 and SSH.
+#
+#   docker compose -f docker-compose.prod.yml up -d --build
+
+name: itadis
+
+services:
+  caddy:
+    image: caddy:2.8-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      # Named volumes, not bind mounts: caddy_data holds the Let's Encrypt
+      # account key and issued certificates. Lose it and every redeploy
+      # re-requests certificates, which hits the rate limit (5 per domain per
+      # week) and leaves the site on an untrusted certificate.
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      SITE_DOMAIN: ${SITE_DOMAIN:?set SITE_DOMAIN in .env.production}
+      TLS_EMAIL: ${TLS_EMAIL:?set TLS_EMAIL in .env.production}
+    depends_on:
+      frontend:
+        condition: service_healthy
+    networks: [edge]
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_SITE_URL: https://${SITE_DOMAIN}
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      # Internal service name, not a public URL: this is the server-side hop
+      # from the Next.js route handlers to NestJS.
+      BACKEND_API_URL: http://backend:3001
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/en').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks: [edge, internal]
+
+  backend:
+    build:
+      context: ./backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL in .env.production}
+      DIRECT_URL: ${DIRECT_URL:?set DIRECT_URL in .env.production}
+      JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env.production}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-8h}
+      # Only consulted for CORS. Nothing in a browser calls this service
+      # cross-origin, but keeping it correct means the header stays right if a
+      # route is ever exposed directly.
+      FRONTEND_URL: https://${SITE_DOMAIN}
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3001/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    networks: [internal]
+
+networks:
+  # Split so the backend sits on `internal` only and has no route to Caddy —
+  # a single shared network would leave it one misconfigured proxy line away
+  # from being published.
+  edge:
+  internal:
+
+volumes:
+  caddy_data:
+  caddy_config:

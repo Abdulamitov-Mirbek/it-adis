@@ -9,6 +9,7 @@ import { AuthModule } from "./auth/auth.module";
 import { AdminModule } from "./admin/admin.module";
 import { PublicModule } from "./public/public.module";
 import { ContentModule } from "./content/content.module";
+import { HealthController } from "./health/health.controller";
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { ContentModule } from "./content/content.module";
     PublicModule,
     ContentModule,
   ],
+  controllers: [HealthController],
   providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
 export class AppModule {}

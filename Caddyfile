@@ -1,0 +1,46 @@
+# Caddy obtains and renews a Let's Encrypt certificate automatically as soon as
+# {$SITE_DOMAIN} resolves to this host's public IP. There is no certbot step and
+# no renewal cron to forget.
+#
+# Before DNS is pointed here, swap the site address for `:80` to serve over
+# plain HTTP on the EC2 public IP — Let's Encrypt cannot issue for a bare IP, so
+# leaving the domain in place while DNS is elsewhere fails the challenge and
+# Caddy serves nothing.
+
+{
+	email {$TLS_EMAIL}
+	# Trim the server header; no reason to advertise the proxy version.
+	servers {
+		metrics
+	}
+}
+
+{$SITE_DOMAIN} {
+	encode zstd gzip
+
+	# Everything goes to Next.js, /api included: those are Next route handlers
+	# that proxy to NestJS server-side. Do NOT add a route to the backend here
+	# — publishing it would expose the API surface this design keeps private.
+	reverse_proxy frontend:3000 {
+		health_uri /en
+		health_interval 30s
+	}
+
+	# Caddy already sends HSTS on HTTPS sites. These are the headers a reverse
+	# proxy is better placed to guarantee than the app, so they are set in both
+	# places deliberately — next.config.ts covers `next dev` and any future
+	# host, this covers anything Caddy serves that never reaches Next.
+	header {
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy strict-origin-when-cross-origin
+		-Server
+	}
+
+	log {
+		output file /data/access.log {
+			roll_size 10MiB
+			roll_keep 5
+		}
+	}
+}

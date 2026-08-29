@@ -37,3 +37,13 @@ export const THROTTLE_APPLICATION = bothBuckets(HOUR, 5);
  * be used to inflate the table indefinitely.
  */
 export const THROTTLE_ANALYTICS = bothBuckets(MINUTE, 30);
+
+/**
+ * Exempt a route from both buckets.
+ *
+ * A bare `@SkipThrottle()` expands to `{ default: true }`, and there is no
+ * bucket called "default" here — so it silently exempts nothing and the route
+ * stays rate limited. Both names have to be listed, for the same reason the
+ * overrides above list both.
+ */
+export const SKIP_THROTTLE = { burst: true, sustained: true };

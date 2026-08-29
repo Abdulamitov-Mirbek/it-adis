@@ -41,6 +41,12 @@ const nextConfig: NextConfig = {
   // Enable React strict mode for better DX
   reactStrictMode: true,
 
+  // Emit a self-contained server bundle for the Docker image: Next traces the
+  // modules actually reached and copies just those, turning a ~1.2 GB image
+  // (full node_modules) into roughly 200 MB. Harmless outside Docker — it only
+  // adds .next/standalone alongside the normal build output.
+  output: "standalone",
+
   // Next advertises its presence by default; there is no reason to tell an
   // attacker which framework and version to look up advisories for.
   poweredByHeader: false,

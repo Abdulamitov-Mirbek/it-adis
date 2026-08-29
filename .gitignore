@@ -1,0 +1,3 @@
+
+# Production secrets live only on the server
+.env.production
