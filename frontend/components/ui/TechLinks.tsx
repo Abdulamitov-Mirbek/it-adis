@@ -75,7 +75,7 @@ export function TechLinks({
   }
 
   // Two columns rather than three: three columns forced the longer names
-  // ("JavaScript", "Data Science") down to an unreadable size on a phone.
+  // ("JavaScript", "Vibe Coding") down to an unreadable size on a phone.
   // Each row is a full-width horizontal card, comfortably over the 44 px
   // minimum tap target.
   return (

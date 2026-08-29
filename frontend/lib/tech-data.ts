@@ -1,7 +1,7 @@
 import { TECH_ICON_PATHS, type TechIconKey } from "./tech-icons";
 
 /**
- * The six technologies that orbit the Earth in the hero and each get a page
+ * The five technologies that orbit the Earth in the hero and each get a page
  * at /[locale]/tech/[slug].
  *
  * This is presentation data only — colours, orbital mechanics, icon and the
@@ -67,22 +67,6 @@ export const TECHNOLOGIES: readonly TechDef[] = [
     color: "#61DAFB",
     courseSlug: "frontend-development",
     orbit: { radius: 2.45, inclination: 0.58, phase: 1.1, speed: 0.22 },
-  },
-  {
-    slug: "ai",
-    key: "ai",
-    icon: "tensorflow",
-    color: "#FF8C1A",
-    courseSlug: "artificial-intelligence",
-    orbit: { radius: 2.45, inclination: 0.58, phase: 1.1 + Math.PI, speed: 0.22 },
-  },
-  {
-    slug: "data-science",
-    key: "data",
-    icon: "pandas",
-    color: "#22D3EE",
-    courseSlug: "data-science",
-    orbit: { radius: 2.92, inclination: -0.46, phase: 2.3, speed: 0.17 },
   },
   {
     slug: "vibe-coding",

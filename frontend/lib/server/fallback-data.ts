@@ -76,46 +76,24 @@ export const FALLBACK_COURSES: Course[] = [
   ),
   course(
     "4",
-    "artificial-intelligence",
-    "Artificial Intelligence",
-    "From the mathematics of learning to models running in production.",
-    "Neural network fundamentals, PyTorch, computer vision and NLP. Then the part most courses skip: evaluation, fine-tuning, serving and monitoring a model once real users depend on it.",
-    "7 months",
-    "ADVANCED",
-    4,
-    ["PyTorch", "Deep Learning", "NLP", "MLOps"]
-  ),
-  course(
-    "5",
-    "data-science",
-    "Data Science",
-    "Turn raw, messy data into decisions people act on.",
-    "SQL and pandas for real datasets, statistical inference that holds up to scrutiny, and visualisation that communicates rather than decorates. Capstone on a live dataset.",
-    "6 months",
-    "INTERMEDIATE",
-    5,
-    ["Pandas", "SQL", "Statistics", "Visualisation"]
-  ),
-  course(
-    "6",
     "vibe-coding",
     "Vibe Coding",
     "Build with AI as a collaborator, without losing the ability to build without it.",
     "Prompting, agents and AI-assisted refactoring with Cursor and Claude Code. Equal weight on judgement: reviewing generated code, spotting the confident mistakes, and staying the engineer in the loop.",
     "3 months",
     "ALL_LEVELS",
-    6,
+    4,
     ["AI Tools", "Cursor", "Agents", "Productivity"]
   ),
   course(
-    "7",
+    "5",
     "flutter-development",
     "Flutter & Mobile Development",
     "Build apps for both phones from a single codebase, and publish them.",
     "Dart from the ground up, then Flutter widgets, navigation and state management. Network layers, offline storage and testing, finishing with a signed release submitted to the Play Store.",
     "5 months",
     "BEGINNER",
-    7,
+    5,
     ["Flutter", "Dart", "Android", "iOS"]
   ),
 ];
@@ -132,7 +110,6 @@ export const FALLBACK_REVIEWS: Review[] = [
   { id: 2, name: "Marat Dzhaksybekov", role: "Python Developer @ Kaspi", initials: "MD", color: "from-blue-500 to-blue-700", stars: 5, text: "The Python course is relentlessly practical. No slide decks, no theory overload — you are building things from the first day.", course: "Python Development" },
   { id: 3, name: "Sarah Thompson", role: "AI Engineer @ Yandex", initials: "ST", color: "from-purple-500 to-purple-700", stars: 5, text: "The AI course goes far beyond surface-level tutorials. We built production models and deployed them to real users.", course: "Artificial Intelligence" },
   { id: 4, name: "Alex Chen", role: "Fullstack Engineer @ Microsoft", initials: "AC", color: "from-cyan-500 to-cyan-700", stars: 5, text: "The mentorship is the real product. They do not just teach you to code, they teach you to think like an engineer.", course: "JavaScript & TypeScript" },
-  { id: 5, name: "Elena Petrova", role: "Data Scientist @ Tinkoff", initials: "EP", color: "from-pink-500 to-rose-700", stars: 5, text: "I was hired before I had even finished the course. The capstone project was what got me the interview.", course: "Data Science" },
   { id: 6, name: "Omar Nazarbayev", role: "Startup CTO", initials: "ON", color: "from-orange-500 to-red-700", stars: 5, text: "Vibe Coding made my whole team faster — and more careful. Knowing when not to trust the model is half the skill.", course: "Vibe Coding" },
 ];
 

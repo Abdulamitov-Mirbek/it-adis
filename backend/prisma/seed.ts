@@ -57,30 +57,6 @@ const courses = [
     order: 4,
     tags: ["AI", "LLMs", "Productivity", "Vibe Coding"],
   },
-  {
-    slug: "artificial-intelligence",
-    title: "Artificial Intelligence",
-    description: "Neural networks, machine learning pipelines, LLMs, and practical AI applications.",
-    longDesc: "Supervised/unsupervised learning, deep learning with PyTorch, NLP, computer vision, fine-tuning LLMs.",
-    duration: "6 months",
-    level: CourseLevel.ADVANCED,
-    price: 60000,
-    isFeatured: true,
-    order: 5,
-    tags: ["AI", "ML", "Deep Learning", "Python"],
-  },
-  {
-    slug: "data-science",
-    title: "Data Science",
-    description: "Data analysis, visualization, statistical modeling, and real business insights.",
-    longDesc: "pandas, NumPy, matplotlib, seaborn, scikit-learn, SQL. End-to-end data pipelines and dashboards.",
-    duration: "4 months",
-    level: CourseLevel.INTERMEDIATE,
-    price: 40000,
-    isFeatured: false,
-    order: 6,
-    tags: ["Data", "Python", "Analytics", "SQL"],
-  },
 ];
 
 async function main() {

@@ -37,6 +37,14 @@ export class CreateCourseDto {
   @IsBoolean()
   isFeatured?: boolean;
 
+  // The admin course dialog has always sent this; it was missing from the DTO,
+  // so `whitelist` silently dropped it and toggling a course active or inactive
+  // did nothing. With `forbidNonWhitelisted` on it would have started 400ing.
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
+
   @ApiProperty({ required: false })
   @IsOptional()
   @IsInt()

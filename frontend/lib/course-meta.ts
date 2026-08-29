@@ -1,5 +1,5 @@
 import {
-  Code2, Brain, Layers, Zap, Globe, Database, Smartphone,
+  Code2, Layers, Zap, Globe, Smartphone,
 } from "lucide-react";
 import { Course } from "./api";
 
@@ -63,17 +63,6 @@ const STATIC_META_MAP: Record<string, Omit<CourseMeta, "course" | "duration">> =
     border: "border-yellow-500/30 hover:border-yellow-400/60",
     iconBg: "bg-yellow-500/10 text-yellow-400",
   },
-  "artificial-intelligence": {
-    key: "ai",
-    icon: Brain,
-    badgeKey: "advanced",
-    students: "290+",
-    rating: 4.8,
-    tags: ["Advanced", "ML", "Deep Learning"],
-    gradient: "from-purple-600/20 to-purple-900/10",
-    border: "border-purple-500/30 hover:border-purple-400/60",
-    iconBg: "bg-purple-500/10 text-purple-400",
-  },
   "flutter-development": {
     key: "flutter",
     icon: Smartphone,
@@ -84,17 +73,6 @@ const STATIC_META_MAP: Record<string, Omit<CourseMeta, "course" | "duration">> =
     gradient: "from-sky-600/20 to-sky-900/10",
     border: "border-sky-500/30 hover:border-sky-400/60",
     iconBg: "bg-sky-500/10 text-sky-400",
-  },
-  "data-science": {
-    key: "data",
-    icon: Database,
-    badgeKey: "practical",
-    students: "310+",
-    rating: 4.7,
-    tags: ["Intermediate", "Analytics", "Python"],
-    gradient: "from-cyan-600/15 to-teal-900/10",
-    border: "border-cyan-500/30 hover:border-cyan-400/60",
-    iconBg: "bg-cyan-500/10 text-cyan-400",
   },
 };
 

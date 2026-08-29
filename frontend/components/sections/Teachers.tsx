@@ -30,10 +30,9 @@ function XIcon({ size = 15 }: { size?: number }) {
 }
 
 const TEACHERS = [
-  { name: "Amir Seitkali",   role: "Lead Python & AI Instructor", bio: "10 years in ML engineering. Previously at Google DeepMind. Built production ML systems serving 50M+ users.", tags: ["Python", "ML", "NLP"],           initials: "AS", color: "from-green-500 to-emerald-700" },
+  { name: "Amir Seitkali",   role: "Lead Python Instructor",       bio: "10 years in backend engineering. Previously at Google. Built production systems serving 50M+ users.",          tags: ["Python", "Django", "APIs"],       initials: "AS", color: "from-green-500 to-emerald-700" },
   { name: "Diana Kozyreva",  role: "Frontend & React Expert",      bio: "Senior frontend engineer, 8 years. Ex-Figma, open-source UI libraries with 12k stars.",                          tags: ["React", "Next.js", "TypeScript"], initials: "DK", color: "from-blue-500 to-blue-700"    },
   { name: "Ruslan Bektenov", role: "JavaScript & Vibe Coding",     bio: "Full-stack developer turned educator. Built 30+ SaaS products. Shipped a startup in 4 hours.",                   tags: ["JS", "Vibe Coding", "LLMs"],      initials: "RB", color: "from-yellow-500 to-orange-600" },
-  { name: "Irina Voloshyna", role: "Data Science Lead",            bio: "PhD in Applied Statistics. 7 years as data scientist at top fintech.",                                            tags: ["Data Science", "Python", "SQL"],  initials: "IV", color: "from-purple-500 to-purple-700" },
 ];
 
 const SOCIAL = [

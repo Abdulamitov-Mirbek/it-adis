@@ -1,7 +1,14 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "rootDir": "./src"
+    "rootDir": "./src",
+    // Keep the incremental cache INSIDE dist. It used to default to
+    // ./tsconfig.build.tsbuildinfo in the project root, which nest-cli's
+    // `deleteOutDir` does not touch — so after dist was wiped, tsc trusted the
+    // surviving cache, decided every file was already emitted, and produced a
+    // dist containing only the files edited since. `node dist/main` then failed
+    // with MODULE_NOT_FOUND. Cache and output now live or die together.
+    "tsBuildInfoFile": "./dist/tsconfig.build.tsbuildinfo"
   },
   "exclude": ["node_modules", "test", "dist", "prisma", "**/*spec.ts"]
 }

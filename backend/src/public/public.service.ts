@@ -74,16 +74,6 @@ export class PublicService {
         course: "Python Development" 
       },
       { 
-        id: 3,
-        name: "Sarah Thompson", 
-        role: "AI Engineer @ Yandex", 
-        initials: "ST", 
-        color: "from-purple-500 to-purple-700", 
-        stars: 5, 
-        text: "The AI course goes way beyond surface-level tutorials. We built production ML models and deployed them to real users. My salary doubled after graduating.", 
-        course: "Artificial Intelligence" 
-      },
-      { 
         id: 4,
         name: "Alex Chen", 
         role: "Fullstack @ Microsoft", 
@@ -92,16 +82,6 @@ export class PublicService {
         stars: 5, 
         text: "Coming from a non-tech background, I was worried about keeping up. The mentorship here is unreal — they don't just teach code, they teach you how to think like a developer.", 
         course: "JavaScript & TypeScript" 
-      },
-      { 
-        id: 5,
-        name: "Elena Petrova", 
-        role: "Data Scientist @ Tinkoff", 
-        initials: "EP", 
-        color: "from-pink-500 to-rose-700", 
-        stars: 5, 
-        text: "The data science program is incredibly hands-on. We worked with real datasets from day one and learned industry-standard tools. Got hired before even finishing the course.", 
-        course: "Data Science" 
       },
       { 
         id: 6,

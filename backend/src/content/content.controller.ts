@@ -9,6 +9,8 @@ import {
   Query,
   UseGuards,
 } from "@nestjs/common";
+import { Throttle } from "@nestjs/throttler";
+import { THROTTLE_ANALYTICS } from "../config/throttle";
 import { ApiBearerAuth, ApiOperation, ApiQuery, ApiTags } from "@nestjs/swagger";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { ContentService } from "./content.service";
@@ -18,6 +20,7 @@ import {
   TrackPageViewDto,
   UpdateSiteContentDto,
 } from "./dto/content.dto";
+import { UpdateReviewDto, UpdateTeacherDto } from "./dto/update-content.dto";
 
 /**
  * Admin-managed content: teachers, reviews, the About copy and traffic.
@@ -59,7 +62,7 @@ export class ContentController {
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: "Update a teacher (admin)" })
-  updateTeacher(@Param("id") id: string, @Body() dto: Partial<CreateTeacherDto>) {
+  updateTeacher(@Param("id") id: string, @Body() dto: UpdateTeacherDto) {
     return this.contentService.updateTeacher(id, dto);
   }
 
@@ -99,7 +102,7 @@ export class ContentController {
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: "Update a review (admin)" })
-  updateReview(@Param("id") id: string, @Body() dto: Partial<CreateReviewDto>) {
+  updateReview(@Param("id") id: string, @Body() dto: UpdateReviewDto) {
     return this.contentService.updateReview(id, dto);
   }
 
@@ -130,6 +133,7 @@ export class ContentController {
   // ── Analytics ─────────────────────────────────────────────────────────────
 
   @Post("analytics/track")
+  @Throttle(THROTTLE_ANALYTICS)
   @ApiOperation({ summary: "Record a page view (called by the browser)" })
   track(@Body() dto: TrackPageViewDto) {
     return this.contentService.trackPageView(dto);

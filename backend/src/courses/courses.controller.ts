@@ -13,6 +13,7 @@ import { ApiTags, ApiOperation, ApiQuery, ApiBearerAuth } from "@nestjs/swagger"
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { CoursesService } from "./courses.service";
 import { CreateCourseDto } from "./dto/create-course.dto";
+import { UpdateCourseDto } from "./dto/update-course.dto";
 
 @ApiTags("courses")
 @Controller("courses")
@@ -50,7 +51,7 @@ export class CoursesController {
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: "Update a course (admin)" })
-  update(@Param("slug") slug: string, @Body() dto: Partial<CreateCourseDto>) {
+  update(@Param("slug") slug: string, @Body() dto: UpdateCourseDto) {
     return this.coursesService.update(slug, dto);
   }
 

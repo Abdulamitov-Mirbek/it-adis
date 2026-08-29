@@ -9,11 +9,10 @@
     "apply": "Apply Now"
   },
   "hero": {
-    "badge": "Advanced Digital Innovation School",
     "title1": "Your Future",
     "title2": "Starts",
     "title3": "with IT",
-    "subtitle": "Master the technologies that define tomorrow — Python, JavaScript, AI, Frontend, and Vibe Coding. Real projects. Real mentors. Real results.",
+    "subtitle": "Master the technologies that define tomorrow — Python, JavaScript, Frontend, Flutter and Vibe Coding. Real projects. Real mentors. Real results.",
     "cta1": "Start Learning",
     "cta2": "Explore Courses",
     "stats": {
@@ -57,14 +56,6 @@
       "vibe": {
         "title": "Vibe Coding",
         "desc": "The future of development — AI-assisted coding workflows, prompt engineering for devs, and building fast with LLMs."
-      },
-      "ai": {
-        "title": "Artificial Intelligence",
-        "desc": "Neural networks, machine learning pipelines, LLMs, and practical AI applications. Build the intelligent systems of tomorrow."
-      },
-      "data": {
-        "title": "Data Science",
-        "desc": "Transform data into insights. Master analytics, visualization, and data-driven decision making."
       }
     }
   },
@@ -73,8 +64,6 @@
     "title1": "We Don't Teach Code.",
     "title2": "We Build",
     "titleGreen": "Careers.",
-    "p1": "IT ADIS is a modern technology education center dedicated to producing industry-ready developers, data scientists, and AI engineers. We combine rigorous technical depth with real-world project experience.",
-    "p2": "Founded with one mission: eliminate the gap between traditional education and what tech companies actually need. Every curriculum update reflects what top employers are hiring for right now.",
     "points": [
       "Mentored by active senior engineers",
       "Portfolio of 3+ production projects on graduation",
@@ -125,14 +114,14 @@
     "titleGreen": "Journey Today",
     "subtitle": "Drop us a message and our team will get back to you within 24 hours.",
     "email": "Email Us",
-    "emailVal": "hello@itadis.edu",
+    "emailVal": "mmrek07@gmail.com",
     "emailSub": "Response within 24 hours",
     "phone": "Call Us",
-    "phoneVal": "+996 (700) 123-456",
+    "phoneVal": "+996 558 553 177",
     "phoneSub": "Mon–Sat, 9am–6pm",
     "address": "Visit Us",
     "addressVal": "Bishkek, Kyrgyzstan",
-    "addressSub": "Innovation District, Building 5",
+    "addressSub": "Manas Ave 64/1 · Frunze St 278",
     "form": {
       "name": "Full Name",
       "namePh": "John Doe",
@@ -151,20 +140,31 @@
       "title": "Message Received!",
       "desc": "Thanks for reaching out. Our admissions team will contact you within 24 hours to discuss next steps.",
       "again": "Send Another Message"
+    },
+    "map": {
+      "title": "Find us on the map",
+      "subtitle": "Two branches in Bishkek — drop by any of them.",
+      "open": "Open in 2GIS",
+      "directions": "Get directions",
+      "branch1": "Main campus",
+      "branch1Addr": "Manas Avenue 64/1",
+      "branch2": "Second branch",
+      "branch2Addr": "Frunze Street 278"
     }
   },
   "footer": {
     "tagline": "Advanced Digital Innovation School — where technology education meets real-world impact.",
     "copyright": "All rights reserved.",
     "energy": "green energy",
+    "branch1": "Manas Ave 64/1, Bishkek",
+    "branch2": "Frunze St 278, Bishkek",
     "sections": {
       "Programs": [
         "Python",
         "JavaScript",
         "Frontend",
-        "Vibe Coding",
-        "AI",
-        "Data Science"
+        "Flutter",
+        "Vibe Coding"
       ],
       "Company": [
         "About Us",
@@ -426,120 +426,6 @@
           {
             "phase": "Craft",
             "detail": "Accessibility, performance budgets, animation and design systems — what makes work look professional."
-          }
-        ]
-      },
-      "ai": {
-        "name": "AI & Machine Learning",
-        "tagline": "Teaching software to find the patterns you cannot describe.",
-        "what": "Machine learning is how we build systems for problems too complex to write rules for — recognising speech, ranking results, forecasting demand. Instead of encoding the logic yourself, you assemble data, choose a model, and let it learn the mapping. It is the fastest-moving field in software right now.",
-        "why": [
-          "The highest-paying specialisation in the industry, and the gap between demand and supply is still wide.",
-          "It applies to every domain — medicine, agriculture, logistics, finance — so you can pair it with what you already know.",
-          "You learn to reason with data and uncertainty, which sharpens your judgement well beyond programming.",
-          "The tooling has matured enough that you can build genuinely useful models without a research degree."
-        ],
-        "build": [
-          {
-            "title": "A prediction model",
-            "desc": "From raw data to a trained model that forecasts something real, evaluated honestly."
-          },
-          {
-            "title": "A computer-vision classifier",
-            "desc": "A neural network that recognises images, trained and tested on your own dataset."
-          },
-          {
-            "title": "An LLM-powered app",
-            "desc": "A working product built on a language model API — prompting, context, and handling wrong answers."
-          }
-        ],
-        "careers": [
-          {
-            "role": "ML Engineer",
-            "salary": "$1 200 – $3 000 / mo"
-          },
-          {
-            "role": "Data Scientist",
-            "salary": "$1 000 – $2 500 / mo"
-          },
-          {
-            "role": "AI Application Developer",
-            "salary": "$900 – $2 200 / mo"
-          }
-        ],
-        "roadmap": [
-          {
-            "phase": "The maths you need",
-            "detail": "Just enough statistics and linear algebra to understand what a model is doing — not a maths degree."
-          },
-          {
-            "phase": "Classical ML",
-            "detail": "Regression, classification, trees. Training, validation, and why models fool you."
-          },
-          {
-            "phase": "Deep learning",
-            "detail": "Neural networks, TensorFlow, computer vision and language models."
-          },
-          {
-            "phase": "In production",
-            "detail": "Serving a model behind an API, monitoring it, and knowing when it has gone stale."
-          }
-        ]
-      },
-      "data": {
-        "name": "Data Science",
-        "tagline": "Turning a spreadsheet nobody understands into a decision.",
-        "what": "Data science is the work of getting a trustworthy answer out of messy data. It combines programming, statistics and communication: pulling data together, cleaning what is wrong with it, finding what is actually true, and presenting it so a decision-maker can act.",
-        "why": [
-          "Every organisation now collects more data than it can interpret, and very few people can close that gap.",
-          "It is the most business-adjacent technical role, which makes it a natural route into leadership.",
-          "You can start adding value with skills that take months, not years, to build.",
-          "Shares its foundation with AI, so it opens that door too."
-        ],
-        "build": [
-          {
-            "title": "An end-to-end analysis",
-            "desc": "A real dataset from collection through cleaning to a written conclusion someone could act on."
-          },
-          {
-            "title": "An interactive dashboard",
-            "desc": "Live metrics that a non-technical person can read without you in the room."
-          },
-          {
-            "title": "A forecast",
-            "desc": "Time-series work that projects forward — and states its own uncertainty honestly."
-          }
-        ],
-        "careers": [
-          {
-            "role": "Data Analyst",
-            "salary": "$600 – $1 500 / mo"
-          },
-          {
-            "role": "Data Scientist",
-            "salary": "$1 000 – $2 500 / mo"
-          },
-          {
-            "role": "BI Developer",
-            "salary": "$700 – $1 800 / mo"
-          }
-        ],
-        "roadmap": [
-          {
-            "phase": "Data wrangling",
-            "detail": "Python, pandas, SQL. Getting data out of where it lives and into a usable shape."
-          },
-          {
-            "phase": "Statistics that matter",
-            "detail": "Distributions, correlation, significance — and the traps that produce confident wrong answers."
-          },
-          {
-            "phase": "Visualisation",
-            "detail": "Charts that reveal rather than decorate, and the judgement to choose the right one."
-          },
-          {
-            "phase": "Communication",
-            "detail": "Turning an analysis into a recommendation. The skill that decides whether your work changes anything."
           }
         ]
       },

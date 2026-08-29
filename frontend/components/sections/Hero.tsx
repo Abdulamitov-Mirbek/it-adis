@@ -3,7 +3,7 @@
 import { useEffect, useRef, Suspense, lazy } from "react";
 import { useTranslations } from "next-intl";
 import { gsap } from "gsap";
-import { ArrowRight, Play, Sparkles } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { SparkleButton } from "@/components/ui/SparkleButton";
 import { TechLinks } from "@/components/ui/TechLinks";
 import { CanvasErrorBoundary } from "@/components/3d/CanvasErrorBoundary";
@@ -35,7 +35,6 @@ export function Hero() {
   const t = useTranslations("hero");
   const ts = useTranslations("hero.stats");
 
-  const badgeRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -51,8 +50,7 @@ export function Hero() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(badgeRef.current, { y: 30, opacity: 0, duration: 0.7 })
-        .from(headingRef.current, { y: 50, opacity: 0, duration: 0.9 }, "-=0.4")
+      tl.from(headingRef.current, { y: 50, opacity: 0, duration: 0.9 })
         .from(subRef.current, { y: 30, opacity: 0, duration: 0.7 }, "-=0.5")
         .from(ctaRef.current, { y: 30, opacity: 0, duration: 0.7 }, "-=0.4");
       if (statsRef.current) {
@@ -112,14 +110,6 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-9 lg:gap-8 xl:gap-16 items-center">
           {/* ── Left column ──────────────────────── */}
           <div className="flex flex-col gap-6 sm:gap-7">
-            <div ref={badgeRef} className="inline-flex items-center gap-2 self-start">
-              <div className="flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-green-500/30 text-green-300 text-sm font-medium">
-                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse-green" />
-                <Sparkles size={14} />
-                {t("badge")}
-              </div>
-            </div>
-
             <h1
               ref={headingRef}
               className="font-display text-[2.4rem] sm:text-5xl md:text-6xl xl:text-7xl font-bold leading-[1.12] sm:leading-[1.06] tracking-tight"

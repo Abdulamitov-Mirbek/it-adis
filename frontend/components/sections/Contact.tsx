@@ -8,6 +8,8 @@ import { Mail, MapPin, Phone, CheckCircle2 } from "lucide-react";
 import { SparkleButton } from "@/components/ui/SparkleButton";
 import { cn } from "@/lib/utils";
 import { api } from "@/lib/api";
+import { BranchMap } from "@/components/sections/BranchMap";
+import { BRANCH_2GIS_MAIN, CONTACT_EMAIL, CONTACT_PHONE_HREF } from "@/lib/contact";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,11 +38,10 @@ export function Contact() {
         // Fallback to hardcoded programs
         setPrograms([
           "Python Development",
-          "JavaScript & TypeScript", 
+          "JavaScript & TypeScript",
           "Frontend Development",
           "Vibe Coding",
-          "Artificial Intelligence",
-          "Data Science",
+          "Flutter & Mobile Development",
         ]);
       }
     };
@@ -109,11 +110,16 @@ export function Contact() {
           <div ref={leftRef} className="flex flex-col gap-8">
             <div className="flex flex-col gap-5">
               {[
-                { Icon: Mail,   label: t("email"),   value: t("emailVal"),   sub: t("emailSub")   },
-                { Icon: Phone,  label: t("phone"),   value: t("phoneVal"),   sub: t("phoneSub")   },
-                { Icon: MapPin, label: t("address"), value: t("addressVal"), sub: t("addressSub") },
-              ].map(({ Icon, label, value, sub }) => (
-                <div key={label} className="flex items-start gap-4 glass border border-green-900/30 rounded-2xl p-5 hover:border-green-500/30 transition-all">
+                { Icon: Mail,   label: t("email"),   value: t("emailVal"),   sub: t("emailSub"),   href: `mailto:${CONTACT_EMAIL}` },
+                { Icon: Phone,  label: t("phone"),   value: t("phoneVal"),   sub: t("phoneSub"),   href: `tel:${CONTACT_PHONE_HREF}` },
+                { Icon: MapPin, label: t("address"), value: t("addressVal"), sub: t("addressSub"), href: BRANCH_2GIS_MAIN },
+              ].map(({ Icon, label, value, sub, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="flex items-start gap-4 glass border border-green-900/30 rounded-2xl p-5 hover:border-green-500/30 transition-all focus:outline-none focus:ring-2 focus:ring-green-500/40"
+                >
                   <div className="p-3 rounded-xl bg-green-500/10 text-green-400 shrink-0" aria-hidden="true">
                     <Icon size={20} />
                   </div>
@@ -122,25 +128,10 @@ export function Contact() {
                     <div className="font-semibold text-white">{value}</div>
                     <div className="text-xs text-green-100/78 mt-0.5">{sub}</div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
 
-            {/* Map placeholder */}
-            <div className="glass border border-green-900/30 rounded-3xl overflow-hidden h-56 relative" aria-label="Campus location map">
-              <div className="absolute inset-0 opacity-20" style={{
-                backgroundImage: "linear-gradient(rgba(74,222,128,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(74,222,128,0.3) 1px, transparent 1px)",
-                backgroundSize: "30px 30px",
-              }} aria-hidden="true" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="flex flex-col items-center gap-2">
-                  <div className="w-10 h-10 rounded-full bg-green-500/20 border border-green-500/40 flex items-center justify-center animate-pulse-green">
-                    <MapPin size={18} className="text-green-400" aria-hidden="true" />
-                  </div>
-                  <span className="text-sm text-green-300/70 font-medium">IT ADIS Campus</span>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Form */}
@@ -208,6 +199,8 @@ export function Contact() {
             )}
           </div>
         </div>
+
+        <BranchMap />
       </div>
     </section>
   );

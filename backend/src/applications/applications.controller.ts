@@ -7,6 +7,8 @@ import {
   Param,
   UseGuards,
 } from "@nestjs/common";
+import { Throttle } from "@nestjs/throttler";
+import { THROTTLE_APPLICATION } from "../config/throttle";
 import { ApiTags, ApiOperation, ApiBearerAuth } from "@nestjs/swagger";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { ApplicationsService } from "./applications.service";
@@ -20,6 +22,7 @@ export class ApplicationsController {
 
   /** The only public route here — prospective students submitting the form. */
   @Post()
+  @Throttle(THROTTLE_APPLICATION)
   @ApiOperation({ summary: "Submit a new course application" })
   create(@Body() dto: CreateApplicationDto) {
     return this.applicationsService.create(dto);

@@ -117,14 +117,12 @@ export function About() {
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" aria-hidden="true" />
                 {t("badge")}
               </div>
-              <h2 className="font-display text-4xl sm:text-5xl font-bold mb-5 leading-tight">
+              <h2 className="font-display text-4xl sm:text-5xl font-bold leading-tight">
                 {t("title1")}
                 <br />
                 {t("title2")}{" "}
                 <span className="gradient-text">{t("titleGreen")}</span>
               </h2>
-              <p className="text-green-100/75 text-lg leading-relaxed mb-6">{t("p1")}</p>
-              <p className="text-green-100/70 leading-relaxed">{t("p2")}</p>
             </div>
 
             <div className="flex flex-col gap-3">

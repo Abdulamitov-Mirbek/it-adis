@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local build/run logs — noise in review, and stack traces leak absolute paths
+backend.log
+*.log
+
+# TypeScript incremental cache (kept inside dist by tsconfig.build.json)
+*.tsbuildinfo
+
+# Compiled output
+/dist

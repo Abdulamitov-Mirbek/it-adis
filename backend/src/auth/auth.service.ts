@@ -10,12 +10,30 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
+  /**
+   * A bcrypt hash of a value nobody can supply, compared against when the email
+   * is unknown.
+   *
+   * Without it the lookup short-circuits: an unknown email returns in the time
+   * of one database query, a known one costs a full bcrypt comparison on top.
+   * That difference is measurable over the network and tells an attacker which
+   * addresses are real admins — the first half of the credentials they need.
+   * Every login now pays the same bcrypt cost.
+   */
+  private static readonly DUMMY_HASH = bcrypt.hashSync(
+    "no-such-account-placeholder",
+    10,
+  );
+
   async validateAdmin(email: string, password: string): Promise<any> {
     const adminUser = await this.prisma.adminUser.findUnique({
       where: { email },
     });
 
-    if (adminUser && await bcrypt.compare(password, adminUser.passwordHash)) {
+    const hash = adminUser?.passwordHash ?? AuthService.DUMMY_HASH;
+    const passwordMatches = await bcrypt.compare(password, hash);
+
+    if (adminUser && passwordMatches) {
       const { passwordHash: _, ...result } = adminUser;
       return result;
     }
