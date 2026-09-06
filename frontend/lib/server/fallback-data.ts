@@ -113,10 +113,23 @@ export const FALLBACK_REVIEWS: Review[] = [
   { id: 6, name: "Omar Nazarbayev", role: "Startup CTO", initials: "ON", color: "from-orange-500 to-red-700", stars: 5, text: "Vibe Coding made my whole team faster — and more careful. Knowing when not to trust the model is half the skill.", course: "Vibe Coding" },
 ];
 
+/**
+ * Served only when the teachers table cannot be read.
+ *
+ * Mirrors the real roster in backend/src/scripts/seed-teachers.ts rather than
+ * inventing names: this used to hold three fictional instructors, so a backend
+ * outage quietly replaced the school's actual mentors with people who do not
+ * work there. No photos here — a fallback cannot reach storage either, and the
+ * cards fall back to initials.
+ */
 export const FALLBACK_TEACHERS: Teacher[] = [
-  { id: 1, name: "Amir Seitkali", role: "Lead Python & AI Instructor", bio: "Ten years in machine learning engineering, previously at Google DeepMind.", tags: ["Python", "ML", "NLP"], initials: "AS", color: "from-green-500 to-emerald-700" },
-  { id: 2, name: "Diana Kozyreva", role: "Frontend & React Expert", bio: "Senior frontend engineer with eight years building design systems. Ex-Figma.", tags: ["React", "Next.js", "TypeScript"], initials: "DK", color: "from-blue-500 to-blue-700" },
-  { id: 3, name: "Viktor Petrov", role: "AI & Machine Learning Lead", bio: "PhD in Computer Science and twelve years in applied AI research.", tags: ["Deep Learning", "Computer Vision", "PyTorch"], initials: "VP", color: "from-purple-500 to-purple-700" },
+  { id: 1, name: "Bayastan", role: "Flutter-разработчик, Middle+", bio: "Более 5 лет в мобильной разработке. Flutter и Dart, архитектура приложений, релизы в App Store и Google Play.", tags: ["Flutter", "Dart", "Mobile"], initials: "BA", color: "from-cyan-500 to-sky-700" },
+  { id: 2, name: "Adyl", role: "Senior Python-разработчик", bio: "Более 5 лет в backend-разработке на Python. Чистый код, проектирование сервисов и разбор реальных production-задач.", tags: ["Python", "Backend", "Senior"], initials: "AD", color: "from-green-500 to-emerald-700" },
+  { id: 3, name: "Guldana", role: "Frontend-разработчик", bio: "Более 4 лет во фронтенде. React, Vue и Angular — помогает выбрать инструмент под задачу и не бояться нового фреймворка.", tags: ["React", "Vue", "Angular"], initials: "GU", color: "from-violet-500 to-purple-700" },
+  { id: 4, name: "Azamat", role: "Full-stack разработчик", bio: "Более 4 лет во full-stack разработке. Ведёт студентов от вёрстки до сервера и деплоя готового проекта.", tags: ["Full-stack", "Frontend", "Backend"], initials: "AZ", color: "from-amber-500 to-orange-600" },
+  { id: 5, name: "Saltanat", role: "Наставник по JavaScript и React", bio: "Более 3 лет во фронтенде. JavaScript и React: компонентная архитектура, работа с API и вёрстка под любые экраны.", tags: ["JavaScript", "React", "Frontend"], initials: "SA", color: "from-pink-500 to-rose-700" },
+  { id: 6, name: "Erjan", role: "Python / AI-разработчик", bio: "Более 2 лет в Python-разработке. Django, работа с данными и AI-сервисами, backend для веб-приложений.", tags: ["Python", "Django", "AI"], initials: "ER", color: "from-blue-500 to-blue-700" },
+  { id: 7, name: "Mirbek", role: "Full-stack разработчик", bio: "Full-stack разработка от вёрстки до сервера. Помогает студентам собрать и опубликовать первый рабочий проект.", tags: ["Full-stack", "JavaScript", "Web"], initials: "MI", color: "from-teal-500 to-teal-700" },
 ];
 
 /** Served when the site-content row cannot be read; mirrors the schema defaults. */

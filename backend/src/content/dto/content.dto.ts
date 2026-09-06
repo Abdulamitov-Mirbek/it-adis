@@ -9,6 +9,7 @@ import {
   MaxLength,
   Min,
   MinLength,
+  ValidateIf,
 } from "class-validator";
 
 /**
@@ -44,6 +45,17 @@ export class CreateTeacherDto {
   @IsString()
   @MaxLength(4)
   initials?: string;
+
+  /**
+   * Public Supabase Storage URL, normally set by the photo upload endpoint
+   * rather than typed. Nullable so the form can clear a photo and fall back to
+   * the initials badge.
+   */
+  @IsOptional()
+  @ValidateIf((_, value) => value !== null)
+  @IsString()
+  @MaxLength(500)
+  photoUrl?: string | null;
 
   @IsOptional()
   @IsString()

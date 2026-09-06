@@ -2,16 +2,20 @@
 
 import { useCallback } from "react";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { adminAPI } from "@/lib/admin-api";
 import { Card, CardHeader, StatusBadge } from "./ui/primitives";
 import { EmptyState, ErrorState, Skeleton } from "./ui/states";
-import { formatDateTime, statusMeta } from "./status";
+import { useDateFormat, useStatusMeta } from "./status";
 import { useAdminQuery } from "./useAdminQuery";
 
 /** The latest applications, as a feed — the one thing worth seeing on opening
  *  the panel without navigating anywhere. */
 export function RecentActivity() {
+  const t = useTranslations("admin.recent");
+  const statusMeta = useStatusMeta();
+  const { formatDateTime } = useDateFormat();
   const { data, error, isLoading, reload } = useAdminQuery(
     useCallback(() => adminAPI.getRecentActivity(), [])
   );
@@ -21,14 +25,14 @@ export function RecentActivity() {
   return (
     <Card>
       <CardHeader
-        title="Recent applications"
-        description="The most recent submissions from the website"
+        title={t("title")}
+        description={t("description")}
         action={
           <Link
             href="/admin/applications"
             className="inline-flex items-center gap-1 text-[13px] font-medium text-green-700 hover:text-green-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 rounded"
           >
-            View all
+            {t("viewAll")}
             <ArrowRight size={14} aria-hidden="true" />
           </Link>
         }
@@ -55,8 +59,8 @@ export function RecentActivity() {
 
       {!isLoading && !error && applications.length === 0 && (
         <EmptyState
-          title="No applications yet"
-          description="New submissions from the website will appear here as they arrive."
+          title={t("emptyTitle")}
+          description={t("emptyDescription")}
         />
       )}
 
@@ -81,7 +85,7 @@ export function RecentActivity() {
                     {application.applicantName}
                   </p>
                   <p className="text-[13px] text-slate-500 truncate">
-                    {application.courseName || "No course selected"}
+                    {application.courseName || t("noCourse")}
                     <span className="text-slate-500 mx-1.5" aria-hidden="true">·</span>
                     {formatDateTime(application.createdAt)}
                   </p>

@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  frontend:
+    name: Frontend: lint & build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install (frontend)
+        working-directory: frontend
+        run: |
+          npm ci
+      - name: Lint (frontend)
+        working-directory: frontend
+        run: |
+          npm run lint --if-present
+      - name: Build (frontend)
+        working-directory: frontend
+        run: |
+          npm run build --if-present
+
+  backend:
+    name: Backend: lint & build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install (backend)
+        working-directory: backend
+        run: |
+          npm ci
+      - name: Lint (backend)
+        working-directory: backend
+        run: |
+          npm run lint --if-present
+      - name: Build (backend)
+        working-directory: backend
+        run: |
+          npm run build --if-present

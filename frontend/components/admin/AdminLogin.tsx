@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { useAdmin } from "./AdminProvider";
 import { useRouter } from "@/i18n/navigation";
 import { Button, Field, Input } from "./ui/primitives";
@@ -12,6 +13,7 @@ export function AdminLogin() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { login, isAuthenticated, isLoading } = useAdmin();
   const router = useRouter();
+  const t = useTranslations("admin.login");
 
   useEffect(() => {
     // Someone arriving here with a live session should not have to sign in
@@ -29,7 +31,7 @@ export function AdminLogin() {
     try {
       await login(email, password);
     } catch (caught) {
-      setError(caught instanceof Error ? caught.message : "Sign in failed");
+      setError(caught instanceof Error ? caught.message : t("failed"));
       setIsSubmitting(false);
     }
     // On success the provider navigates away, so the submitting state is left
@@ -50,15 +52,15 @@ export function AdminLogin() {
           <span className="grid place-items-center w-11 h-11 rounded-xl bg-green-600 text-white font-bold mb-4">
             IA
           </span>
-          <h1 className="font-display text-xl font-semibold text-slate-900">IT ADIS Administration</h1>
+          <h1 className="font-display text-xl font-semibold text-slate-900">{t("heading")}</h1>
           <p className="text-[13px] text-slate-500 mt-1">
-            Sign in to manage courses and applications
+            {t("subheading")}
           </p>
         </div>
 
         <div className="relative bg-dark-card border border-dark-border rounded-2xl p-6">
           <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-            <Field label="Email address" htmlFor="email" required>
+            <Field label={t("email")} htmlFor="email" required>
               <Input
                 id="email"
                 name="email"
@@ -66,13 +68,13 @@ export function AdminLogin() {
                 autoComplete="username"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                placeholder="you@itadis.edu"
+                placeholder={t("emailPlaceholder")}
                 required
                 autoFocus
               />
             </Field>
 
-            <Field label="Password" htmlFor="password" required>
+            <Field label={t("password")} htmlFor="password" required>
               <Input
                 id="password"
                 name="password"
@@ -99,7 +101,7 @@ export function AdminLogin() {
               loading={isSubmitting}
               className="w-full"
             >
-              {isSubmitting ? "Signing in…" : "Sign in"}
+              {isSubmitting ? t("submitting") : t("submit")}
             </Button>
           </form>
         </div>
@@ -107,7 +109,7 @@ export function AdminLogin() {
         {/* The previous version printed the live administrator email and
             password on this page, in production, to anyone who loaded it. */}
         <p className="text-center text-xs text-slate-500 mt-6">
-          Authorised personnel only.
+          {t("notice")}
         </p>
       </div>
     </div>

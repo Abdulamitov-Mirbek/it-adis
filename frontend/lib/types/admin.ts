@@ -20,6 +20,23 @@ export interface DashboardStats {
   acceptanceRate: string;
 }
 
+export interface Teacher {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  tags: string[];
+  initials: string;
+  /** Public Supabase Storage URL. Null falls back to the initials badge. */
+  photoUrl: string | null;
+  /** Tailwind gradient classes, e.g. "from-cyan-500 to-sky-700". */
+  color: string;
+  order: number;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface Course {
   id: string;
   slug: string;

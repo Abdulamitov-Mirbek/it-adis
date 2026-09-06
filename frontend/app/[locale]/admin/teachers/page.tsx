@@ -2,14 +2,14 @@
 
 import { useTranslations } from "next-intl";
 import { AdminShell } from "@/components/admin/AdminShell";
-import { CoursesTable } from "@/components/admin/CoursesTable";
+import { TeachersTable } from "@/components/admin/TeachersTable";
 
-export default function AdminCoursesPage() {
-  const t = useTranslations("admin.pages.courses");
+export default function AdminTeachersPage() {
+  const t = useTranslations("admin.pages.teachers");
 
   return (
     <AdminShell title={t("title")} description={t("description")}>
-      <CoursesTable />
+      <TeachersTable />
     </AdminShell>
   );
 }

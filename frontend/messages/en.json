@@ -507,5 +507,223 @@
         "ALL_LEVELS": "All levels"
       }
     }
+  },
+  "admin": {
+    "brandSubtitle": "Administration",
+    "nav": {
+      "aria": "Admin sections",
+      "dashboard": "Dashboard",
+      "courses": "Courses",
+      "applications": "Applications",
+      "signOut": "Sign out",
+      "open": "Open navigation",
+      "close": "Close navigation",
+      "teachers": "Teachers"
+    },
+    "session": {
+      "checking": "Checking your session…",
+      "redirecting": "Redirecting to sign in…"
+    },
+    "login": {
+      "heading": "IT ADIS Administration",
+      "subheading": "Sign in to manage courses and applications",
+      "email": "Email address",
+      "emailPlaceholder": "you@itadis.edu",
+      "password": "Password",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "failed": "Sign in failed",
+      "notice": "Authorised personnel only."
+    },
+    "pages": {
+      "dashboard": {
+        "title": "Dashboard",
+        "description": "Overview of courses and applications"
+      },
+      "courses": {
+        "title": "Courses",
+        "description": "Create, edit and archive the course catalogue"
+      },
+      "applications": {
+        "title": "Applications",
+        "description": "Review and respond to student applications"
+      },
+      "teachers": {
+        "title": "Teachers",
+        "description": "Add, edit and remove the mentors shown on the website"
+      }
+    },
+    "stats": {
+      "totalApplications": "Total applications",
+      "awaitingReview": "Awaiting review",
+      "needsAttention": "Needs your attention",
+      "allCaughtUp": "All caught up",
+      "activeCourses": "Active courses",
+      "acceptanceRate": "Acceptance rate",
+      "accepted": "{count} accepted"
+    },
+    "recent": {
+      "title": "Recent applications",
+      "description": "The most recent submissions from the website",
+      "viewAll": "View all",
+      "emptyTitle": "No applications yet",
+      "emptyDescription": "New submissions from the website will appear here as they arrive.",
+      "noCourse": "No course selected"
+    },
+    "applications": {
+      "title": "Applications",
+      "description": "Every submission from the website, newest first",
+      "filterAria": "Filter by status",
+      "allStatuses": "All statuses",
+      "statusFor": "Status for {name}",
+      "saveFailed": "Could not save the change",
+      "emptyFilteredTitle": "No applications with that status",
+      "emptyFilteredDescription": "Try clearing the filter to see everything that has come in.",
+      "emptyTitle": "No applications yet",
+      "emptyDescription": "Submissions from the website’s application form will appear here.",
+      "columns": {
+        "applicant": "Applicant",
+        "contact": "Contact",
+        "programme": "Programme",
+        "submitted": "Submitted",
+        "status": "Status"
+      }
+    },
+    "courses": {
+      "title": "Courses",
+      "description": "What the school offers, as shown on the public website",
+      "new": "New course",
+      "emptyTitle": "No courses yet",
+      "emptyDescription": "Add the first course and it will appear on the website straight away.",
+      "featured": "Featured",
+      "active": "Active",
+      "archived": "Archived",
+      "edit": "Edit",
+      "editAria": "Edit {title}",
+      "archiveAria": "Archive {title}",
+      "added": "added {date}",
+      "archiveConfirm": "Archive “{title}”?\n\nIt will be hidden from the website. Existing applications are kept, and you can make it active again later.",
+      "archiveFailed": "Could not archive the course",
+      "columns": {
+        "course": "Course",
+        "level": "Level",
+        "duration": "Duration",
+        "applications": "Applications",
+        "status": "Status",
+        "actions": "Actions"
+      }
+    },
+    "form": {
+      "editTitle": "Edit course",
+      "newTitle": "New course",
+      "editDescription": "Changes appear on the public site immediately.",
+      "newDescription": "The course goes live on the website as soon as it is active.",
+      "close": "Close",
+      "title": "Title",
+      "titlePlaceholder": "Python Development",
+      "slug": "Slug",
+      "slugHintEdit": "Fixed after creation, because applications reference it.",
+      "slugHintNew": "Leave blank to generate one from the title.",
+      "slugPlaceholder": "python-development",
+      "shortDescription": "Short description",
+      "shortDescriptionPlaceholder": "One or two sentences, shown on the course card.",
+      "fullDescription": "Full description",
+      "fullDescriptionHint": "Shown when a visitor opens the course from the website.",
+      "duration": "Duration",
+      "durationPlaceholder": "6 months",
+      "level": "Level",
+      "price": "Price",
+      "priceHint": "Use 0 to show as free.",
+      "tags": "Tags",
+      "tagsHint": "Comma separated, for example: Python, Django, FastAPI",
+      "order": "Display order",
+      "orderHint": "Lower numbers appear first on the website.",
+      "visibility": "Visibility",
+      "isActive": "Active, visible on the website",
+      "isFeatured": "Featured",
+      "cancel": "Cancel",
+      "save": "Save changes",
+      "create": "Create course",
+      "saveFailed": "Could not save the course"
+    },
+    "status": {
+      "PENDING": "Pending",
+      "REVIEWING": "Reviewing",
+      "ACCEPTED": "Accepted",
+      "REJECTED": "Rejected"
+    },
+    "level": {
+      "BEGINNER": "Beginner",
+      "INTERMEDIATE": "Intermediate",
+      "ADVANCED": "Advanced",
+      "ALL_LEVELS": "All levels"
+    },
+    "states": {
+      "cannotReach": "Cannot reach the server",
+      "wentWrong": "Something went wrong",
+      "backendHint": "If this persists, check that BACKEND_API_URL is set correctly in the deployment settings.",
+      "tryAgain": "Try again"
+    },
+    "pagination": {
+      "showing": "Showing <b>{first}</b>–<b>{last}</b> of <b>{total}</b>",
+      "previous": "Previous",
+      "next": "Next",
+      "previousAria": "Previous page",
+      "nextAria": "Next page"
+    },
+    "teachers": {
+      "title": "Teachers",
+      "description": "The mentors shown on the public website, in display order",
+      "new": "New mentor",
+      "emptyTitle": "No mentors yet",
+      "emptyDescription": "Add the first mentor and they will appear on the website straight away.",
+      "visible": "Visible",
+      "hidden": "Hidden",
+      "edit": "Edit",
+      "editAria": "Edit {name}",
+      "deleteAria": "Delete {name}",
+      "deleteConfirm": "Delete {name}?\n\nThis removes the mentor and their photo for good. It cannot be undone — to hide someone temporarily, edit them and turn off “Visible” instead.",
+      "deleteFailed": "Could not delete the mentor",
+      "columns": {
+        "mentor": "Mentor",
+        "tags": "Skills",
+        "order": "Order",
+        "status": "Status",
+        "actions": "Actions"
+      }
+    },
+    "teacherForm": {
+      "editTitle": "Edit mentor",
+      "newTitle": "New mentor",
+      "editDescription": "Changes appear on the public site immediately.",
+      "newDescription": "The mentor appears on the website as soon as they are visible.",
+      "close": "Close",
+      "photo": "Photo",
+      "photoHint": "JPEG, PNG or WebP, up to 5 MB. Without one the card shows initials.",
+      "photoUpload": "Upload photo",
+      "photoReplace": "Replace photo",
+      "photoRemove": "Remove",
+      "photoTooLarge": "That image is larger than 5 MB. Choose a smaller one.",
+      "photoFailed": "Could not upload the photo",
+      "name": "Name",
+      "namePlaceholder": "Bayastan",
+      "role": "Role",
+      "rolePlaceholder": "Flutter developer",
+      "bio": "Short bio",
+      "bioHint": "One or two sentences. Longer text breaks the card grid.",
+      "tags": "Skills",
+      "tagsHint": "Comma separated, for example: Flutter, Dart, Mobile",
+      "initials": "Initials",
+      "initialsHint": "Shown when there is no photo. Left blank, it uses the name.",
+      "color": "Card colour",
+      "colorHint": "The gradient behind the initials.",
+      "order": "Display order",
+      "orderHint": "Lower numbers appear first on the website.",
+      "isActive": "Visible on the website",
+      "cancel": "Cancel",
+      "save": "Save changes",
+      "create": "Add mentor",
+      "saveFailed": "Could not save the mentor"
+    }
   }
 }

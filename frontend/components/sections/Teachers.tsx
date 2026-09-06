@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { api, type Teacher } from "@/lib/api";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,11 +30,13 @@ function XIcon({ size = 15 }: { size?: number }) {
   );
 }
 
-const TEACHERS = [
-  { name: "Amir Seitkali",   role: "Lead Python Instructor",       bio: "10 years in backend engineering. Previously at Google. Built production systems serving 50M+ users.",          tags: ["Python", "Django", "APIs"],       initials: "AS", color: "from-green-500 to-emerald-700" },
-  { name: "Diana Kozyreva",  role: "Frontend & React Expert",      bio: "Senior frontend engineer, 8 years. Ex-Figma, open-source UI libraries with 12k stars.",                          tags: ["React", "Next.js", "TypeScript"], initials: "DK", color: "from-blue-500 to-blue-700"    },
-  { name: "Ruslan Bektenov", role: "JavaScript & Vibe Coding",     bio: "Full-stack developer turned educator. Built 30+ SaaS products. Shipped a startup in 4 hours.",                   tags: ["JS", "Vibe Coding", "LLMs"],      initials: "RB", color: "from-yellow-500 to-orange-600" },
-];
+/**
+ * The roster now comes from the database so the admin panel can manage it.
+ *
+ * It used to be a hardcoded array here, which meant the teachers table and its
+ * whole admin API existed but nothing on the site ever read them — adding a
+ * mentor through the panel appeared to work and changed nothing.
+ */
 
 const SOCIAL = [
   { Icon: GithubIcon,   label: "GitHub"   },
@@ -46,19 +49,40 @@ export function Teachers() {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const cardsRef   = useRef<HTMLDivElement>(null);
+  const [teachers, setTeachers] = useState<Teacher[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    api
+      .getTeachers()
+      .then((rows) => {
+        if (!cancelled) setTeachers(rows);
+      })
+      .catch((err) => {
+        // The route serves FALLBACK_TEACHERS when the backend is unreachable,
+        // so reaching here means the request itself failed. Rendering nothing
+        // is better than an error box in the middle of a marketing page.
+        console.error("Failed to fetch teachers:", err);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     gsap.fromTo(headingRef.current, { y: 40, opacity: 0 }, {
       y: 0, opacity: 1, duration: 0.8, ease: "power3.out",
       scrollTrigger: { trigger: headingRef.current, start: "top 85%" },
     });
-    if (cardsRef.current) {
+    if (cardsRef.current && teachers.length > 0) {
       gsap.fromTo(Array.from(cardsRef.current.children), { y: 60, opacity: 0 }, {
         y: 0, opacity: 1, duration: 0.7, stagger: 0.12, ease: "power3.out",
         scrollTrigger: { trigger: cardsRef.current, start: "top 85%" },
       });
     }
-  }, []);
+    // Re-runs once the roster arrives: on the first pass the grid is empty, so
+    // there are no children to stagger and the cards would stay at opacity 0.
+  }, [teachers.length]);
 
   return (
     <section ref={sectionRef} id="teachers" className="relative section-padding bg-white overflow-hidden">
@@ -79,15 +103,28 @@ export function Teachers() {
         </div>
 
         <div ref={cardsRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {TEACHERS.map((teacher) => (
+          {teachers.map((teacher) => (
             <div key={teacher.name}
               className="group relative glass border border-slate-200 rounded-3xl p-6 hover:border-green-200 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 overflow-hidden"
             >
               <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
 
               <div className="relative mb-5">
-                <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${teacher.color} flex items-center justify-center font-display text-2xl font-bold text-slate-900 shadow-xl`}>
-                  {teacher.initials}
+                <div className={`relative w-20 h-20 rounded-2xl overflow-hidden bg-gradient-to-br ${teacher.color} flex items-center justify-center font-display text-2xl font-bold text-slate-900 shadow-xl`}>
+                  {teacher.photoUrl ? (
+                    // Plain <img>: next/image would need the Supabase storage
+                    // host in remotePatterns, and the bucket URL is set per
+                    // deployment rather than at build time.
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={teacher.photoUrl}
+                      alt={teacher.name}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  ) : (
+                    teacher.initials
+                  )}
                 </div>
                 <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-green-600 border-2 border-dark flex items-center justify-center" aria-hidden="true">
                   <div className="w-2 h-2 rounded-full bg-white" />

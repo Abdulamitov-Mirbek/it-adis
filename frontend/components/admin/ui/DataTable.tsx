@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import type { Pagination as PaginationMeta } from "@/lib/types/admin";
 import { Button } from "./primitives";
@@ -86,6 +87,7 @@ export function Pagination({
   onPageChange: (page: number) => void;
   disabled?: boolean;
 }) {
+  const t = useTranslations("admin.pagination");
   const { page, limit, total, pages } = pagination;
 
   // Guard against a zero-result response, where first would otherwise read 1
@@ -96,9 +98,17 @@ export function Pagination({
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-5 py-3 border-t border-dark-border">
       <p className="text-[13px] text-slate-500" aria-live="polite">
-        Showing <span className="font-medium text-slate-900">{first}</span>–
-        <span className="font-medium text-slate-900">{last}</span> of{" "}
-        <span className="font-medium text-slate-900">{total}</span>
+        {/* Rich text rather than three separate strings: Russian puts the
+            range and the total in a different order, and splitting the
+            sentence would hard-code the English one. */}
+        {t.rich("showing", {
+          first,
+          last,
+          total,
+          b: (chunks) => (
+            <span className="font-medium text-slate-900">{chunks}</span>
+          ),
+        })}
       </p>
 
       <div className="flex items-center gap-2">
@@ -106,10 +116,10 @@ export function Pagination({
           size="sm"
           onClick={() => onPageChange(page - 1)}
           disabled={disabled || page <= 1}
-          aria-label="Previous page"
+          aria-label={t("previousAria")}
         >
           <ChevronLeft size={14} aria-hidden="true" />
-          Previous
+          {t("previous")}
         </Button>
         <span className="text-[13px] text-slate-500 tabular-nums px-1">
           {page} / {Math.max(pages, 1)}
@@ -118,9 +128,9 @@ export function Pagination({
           size="sm"
           onClick={() => onPageChange(page + 1)}
           disabled={disabled || page >= pages}
-          aria-label="Next page"
+          aria-label={t("nextAria")}
         >
-          Next
+          {t("next")}
           <ChevronRight size={14} aria-hidden="true" />
         </Button>
       </div>

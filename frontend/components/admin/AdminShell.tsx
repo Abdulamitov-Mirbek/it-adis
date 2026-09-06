@@ -1,15 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   ClipboardList,
   LayoutDashboard,
   LogOut,
   BookOpen,
   Menu,
+  Users,
 } from "lucide-react";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
+import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
+import { ADMIN_LOCALES } from "@/i18n/admin-locales";
 import { useAdmin } from "./AdminProvider";
 import { Button } from "./ui/primitives";
 
@@ -23,10 +27,13 @@ import { Button } from "./ui/primitives";
  * view could not be linked to or bookmarked.
  */
 
+// `key` indexes admin.nav rather than holding the label, so the sidebar reads
+// in the operator's language without duplicating this list per locale.
 const NAV_ITEMS = [
-  { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
-  { href: "/admin/courses", label: "Courses", icon: BookOpen, exact: false },
-  { href: "/admin/applications", label: "Applications", icon: ClipboardList, exact: false },
+  { href: "/admin", key: "dashboard", icon: LayoutDashboard, exact: true },
+  { href: "/admin/courses", key: "courses", icon: BookOpen, exact: false },
+  { href: "/admin/applications", key: "applications", icon: ClipboardList, exact: false },
+  { href: "/admin/teachers", key: "teachers", icon: Users, exact: false },
 ] as const;
 
 function initialsOf(name: string): string {
@@ -40,10 +47,11 @@ function initialsOf(name: string): string {
 
 function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
+  const t = useTranslations("admin.nav");
 
   return (
-    <nav className="flex-1 px-3 py-4 space-y-0.5" aria-label="Admin sections">
-      {NAV_ITEMS.map(({ href, label, icon: Icon, exact }) => {
+    <nav className="flex-1 px-3 py-4 space-y-0.5" aria-label={t("aria")}>
+      {NAV_ITEMS.map(({ href, key, icon: Icon, exact }) => {
         const isActive = exact ? pathname === href : pathname.startsWith(href);
         return (
           <Link
@@ -64,7 +72,7 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
               className={isActive ? "text-green-700" : "text-slate-500"}
               aria-hidden="true"
             />
-            {label}
+            {t(key)}
           </Link>
         );
       })}
@@ -73,6 +81,8 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
 }
 
 function Brand() {
+  const t = useTranslations("admin");
+
   return (
     <div className="flex items-center gap-2.5 h-16 px-5 border-b border-dark-border">
       <span className="grid place-items-center w-8 h-8 rounded-lg bg-green-700 text-white font-bold text-sm shrink-0">
@@ -83,7 +93,7 @@ function Brand() {
           IT ADIS
         </span>
         <span className="block text-[11px] text-slate-500 leading-tight">
-          Administration
+          {t("brandSubtitle")}
         </span>
       </span>
     </div>
@@ -103,6 +113,7 @@ export function AdminShell({
 }) {
   const { user, isAuthenticated, isLoading, logout } = useAdmin();
   const router = useRouter();
+  const t = useTranslations("admin");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => {
@@ -123,7 +134,7 @@ export function AdminShell({
             aria-hidden="true"
           />
           <p className="text-sm text-slate-500">
-            {isLoading ? "Checking your session…" : "Redirecting to sign in…"}
+            {isLoading ? t("session.checking") : t("session.redirecting")}
           </p>
         </div>
       </div>
@@ -139,7 +150,7 @@ export function AdminShell({
         <div className="p-3 border-t border-dark-border">
           <Button variant="ghost" size="sm" onClick={logout} className="w-full justify-start">
             <LogOut size={16} aria-hidden="true" />
-            Sign out
+            {t("nav.signOut")}
           </Button>
         </div>
       </aside>
@@ -158,7 +169,7 @@ export function AdminShell({
             <div className="p-3 border-t border-dark-border">
               <Button variant="ghost" size="sm" onClick={logout} className="w-full justify-start">
                 <LogOut size={16} aria-hidden="true" />
-                Sign out
+                {t("nav.signOut")}
               </Button>
             </div>
           </aside>
@@ -171,7 +182,7 @@ export function AdminShell({
             type="button"
             onClick={() => setMobileNavOpen((open) => !open)}
             className="lg:hidden grid place-items-center w-9 h-9 -ml-1 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-            aria-label={mobileNavOpen ? "Close navigation" : "Open navigation"}
+            aria-label={mobileNavOpen ? t("nav.close") : t("nav.open")}
             aria-expanded={mobileNavOpen}
           >
             <Menu size={18} aria-hidden="true" />
@@ -185,6 +196,10 @@ export function AdminShell({
           </div>
 
           {actions && <div className="shrink-0 flex items-center gap-2">{actions}</div>}
+
+          <div className="shrink-0">
+            <LanguageSwitcher locales={ADMIN_LOCALES} />
+          </div>
 
           <div className="hidden sm:flex items-center gap-2.5 pl-3 ml-1 border-l border-dark-border">
             <span

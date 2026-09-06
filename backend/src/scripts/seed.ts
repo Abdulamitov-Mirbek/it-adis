@@ -14,60 +14,9 @@
  * updated in place, so re-seeding never changes a course's id — applications
  * point at those ids through applications."courseId".
  */
-import { createClient } from "@supabase/supabase-js";
 import { randomUUID } from "crypto";
-import { readFileSync } from "fs";
-import { join } from "path";
 import * as bcrypt from "bcryptjs";
-
-// ── Environment ───────────────────────────────────────────────────────────────
-// In Docker (and under systemd) the variables are already in the environment,
-// and there is no .env file — the read below just misses and this does nothing.
-// Run by hand from backend/ it reads backend/.env, parsed the same way
-// deploy-native.sh does it: no shell expansion, so a key containing `$`
-// survives intact.
-//
-// Resolved from the working directory, not from __dirname: this file runs from
-// src/scripts under ts-node and from dist/scripts once compiled, so a relative
-// path would point somewhere different in each case.
-function loadDotEnv() {
-  let raw: string;
-  try {
-    raw = readFileSync(join(process.cwd(), ".env"), "utf8");
-  } catch {
-    return;
-  }
-  for (const line of raw.split(/\r?\n/)) {
-    if (!line.trim() || line.trim().startsWith("#") || !line.includes("=")) continue;
-    const key = line.slice(0, line.indexOf("=")).trim();
-    let value = line.slice(line.indexOf("=") + 1).trim();
-    if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(key)) continue;
-    if (value.length >= 2 && ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'")))) {
-      value = value.slice(1, -1);
-    }
-    if (process.env[key] === undefined) process.env[key] = value;
-  }
-}
-
-loadDotEnv();
-
-const SUPABASE_URL = process.env.SUPABASE_URL?.trim();
-const SUPABASE_KEY = (
-  process.env.SUPABASE_SECRET_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY
-)?.trim();
-
-if (!SUPABASE_URL || !SUPABASE_KEY) {
-  console.error(
-    "SUPABASE_URL and SUPABASE_SECRET_KEY must be set (backend/.env or the environment)."
-  );
-  process.exit(1);
-}
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
-  auth: { persistSession: false, autoRefreshToken: false },
-});
-
-const nowIso = () => new Date().toISOString();
+import { supabase, nowIso, check } from "./env";
 
 const courses = [
   {
@@ -120,11 +69,6 @@ const courses = [
   },
 ];
 
-/** Throws rather than letting supabase-js return a silent `{ error }`. */
-function check(context: string, error: { message: string } | null) {
-  if (error) throw new Error(`${context}: ${error.message}`);
-}
-
 async function main() {
   console.log("🌱 Seeding Supabase...");
 
@@ -167,7 +111,9 @@ async function main() {
         "  Pick a password nobody can read out of this repository and re-run:\n\n" +
         '    SEED_ADMIN_PASSWORD="..." npm run seed\n'
     );
-    process.exit(1);
+    // Not process.exit: see the note on the catch below.
+    process.exitCode = 1;
+    return;
   }
 
   const passwordHash = bcrypt.hashSync(adminPassword, 10);
@@ -204,5 +150,10 @@ async function main() {
 
 main().catch((e) => {
   console.error(e instanceof Error ? e.message : e);
-  process.exit(1);
+  // Not process.exit(1): by this point supabase-js is holding open sockets, and
+  // tearing the process down underneath them trips a libuv assertion on Windows
+  // ("UV_HANDLE_CLOSING", src/win/async.c) which replaces the exit code with
+  // 127. Setting exitCode and letting the loop drain takes under a second and
+  // reports the failure correctly.
+  process.exitCode = 1;
 });

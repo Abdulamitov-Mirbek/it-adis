@@ -1,6 +1,7 @@
 "use client";
 
 import { AlertTriangle, Inbox, RefreshCw, WifiOff } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { Button } from "./primitives";
 
@@ -76,6 +77,8 @@ export function ErrorState({
   code?: string;
   onRetry?: () => void;
 }) {
+  const t = useTranslations("admin.states");
+
   const isConnectivity =
     code === "BACKEND_UNREACHABLE" ||
     code === "BACKEND_TIMEOUT" ||
@@ -89,19 +92,18 @@ export function ErrorState({
         <Icon size={20} aria-hidden="true" />
       </div>
       <p className="text-sm font-semibold text-slate-900">
-        {isConnectivity ? "Cannot reach the server" : "Something went wrong"}
+        {isConnectivity ? t("cannotReach") : t("wentWrong")}
       </p>
       <p className="text-[13px] text-slate-500 mt-1 max-w-md">{message}</p>
       {isConnectivity && (
         <p className="text-xs text-slate-500 mt-2 max-w-md">
-          If this persists, check that BACKEND_API_URL is set correctly in the
-          deployment settings.
+          {t("backendHint")}
         </p>
       )}
       {onRetry && (
         <Button onClick={onRetry} className="mt-5" size="sm">
           <RefreshCw size={14} aria-hidden="true" />
-          Try again
+          {t("tryAgain")}
         </Button>
       )}
     </div>

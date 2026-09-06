@@ -2,12 +2,13 @@
 
 import { useCallback, useState } from "react";
 import { Mail, Phone } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { adminAPI, ApiRequestError } from "@/lib/admin-api";
 import type { Application } from "@/lib/types/admin";
 import { Card, CardHeader, Select } from "./ui/primitives";
 import { EmptyState, ErrorState, TableSkeleton } from "./ui/states";
 import { Pagination, TableWrap, Td, Th, Tr } from "./ui/DataTable";
-import { APPLICATION_STATUSES, formatDate, statusMeta } from "./status";
+import { APPLICATION_STATUSES, useDateFormat, useStatusMeta } from "./status";
 import { useAdminQuery } from "./useAdminQuery";
 
 const PAGE_SIZE = 10;
@@ -21,6 +22,8 @@ function StatusControl({
   application: Application;
   onChanged: (updated: Application["status"]) => void;
 }) {
+  const t = useTranslations("admin.applications");
+  const statusMeta = useStatusMeta();
   const [saving, setSaving] = useState(false);
   const [failed, setFailed] = useState<string | null>(null);
 
@@ -39,7 +42,7 @@ function StatusControl({
     } catch (error) {
       onChanged(previous);
       setFailed(
-        error instanceof ApiRequestError ? error.message : "Could not save the change"
+        error instanceof ApiRequestError ? error.message : t("saveFailed")
       );
     } finally {
       setSaving(false);
@@ -49,7 +52,7 @@ function StatusControl({
   return (
     <div className="flex flex-col items-start gap-1">
       <Select
-        aria-label={`Status for ${application.name}`}
+        aria-label={t("statusFor", { name: application.name })}
         value={application.status}
         disabled={saving}
         onChange={(event) => handleChange(event.target.value as Application["status"])}
@@ -71,6 +74,9 @@ function StatusControl({
 }
 
 export function ApplicationsTable() {
+  const t = useTranslations("admin.applications");
+  const statusMeta = useStatusMeta();
+  const { formatDate } = useDateFormat();
   const [page, setPage] = useState(1);
   const [statusFilter, setStatusFilter] = useState<string>("");
 
@@ -102,11 +108,11 @@ export function ApplicationsTable() {
   return (
     <Card>
       <CardHeader
-        title="Applications"
-        description="Every submission from the website, newest first"
+        title={t("title")}
+        description={t("description")}
         action={
           <Select
-            aria-label="Filter by status"
+            aria-label={t("filterAria")}
             value={statusFilter}
             onChange={(event) => {
               setStatusFilter(event.target.value);
@@ -116,7 +122,7 @@ export function ApplicationsTable() {
             }}
             className="h-9 text-[13px] w-40"
           >
-            <option value="">All statuses</option>
+            <option value="">{t("allStatuses")}</option>
             {APPLICATION_STATUSES.map((status) => (
               <option key={status} value={status}>
                 {statusMeta(status).label}
@@ -134,11 +140,9 @@ export function ApplicationsTable() {
 
       {!isLoading && !error && applications.length === 0 && (
         <EmptyState
-          title={statusFilter ? "No applications with that status" : "No applications yet"}
+          title={statusFilter ? t("emptyFilteredTitle") : t("emptyTitle")}
           description={
-            statusFilter
-              ? "Try clearing the filter to see everything that has come in."
-              : "Submissions from the website's application form will appear here."
+            statusFilter ? t("emptyFilteredDescription") : t("emptyDescription")
           }
         />
       )}
@@ -148,11 +152,11 @@ export function ApplicationsTable() {
           <TableWrap>
             <thead>
               <tr>
-                <Th>Applicant</Th>
-                <Th>Contact</Th>
-                <Th>Programme</Th>
-                <Th>Submitted</Th>
-                <Th>Status</Th>
+                <Th>{t("columns.applicant")}</Th>
+                <Th>{t("columns.contact")}</Th>
+                <Th>{t("columns.programme")}</Th>
+                <Th>{t("columns.submitted")}</Th>
+                <Th>{t("columns.status")}</Th>
               </tr>
             </thead>
             <tbody>

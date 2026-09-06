@@ -89,6 +89,8 @@ export interface Teacher {
   bio: string;
   tags: string[];
   initials: string;
+  /** Public Supabase Storage URL. Null falls back to the initials badge. */
+  photoUrl: string | null;
   color: string;
   order: number;
   isActive: boolean;

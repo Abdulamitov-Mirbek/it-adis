@@ -12,7 +12,16 @@ const LOCALES = [
   { code: "kg", label: "KG", full: "Кыргызча" },
 ] as const;
 
-export function LanguageSwitcher() {
+/**
+ * `locales` narrows which languages are offered. It defaults to all of them for
+ * the public site; the admin panel passes its own shorter list, because the
+ * panel's strings exist in fewer languages than the marketing pages.
+ */
+export function LanguageSwitcher({
+  locales,
+}: {
+  locales?: readonly string[];
+} = {}) {
   const locale  = useLocale();
   const router  = useRouter();
   const path    = usePathname();
@@ -38,7 +47,14 @@ export function LanguageSwitcher() {
     router.push(segments.join("/") || "/");
   };
 
-  const current = LOCALES.find((l) => l.code === locale) ?? LOCALES[0];
+  const available = locales
+    ? LOCALES.filter((l) => locales.includes(l.code))
+    : LOCALES;
+
+  // Falls back to the first offered language, not the first of all three, so
+  // the button never displays a language this switcher cannot switch to.
+  const current =
+    available.find((l) => l.code === locale) ?? available[0] ?? LOCALES[0];
 
   return (
     <div ref={ref} className="relative">
@@ -60,7 +76,7 @@ export function LanguageSwitcher() {
 
       {open && (
         <div className="absolute right-0 top-full mt-2 w-36 glass border border-slate-200 rounded-2xl overflow-hidden shadow-xl shadow-black/30 z-50">
-          {LOCALES.map((l) => (
+          {available.map((l) => (
             <button
               key={l.code}
               onClick={() => switchLocale(l.code)}

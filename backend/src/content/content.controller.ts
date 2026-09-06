@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
@@ -7,11 +8,20 @@ import {
   Patch,
   Post,
   Query,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
 } from "@nestjs/common";
+import { FileInterceptor } from "@nestjs/platform-express";
 import { Throttle } from "@nestjs/throttler";
 import { THROTTLE_ANALYTICS } from "../config/throttle";
-import { ApiBearerAuth, ApiOperation, ApiQuery, ApiTags } from "@nestjs/swagger";
+import {
+  ApiBearerAuth,
+  ApiConsumes,
+  ApiOperation,
+  ApiQuery,
+  ApiTags,
+} from "@nestjs/swagger";
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { ContentService } from "./content.service";
 import {
@@ -21,6 +31,18 @@ import {
   UpdateSiteContentDto,
 } from "./dto/content.dto";
 import { UpdateReviewDto, UpdateTeacherDto } from "./dto/update-content.dto";
+
+/**
+ * The shape multer hands back, declared locally rather than pulled in from
+ * @types/multer — the package is not a dependency here and these four fields
+ * are all the upload handler touches.
+ */
+interface UploadedImage {
+  buffer: Buffer;
+  mimetype: string;
+  size: number;
+  originalname: string;
+}
 
 /**
  * Admin-managed content: teachers, reviews, the About copy and traffic.
@@ -72,6 +94,30 @@ export class ContentController {
   @ApiOperation({ summary: "Remove a teacher (admin)" })
   removeTeacher(@Param("id") id: string) {
     return this.contentService.removeTeacher(id);
+  }
+
+  /**
+   * Multipart rather than a base64 field: the global JSON body limit is 100 kB,
+   * which even a small headshot exceeds once base64 inflates it by a third.
+   * The size cap here is the same one the service enforces, applied earlier so
+   * an oversized upload is rejected before it is buffered in full.
+   */
+  @Post("teachers/:id/photo")
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiConsumes("multipart/form-data")
+  @ApiOperation({ summary: "Upload a teacher photo (admin)" })
+  @UseInterceptors(
+    FileInterceptor("file", { limits: { fileSize: ContentService.MAX_PHOTO_BYTES } })
+  )
+  uploadTeacherPhoto(
+    @Param("id") id: string,
+    @UploadedFile() file: UploadedImage
+  ) {
+    if (!file) {
+      throw new BadRequestException("No file was uploaded under the field 'file'.");
+    }
+    return this.contentService.uploadTeacherPhoto(id, file);
   }
 
   // ── Reviews ───────────────────────────────────────────────────────────────

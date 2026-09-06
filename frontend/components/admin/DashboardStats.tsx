@@ -8,6 +8,7 @@ import {
   TrendingUp,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { adminAPI } from "@/lib/admin-api";
 import { cn } from "@/lib/utils";
 import { Card } from "./ui/primitives";
@@ -61,6 +62,7 @@ function StatSkeleton() {
 }
 
 export function DashboardStats() {
+  const t = useTranslations("admin.stats");
   const { data, error, isLoading, reload } = useAdminQuery(
     useCallback(() => adminAPI.getDashboardStats(), [])
   );
@@ -90,28 +92,28 @@ export function DashboardStats() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
       <StatCard
-        label="Total applications"
+        label={t("totalApplications")}
         value={data.totalApplications}
         icon={ClipboardList}
         accent="bg-blue-50 text-blue-700 ring-1 ring-blue-500/20"
       />
       <StatCard
-        label="Awaiting review"
+        label={t("awaitingReview")}
         value={pending}
-        hint={pending > 0 ? "Needs your attention" : "All caught up"}
+        hint={pending > 0 ? t("needsAttention") : t("allCaughtUp")}
         icon={Clock}
         accent={pending > 0 ? "bg-amber-50 text-amber-700 ring-1 ring-amber-500/20" : "bg-slate-50 text-slate-500 ring-1 ring-slate-200"}
       />
       <StatCard
-        label="Active courses"
+        label={t("activeCourses")}
         value={data.totalCourses}
         icon={BookOpen}
         accent="bg-green-50 text-green-700 ring-1 ring-green-600/30"
       />
       <StatCard
-        label="Acceptance rate"
+        label={t("acceptanceRate")}
         value={data.acceptanceRate}
-        hint={`${data.applicationsByStatus?.accepted ?? 0} accepted`}
+        hint={t("accepted", { count: data.applicationsByStatus?.accepted ?? 0 })}
         icon={TrendingUp}
         accent="bg-violet-50 text-violet-700 ring-1 ring-violet-200"
       />
