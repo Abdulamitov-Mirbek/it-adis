@@ -1,4 +1,11 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+  Logger,
+  NotFoundException,
+} from "@nestjs/common";
+import { randomUUID } from "crypto";
 import {
   SupabaseService,
   newId,
@@ -26,6 +33,8 @@ function initialsFrom(name: string): string {
 
 @Injectable()
 export class ContentService {
+  private readonly logger = new Logger(ContentService.name);
+
   constructor(private db: SupabaseService) {}
 
   // ── Teachers ──────────────────────────────────────────────────────────────
@@ -94,10 +103,134 @@ export class ContentService {
 
   async removeTeacher(id: string): Promise<Teacher> {
     await this.assertExists("teacher", id);
-    return unwrap<Teacher>(
+    const removed = unwrap<Teacher>(
       await this.db.from(TABLES.teachers).delete().eq("id", id).select().single(),
       "content.removeTeacher"
     );
+
+    // Delete the headshot too. Without this the bucket accumulates orphans that
+    // nothing references and nobody can find again — the row held the only
+    // pointer to the object.
+    if (removed.photoUrl) {
+      await this.deletePhotoObject(removed.photoUrl);
+    }
+
+    return removed;
+  }
+
+  // ── Teacher photos ────────────────────────────────────────────────────────
+
+  /**
+   * Public bucket: these are headshots on a marketing page, so the images are
+   * served straight from the storage CDN rather than through signed URLs the
+   * API would have to mint on every page load.
+   */
+  static readonly PHOTO_BUCKET = "teacher-photos";
+
+  private static readonly ALLOWED_PHOTO_TYPES = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+  ];
+
+  /** 5 MB. A headshot is well under this; anything larger is a mistake. */
+  static readonly MAX_PHOTO_BYTES = 5 * 1024 * 1024;
+
+  async uploadTeacherPhoto(
+    id: string,
+    file: { buffer: Buffer; mimetype: string; size: number; originalname: string }
+  ): Promise<Teacher> {
+    await this.assertExists("teacher", id);
+
+    if (!ContentService.ALLOWED_PHOTO_TYPES.includes(file.mimetype)) {
+      throw new BadRequestException(
+        `Unsupported image type "${file.mimetype}". Use JPEG, PNG or WebP.`
+      );
+    }
+    if (file.size > ContentService.MAX_PHOTO_BYTES) {
+      throw new BadRequestException(
+        `Image is ${(file.size / 1024 / 1024).toFixed(1)} MB; the limit is 5 MB.`
+      );
+    }
+
+    const existing = unwrap<Teacher>(
+      await this.db
+        .from(TABLES.teachers)
+        .select("*")
+        .eq("id", id)
+        .single(),
+      "content.uploadTeacherPhoto.load"
+    );
+
+    const extension =
+      { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" }[
+        file.mimetype
+      ] ?? "jpg";
+    // Random suffix rather than a fixed `${id}.jpg`: the bucket is public and
+    // CDN-cached, so reusing a path leaves viewers looking at the previous
+    // photo until the cache expires.
+    const objectPath = `${id}/${randomUUID()}.${extension}`;
+
+    const { error: uploadError } = await this.db.client.storage
+      .from(ContentService.PHOTO_BUCKET)
+      .upload(objectPath, file.buffer, {
+        contentType: file.mimetype,
+        upsert: false,
+      });
+
+    if (uploadError) {
+      throw new InternalServerErrorException(
+        `Could not store the image: ${uploadError.message}`
+      );
+    }
+
+    const { data: publicUrl } = this.db.client.storage
+      .from(ContentService.PHOTO_BUCKET)
+      .getPublicUrl(objectPath);
+
+    const updated = unwrap<Teacher>(
+      await this.db
+        .from(TABLES.teachers)
+        .update({ photoUrl: publicUrl.publicUrl, updatedAt: nowIso() })
+        .eq("id", id)
+        .select()
+        .single(),
+      "content.uploadTeacherPhoto.save"
+    );
+
+    // Only once the row points at the new object, so a failed update never
+    // leaves the teacher referencing a deleted image.
+    if (existing.photoUrl) {
+      await this.deletePhotoObject(existing.photoUrl);
+    }
+
+    return updated;
+  }
+
+  /**
+   * Best-effort removal of a stored object, given its public URL.
+   *
+   * Deliberately does not throw: a leftover image is untidy, but failing the
+   * delete or the upload that triggered it would be worse for the operator, who
+   * cannot do anything about a storage hiccup anyway.
+   */
+  private async deletePhotoObject(publicUrl: string): Promise<void> {
+    const marker = `/${ContentService.PHOTO_BUCKET}/`;
+    const index = publicUrl.indexOf(marker);
+    if (index === -1) return;
+
+    const objectPath = publicUrl.slice(index + marker.length).split("?")[0];
+    if (!objectPath) return;
+
+    const { error } = await this.db.client.storage
+      .from(ContentService.PHOTO_BUCKET)
+      .remove([decodeURIComponent(objectPath)]);
+
+    if (error) {
+      this.logger.warn(
+        `Could not remove old teacher photo ${objectPath}: ${error.message}`
+      );
+    }
   }
 
   // ── Reviews ───────────────────────────────────────────────────────────────

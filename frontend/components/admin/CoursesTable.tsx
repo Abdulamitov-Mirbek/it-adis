@@ -2,18 +2,22 @@
 
 import { useCallback, useState } from "react";
 import { Pencil, Plus, Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { adminAPI, ApiRequestError } from "@/lib/admin-api";
 import type { Course } from "@/lib/types/admin";
 import { Badge, Button, Card, CardHeader, StatusBadge } from "./ui/primitives";
 import { EmptyState, ErrorState, TableSkeleton } from "./ui/states";
 import { Pagination, TableWrap, Td, Th, Tr } from "./ui/DataTable";
-import { formatDate, levelMeta } from "./status";
+import { useDateFormat, useLevelMeta } from "./status";
 import { useAdminQuery } from "./useAdminQuery";
 import { CourseFormDialog } from "./CourseFormDialog";
 
 const PAGE_SIZE = 10;
 
 export function CoursesTable() {
+  const t = useTranslations("admin.courses");
+  const levelMeta = useLevelMeta();
+  const { formatDate } = useDateFormat();
   const [page, setPage] = useState(1);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editing, setEditing] = useState<Course | undefined>(undefined);
@@ -44,10 +48,7 @@ export function CoursesTable() {
       // The backend soft-deletes, so this is reversible by editing the course
       // and switching it back to active. The confirmation says so, because
       // "Delete" on its own reads as permanent and stops people using it.
-      const confirmed = window.confirm(
-        `Archive “${course.title}”?\n\nIt will be hidden from the website. ` +
-          `Existing applications are kept, and you can make it active again later.`
-      );
+      const confirmed = window.confirm(t("archiveConfirm", { title: course.title }));
       if (!confirmed) return;
 
       setPendingDelete(course.slug);
@@ -57,13 +58,13 @@ export function CoursesTable() {
         reload();
       } catch (caught) {
         setActionError(
-          caught instanceof ApiRequestError ? caught.message : "Could not archive the course"
+          caught instanceof ApiRequestError ? caught.message : t("archiveFailed")
         );
       } finally {
         setPendingDelete(null);
       }
     },
-    [reload]
+    [reload, t]
   );
 
   const courses = data?.courses ?? [];
@@ -72,12 +73,12 @@ export function CoursesTable() {
     <>
       <Card>
         <CardHeader
-          title="Courses"
-          description="What the school offers, as shown on the public website"
+          title={t("title")}
+          description={t("description")}
           action={
             <Button variant="primary" size="sm" onClick={openCreate}>
               <Plus size={15} aria-hidden="true" />
-              New course
+              {t("new")}
             </Button>
           }
         />
@@ -99,12 +100,12 @@ export function CoursesTable() {
 
         {!isLoading && !error && courses.length === 0 && (
           <EmptyState
-            title="No courses yet"
-            description="Add the first course and it will appear on the website straight away."
+            title={t("emptyTitle")}
+            description={t("emptyDescription")}
             action={
               <Button variant="primary" size="sm" onClick={openCreate}>
                 <Plus size={15} aria-hidden="true" />
-                New course
+                {t("new")}
               </Button>
             }
           />
@@ -115,13 +116,13 @@ export function CoursesTable() {
             <TableWrap>
               <thead>
                 <tr>
-                  <Th>Course</Th>
-                  <Th>Level</Th>
-                  <Th>Duration</Th>
-                  <Th align="right">Applications</Th>
-                  <Th>Status</Th>
+                  <Th>{t("columns.course")}</Th>
+                  <Th>{t("columns.level")}</Th>
+                  <Th>{t("columns.duration")}</Th>
+                  <Th align="right">{t("columns.applications")}</Th>
+                  <Th>{t("columns.status")}</Th>
                   <Th align="right">
-                    <span className="sr-only">Actions</span>
+                    <span className="sr-only">{t("columns.actions")}</span>
                   </Th>
                 </tr>
               </thead>
@@ -136,7 +137,7 @@ export function CoursesTable() {
                             <p className="font-medium text-slate-900 truncate">
                               {course.title}
                             </p>
-                            {course.isFeatured && <Badge tone="amber">Featured</Badge>}
+                            {course.isFeatured && <Badge tone="amber">{t("featured")}</Badge>}
                           </div>
                           <p className="text-[13px] text-slate-500 truncate max-w-sm">
                             {course.description}
@@ -146,7 +147,7 @@ export function CoursesTable() {
                             <span className="text-slate-500 mx-1.5" aria-hidden="true">
                               ·
                             </span>
-                            added {formatDate(course.createdAt)}
+                            {t("added", { date: formatDate(course.createdAt) })}
                           </p>
                         </div>
                       </Td>
@@ -164,7 +165,7 @@ export function CoursesTable() {
                       <Td>
                         <StatusBadge
                           tone={course.isActive ? "green" : "neutral"}
-                          label={course.isActive ? "Active" : "Archived"}
+                          label={course.isActive ? t("active") : t("archived")}
                         />
                       </Td>
 
@@ -174,10 +175,10 @@ export function CoursesTable() {
                             variant="ghost"
                             size="sm"
                             onClick={() => openEdit(course)}
-                            aria-label={`Edit ${course.title}`}
+                            aria-label={t("editAria", { title: course.title })}
                           >
                             <Pencil size={14} aria-hidden="true" />
-                            Edit
+                            {t("edit")}
                           </Button>
                           {course.isActive && (
                             <Button
@@ -186,7 +187,7 @@ export function CoursesTable() {
                               className="text-slate-500 hover:text-red-700 hover:bg-red-50"
                               loading={pendingDelete === course.slug}
                               onClick={() => handleDelete(course)}
-                              aria-label={`Archive ${course.title}`}
+                              aria-label={t("archiveAria", { title: course.title })}
                             >
                               <Trash2 size={14} aria-hidden="true" />
                             </Button>

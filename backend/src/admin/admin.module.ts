@@ -8,4 +8,5 @@ import { SupabaseModule } from '../supabase/supabase.module';
   controllers: [AdminController],
   providers: [AdminService],
 })
+
 export class AdminModule {}

@@ -12,7 +12,9 @@
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
-    "seed": "ts-node src/scripts/seed.ts"
+    "seed": "ts-node src/scripts/seed.ts",
+    "create:admin": "ts-node src/scripts/create-admin.ts",
+    "seed:teachers": "ts-node src/scripts/seed-teachers.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.3.0",

@@ -65,6 +65,12 @@ export interface Teacher {
   bio: string;
   tags: string[];
   initials: string;
+  /**
+   * Public Supabase Storage URL. Optional rather than required because the
+   * fallback roster has no photos, and null whenever a mentor has not been
+   * given one — both cases fall back to the initials badge.
+   */
+  photoUrl?: string | null;
   color: string;
 }
 

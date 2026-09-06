@@ -3,10 +3,11 @@
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { adminAPI, ApiRequestError } from "@/lib/admin-api";
 import type { Course } from "@/lib/types/admin";
 import { Button, Field, Input, Select, Textarea } from "./ui/primitives";
-import { COURSE_LEVELS, levelMeta } from "./status";
+import { COURSE_LEVELS, useLevelMeta } from "./status";
 
 /**
  * Create or edit a course.
@@ -81,6 +82,8 @@ export function CourseFormDialog({
   onOpenChange: (open: boolean) => void;
   onSaved: () => void;
 }) {
+  const t = useTranslations("admin.form");
+  const levelMeta = useLevelMeta();
   const isEdit = Boolean(course);
   // Initialised once from props rather than synced in an effect. The parent
   // gives this component a key derived from the course, so switching which
@@ -129,7 +132,7 @@ export function CourseFormDialog({
       onOpenChange(false);
     } catch (caught) {
       setError(
-        caught instanceof ApiRequestError ? caught.message : "Could not save the course"
+        caught instanceof ApiRequestError ? caught.message : t("saveFailed")
       );
     } finally {
       setSaving(false);
@@ -148,19 +151,17 @@ export function CourseFormDialog({
           <div className="flex items-start justify-between gap-4 px-6 py-4 border-b border-dark-border sticky top-0 bg-dark-card rounded-t-2xl z-10">
             <div>
               <Dialog.Title className="font-display text-base font-semibold text-slate-900">
-                {isEdit ? "Edit course" : "New course"}
+                {isEdit ? t("editTitle") : t("newTitle")}
               </Dialog.Title>
               <Dialog.Description className="text-[13px] text-slate-500 mt-0.5">
-                {isEdit
-                  ? "Changes appear on the public site immediately."
-                  : "The course goes live on the website as soon as it is active."}
+                {isEdit ? t("editDescription") : t("newDescription")}
               </Dialog.Description>
             </div>
             <Dialog.Close asChild>
               <button
                 type="button"
                 className="grid place-items-center w-8 h-8 rounded-lg text-slate-500 hover:bg-slate-50 hover:text-slate-900 transition-colors"
-                aria-label="Close"
+                aria-label={t("close")}
               >
                 <X size={16} />
               </button>
@@ -169,49 +170,45 @@ export function CourseFormDialog({
 
           <form onSubmit={handleSubmit} className="px-6 py-5 space-y-5">
             <div className="grid gap-5 sm:grid-cols-2">
-              <Field label="Title" htmlFor="course-title" required>
+              <Field label={t("title")} htmlFor="course-title" required>
                 <Input
                   id="course-title"
                   value={form.title}
                   onChange={(event) => set("title", event.target.value)}
-                  placeholder="Python Development"
+                  placeholder={t("titlePlaceholder")}
                   required
                 />
               </Field>
 
               <Field
-                label="Slug"
+                label={t("slug")}
                 htmlFor="course-slug"
-                hint={
-                  isEdit
-                    ? "Fixed after creation, because applications reference it."
-                    : "Leave blank to generate one from the title."
-                }
+                hint={isEdit ? t("slugHintEdit") : t("slugHintNew")}
               >
                 <Input
                   id="course-slug"
                   value={isEdit ? form.slug : form.slug || slugify(form.title)}
                   onChange={(event) => set("slug", event.target.value)}
-                  placeholder="python-development"
+                  placeholder={t("slugPlaceholder")}
                   disabled={isEdit}
                 />
               </Field>
             </div>
 
-            <Field label="Short description" htmlFor="course-description" required>
+            <Field label={t("shortDescription")} htmlFor="course-description" required>
               <Textarea
                 id="course-description"
                 value={form.description}
                 onChange={(event) => set("description", event.target.value)}
-                placeholder="One or two sentences, shown on the course card."
+                placeholder={t("shortDescriptionPlaceholder")}
                 required
               />
             </Field>
 
             <Field
-              label="Full description"
+              label={t("fullDescription")}
               htmlFor="course-long"
-              hint="Shown when a visitor opens the course from the website."
+              hint={t("fullDescriptionHint")}
             >
               <Textarea
                 id="course-long"
@@ -222,17 +219,17 @@ export function CourseFormDialog({
             </Field>
 
             <div className="grid gap-5 sm:grid-cols-3">
-              <Field label="Duration" htmlFor="course-duration" required>
+              <Field label={t("duration")} htmlFor="course-duration" required>
                 <Input
                   id="course-duration"
                   value={form.duration}
                   onChange={(event) => set("duration", event.target.value)}
-                  placeholder="6 months"
+                  placeholder={t("durationPlaceholder")}
                   required
                 />
               </Field>
 
-              <Field label="Level" htmlFor="course-level">
+              <Field label={t("level")} htmlFor="course-level">
                 <Select
                   id="course-level"
                   value={form.level}
@@ -246,7 +243,7 @@ export function CourseFormDialog({
                 </Select>
               </Field>
 
-              <Field label="Price" htmlFor="course-price" hint="Use 0 to show as free.">
+              <Field label={t("price")} htmlFor="course-price" hint={t("priceHint")}>
                 <Input
                   id="course-price"
                   type="number"
@@ -259,9 +256,9 @@ export function CourseFormDialog({
 
             <div className="grid gap-5 sm:grid-cols-2">
               <Field
-                label="Tags"
+                label={t("tags")}
                 htmlFor="course-tags"
-                hint="Comma separated, for example: Python, Django, FastAPI"
+                hint={t("tagsHint")}
               >
                 <Input
                   id="course-tags"
@@ -271,9 +268,9 @@ export function CourseFormDialog({
               </Field>
 
               <Field
-                label="Display order"
+                label={t("order")}
                 htmlFor="course-order"
-                hint="Lower numbers appear first on the website."
+                hint={t("orderHint")}
               >
                 <Input
                   id="course-order"
@@ -285,7 +282,7 @@ export function CourseFormDialog({
             </div>
 
             <fieldset className="flex flex-wrap gap-x-6 gap-y-3 pt-1">
-              <legend className="sr-only">Visibility</legend>
+              <legend className="sr-only">{t("visibility")}</legend>
               <label className="flex items-center gap-2 text-[13px] text-slate-600 cursor-pointer">
                 <input
                   type="checkbox"
@@ -293,7 +290,7 @@ export function CourseFormDialog({
                   onChange={(event) => set("isActive", event.target.checked)}
                   className="w-4 h-4 rounded border-slate-200 bg-slate-50 text-green-700 focus:ring-green-600/30"
                 />
-                Active, visible on the website
+                {t("isActive")}
               </label>
               <label className="flex items-center gap-2 text-[13px] text-slate-600 cursor-pointer">
                 <input
@@ -302,7 +299,7 @@ export function CourseFormDialog({
                   onChange={(event) => set("isFeatured", event.target.checked)}
                   className="w-4 h-4 rounded border-slate-200 bg-slate-50 text-green-700 focus:ring-green-600/30"
                 />
-                Featured
+                {t("isFeatured")}
               </label>
             </fieldset>
 
@@ -318,11 +315,11 @@ export function CourseFormDialog({
             <div className="flex justify-end gap-2 border-t border-dark-border -mx-6 px-6 pt-4">
               <Dialog.Close asChild>
                 <Button type="button" variant="secondary">
-                  Cancel
+                  {t("cancel")}
                 </Button>
               </Dialog.Close>
               <Button type="submit" variant="primary" loading={saving}>
-                {isEdit ? "Save changes" : "Create course"}
+                {isEdit ? t("save") : t("create")}
               </Button>
             </div>
           </form>
