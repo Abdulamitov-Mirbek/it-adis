@@ -1,0 +1,111 @@
+# Production deploy: master -> the EC2 box, frontend and backend together.
+#
+# Both apps live on one host (Caddy -> Next.js :3000 -> NestJS :3001 over
+# loopback), so there is one deploy, not two. deploy/deploy-native.sh builds
+# both and restarts both.
+#
+# Access is via SSM Run Command, not SSH. GitHub therefore holds no private key
+# and no long-lived AWS credential: it exchanges its OIDC token for a
+# short-lived role session at run time, and port 22 never needs to be opened to
+# GitHub's address range.
+#
+# Required repository configuration:
+#   secrets.AWS_DEPLOY_ROLE_ARN   role GitHub assumes (trusts this repo's OIDC)
+#   vars.AWS_REGION               eu-north-1
+#   vars.EC2_INSTANCE_ID          i-0cef3e76ef5f0c744
+#   vars.SITE_URL                 http://<elastic-ip>  (https://<domain> later)
+name: Deploy to EC2
+
+on:
+  push:
+    branches: [master]
+  # Redeploy the current master without needing an empty commit.
+  workflow_dispatch:
+
+# Two deploys writing the same working tree at once would interleave a git
+# reset with a running build. Queue rather than cancel: cancelling mid-build
+# leaves the box half-deployed.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  id-token: write   # required to mint the OIDC token
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Deploy via SSM
+        env:
+          INSTANCE_ID: ${{ vars.EC2_INSTANCE_ID }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          # Deploy the exact commit that triggered this run, not "latest
+          # master": by the time the box fetches, master may have moved, and a
+          # deploy that ships a different commit than the one shown in the run
+          # is the kind of thing you chase for hours.
+          FETCH="runuser -l ubuntu -c 'cd /opt/itadis && git fetch --prune origin && git checkout -B master ${SHA} && git reset --hard ${SHA}'"
+          RUN="bash /opt/itadis/deploy/ci-remote-deploy.sh"
+
+          CMD_ID=$(aws ssm send-command \
+            --instance-ids "$INSTANCE_ID" \
+            --document-name AWS-RunShellScript \
+            --comment "deploy ${SHA:0:7}" \
+            --timeout-seconds 3600 \
+            --parameters "$(jq -n --arg a "$FETCH" --arg b "$RUN" '{commands:[$a,$b]}')" \
+            --query Command.CommandId --output text)
+          echo "SSM command: $CMD_ID"
+
+          # Poll rather than `aws ssm wait command-executed`: that waiter gives
+          # up after roughly 10 minutes, and a cold first build (two npm
+          # installs plus a Next build on a small instance) takes longer.
+          STATUS=Pending
+          for _ in $(seq 1 180); do
+            STATUS=$(aws ssm get-command-invocation \
+              --command-id "$CMD_ID" --instance-id "$INSTANCE_ID" \
+              --query Status --output text 2>/dev/null || echo Pending)
+            case "$STATUS" in
+              Success|Failed|Cancelled|TimedOut) break ;;
+            esac
+            sleep 10
+          done
+
+          echo "--- server output ---"
+          aws ssm get-command-invocation --command-id "$CMD_ID" \
+            --instance-id "$INSTANCE_ID" --query StandardOutputContent --output text || true
+
+          ERR=$(aws ssm get-command-invocation --command-id "$CMD_ID" \
+            --instance-id "$INSTANCE_ID" --query StandardErrorContent --output text || true)
+          if [ -n "$ERR" ] && [ "$ERR" != "None" ]; then
+            echo "--- stderr ---"
+            echo "$ERR" >&2
+          fi
+
+          echo "final status: $STATUS"
+          [ "$STATUS" = "Success" ]
+
+      - name: Smoke test the public site
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: |
+          set -euo pipefail
+          # deploy-native.sh already polls loopback on the box. This checks the
+          # one thing it cannot see: that Caddy is serving to the internet.
+          for i in $(seq 1 10); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 "$SITE_URL/en" || echo 000)
+            echo "attempt $i: $code"
+            [ "$code" = "200" ] && exit 0
+            sleep 6
+          done
+          echo "site did not return 200 at $SITE_URL/en" >&2
+          exit 1
